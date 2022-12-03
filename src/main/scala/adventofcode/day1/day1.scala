@@ -1,34 +1,48 @@
 package adventofcode.day1
 
 import adventofcode.AdventOfCodeBase
-import adventofcode.day1.Day1.caloriesByElf
+import adventofcode.day1.Day1.elves
 import scala.io.Source
 
 object Day1 extends AdventOfCodeBase("day1.txt") {
 
-  def caloriesByElf(lines: List[String]): List[(Long, Int)] =
+  def elves(lines: List[String]): List[Elf] =
     lines
-      .foldLeft(List(0L)) { case (acc, line) =>
-        if (line.trim.isEmpty) {
-          0L :: acc
-        } else {
-          (acc.head + line.toLong) :: acc.tail
-        }
+      .foldLeft(List.empty[Elf]) { case (acc, line) =>
+        acc match
+          case head :: next =>
+            if (line.trim.isEmpty) {
+              head.next :: acc
+            } else {
+              head.addCalories(line.toLong) :: next
+            }
+          case Nil =>
+            if (line.trim.isEmpty) {
+              Elf(0, 0L) :: acc
+            } else {
+              Elf(0, line.toLong) :: acc
+            }
       }
       .reverse
-      .zipWithIndex
 
-  def maxCalories(caloriesByElf: List[(Long, Int)]): Long =
-    caloriesByElf.maxBy(_._1)._1
+  def maxCalories(elves: List[Elf]): Long =
+    elves.maxBy(_.calories).calories
 
-  def top3ElvesCalories(caloriesByElf: List[(Long, Int)]): Long =
-    caloriesByElf.sortBy(_._1).reverse.take(3).map(_._1).sum
+  def top3(elves: List[Elf]): List[Elf] =
+    elves.sortBy(_.calories).reverse.take(3)
+
+  def part1(input: List[String]): Long = maxCalories(elves(input))
+
+  def part2(input: List[String]): Long = top3(elves(input)).map(_.calories).sum
 
   def main(args: Array[String]): Unit = {
-    val all      = caloriesByElf(input)
-    val calories = maxCalories(all)
-    println(s"part1: $calories")
-    val sumOfTop3Elf = top3ElvesCalories(all)
-    println(sumOfTop3Elf)
+    println(s"part1: ${part1(input)}")
+    println(s"part2: ${part2(input)}")
   }
+}
+
+case class Elf(number: Int, calories: Long) {
+  def next: Elf = Elf(number + 1, 0L)
+
+  def addCalories(cal: Long): Elf = copy(calories = calories + cal)
 }

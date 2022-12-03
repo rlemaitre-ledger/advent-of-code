@@ -31,7 +31,7 @@ object Part2 extends AdventOfCodeBase("day3.txt") {
     groups.map(_.badge).map(_.priority).sum
 
   def main(args: Array[String]): Unit = {
-    println(s"La priorité totale est de ${priority(groups(input))}")
+    println(s"Total priority is ${priority(groups(input))}")
   }
 }
 
@@ -49,7 +49,6 @@ case class Group(elves: List[RugSack]) {
 case class RugSack(first: Compartment, second: Compartment) {
   def misplaced: Item = {
     val inCommon = first.distinctItems.intersect(second.distinctItems)
-    assert(inCommon.size == 1, s"$first and $second have more than 1 item in common ($inCommon)")
     inCommon.head
   }
   def distinctItems: Set[Item] = first.distinctItems ++ second.distinctItems

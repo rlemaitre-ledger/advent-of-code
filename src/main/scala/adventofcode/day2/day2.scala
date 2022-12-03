@@ -59,20 +59,28 @@ object Result {
     case (Move.Scissors, Move.Scissors) => Result.Draw
 }
 
-def computeScore(rounds: List[(Move, Move, Result)]): Int = {
-  rounds.map { case (_, move, result) => move.score + result.score }.sum
+def computeScore(rounds: List[Round]): Int = {
+  rounds.map(_.score).sum
 }
 
+case class Round(opponent: Move, me: Move, result: Result) {
+  val score: Int = me.score + result.score
+}
+
+object Round {
+  def fromMoves(opponent: Move, me: Move): Round =
+    Round(opponent, me, Result.from(opponent, me))
+
+  def fromOpponentAndResult(opponent: Move, result: Result): Round =
+    Round(opponent, Move.from(opponent, result), result)
+}
 object Part1 extends AdventOfCodeBase("day2.txt") {
-  def parseLine(line: String): (Move, Move) = {
-    val arr = line.split(' ')
-    assert(arr.length == 2, s"line [$line] is invalid")
-    (Move.fromOpponent(arr.head), Move.fromMe(arr.last))
-  }
-  def rounds(lines: List[String]): List[(Move, Move, Result)] =
+  def rounds(lines: List[String]): List[Round] =
     lines
-      .map(parseLine)
-      .map { case (opponent, me) => (opponent, me, Result.from(opponent, me)) }
+      .map(line => {
+        val arr = line.split(' ')
+        Round.fromMoves(Move.fromOpponent(arr.head), Move.fromMe(arr.last))
+      })
 
   def main(args: Array[String]): Unit = {
     val myScore = computeScore(rounds(input))
@@ -81,16 +89,13 @@ object Part1 extends AdventOfCodeBase("day2.txt") {
 }
 
 object Part2 extends AdventOfCodeBase("day2.txt") {
-  def parseLine(line: String): (Move, Result) = {
-    val arr = line.split(' ')
-    assert(arr.length == 2, s"line [$line] is invalid")
-    (Move.fromOpponent(arr.head), Result.fromInput(arr.last))
-  }
 
-  def rounds(lines: List[String]): List[(Move, Move, Result)] =
+  def rounds(lines: List[String]): List[Round] =
     lines
-      .map(parseLine)
-      .map { case (opponent, result) => (opponent, Move.from(opponent, result), result) }
+      .map(line => {
+        val arr = line.split(' ')
+        Round.fromOpponentAndResult(Move.fromOpponent(arr.head), Result.fromInput(arr.last))
+      })
 
   def main(args: Array[String]): Unit = {
     val myScore = computeScore(rounds(input))

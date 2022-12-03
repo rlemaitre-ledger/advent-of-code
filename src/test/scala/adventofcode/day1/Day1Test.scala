@@ -18,13 +18,15 @@ class Day1Test extends FunSuite {
                 |9000
                 |
                 |10000""".stripMargin.split('\n').toList
+
   test("parse input") {
-    assertEquals(caloriesByElf(input), List((6000L, 0), (4000L, 1), (11000L, 2), (24000L, 3), (10000L, 4)))
+    assertEquals(elves(input), List(Elf(0, 6000L), Elf(1, 4000L), Elf(2, 11000L), Elf(3, 24000L), Elf(4, 10000L)))
+    assertEquals(elves(List("")), List(Elf(0, 0L)))
   }
   test("part1") {
-    assertEquals(maxCalories(caloriesByElf(input)), 24000L)
+    assertEquals(part1(input), 24000L)
   }
   test("part2") {
-    assertEquals(top3ElvesCalories(caloriesByElf(input)), 45000L)
+    assertEquals(part2(input), 45000L)
   }
 }
