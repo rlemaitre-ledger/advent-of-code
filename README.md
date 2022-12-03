@@ -1,10 +1,13 @@
 
 # Advent of code 2022
+<p align="center">
+	<a href="https://gitmoji.dev">
+		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
+			 alt="Gitmoji">
+	</a>
+</p>
 
-Atlas is an indexing framework and the backbone of the next generation of Ledger Explorers
-
-
-
+This repository contains my code for [Advent of Code 2022](https://adventofcode.com/2022).
 
 ## Achievements
 
@@ -33,7 +36,6 @@ Atlas is an indexing framework and the backbone of the next generation of Ledger
 - [ ] Day 23 ✩✩
 - [ ] Day 24 ✩✩
 - [ ] Day 25 ✩✩
-
 
 ## Tech Stack
 
