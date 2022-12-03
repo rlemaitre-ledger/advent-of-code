@@ -1,10 +1,14 @@
-
 # Advent of code 2022
+
 <p align="center">
 	<a href="https://gitmoji.dev">
 		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
 			 alt="Gitmoji">
 	</a>
+    <img src="https://github.com/rlemaitre-ledger/advent-of-code-2022/actions/workflows/ci.yml/badge.svg">
+    <a href="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022">
+        <img src="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022/branch/main/graph/badge.svg?token=5XW9EJ5SBD"/>
+    </a>
 </p>
 
 This repository contains my code for [Advent of Code 2022](https://adventofcode.com/2022).
@@ -43,7 +47,6 @@ This repository contains my code for [Advent of Code 2022](https://adventofcode.
 
 **Tests:** [mUnit](https://scalameta.org/munit/)
 
-
 ## Running Tests
 
 To run tests, run the following command
@@ -51,7 +54,6 @@ To run tests, run the following command
 ```bash
   sbt test
 ```
-
 
 ## License
 
