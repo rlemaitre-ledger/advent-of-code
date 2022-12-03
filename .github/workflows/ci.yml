@@ -1,0 +1,24 @@
+name: Scala CI
+
+on:
+  pull_request:
+    branches: ['**']
+  push:
+    branches: ['**']
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: sbt test
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Formatting
+        run: sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck
