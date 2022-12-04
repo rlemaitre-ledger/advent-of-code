@@ -47,4 +47,13 @@ class Day04Test extends AoCTest {
   test("part 1") {
     assertEquals(Day04.part1(input), 2)
   }
+  test("Pair do not overlap") {
+    assertEquals(Pair(Assignment(2, 4), Assignment(6, 8)).overlaps, false)
+  }
+  test("Pair overlap") {
+    assertEquals(Pair(Assignment(5, 7), Assignment(7, 9)).overlaps, true)
+  }
+  test("part 2") {
+    assertEquals(Day04.part2(input), 4)
+  }
 }
