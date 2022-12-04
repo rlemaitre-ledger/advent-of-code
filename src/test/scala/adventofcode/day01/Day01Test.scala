@@ -1,10 +1,10 @@
 package adventofcode.day01
 
-import Day1.*
+import Day01.*
 import adventofcode.AoCTest
 
 class Day01Test extends AoCTest {
-  val lines = """1000
+  val lines: String = """1000
                 |2000
                 |3000
                 |
@@ -20,13 +20,13 @@ class Day01Test extends AoCTest {
                 |10000""".stripMargin
 
   test("parse input") {
-    assertEquals(elves(input), List(Elf(0, 6000L), Elf(1, 4000L), Elf(2, 11000L), Elf(3, 24000L), Elf(4, 10000L)))
-    assertEquals(elves(List("")), List(Elf(0, 0L)))
+    assertEquals(elves(input), List(Elf(0, 6000), Elf(1, 4000), Elf(2, 11000), Elf(3, 24000), Elf(4, 10000)))
+    assertEquals(elves(List("")), List(Elf(0, 0)))
   }
   test("part1") {
-    assertEquals(part1(input), 24000L)
+    assertEquals(part1(input), 24000)
   }
   test("part2") {
-    assertEquals(part2(input), 45000L)
+    assertEquals(part2(input), 45000)
   }
 }

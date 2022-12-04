@@ -7,4 +7,6 @@ trait AdventOfCodeBase(path: String) {
     .fromResource(path)
     .getLines()
     .toList
+  def part1(lines: List[String]): Int
+  def part2(lines: List[String]): Int
 }

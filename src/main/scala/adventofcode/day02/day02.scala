@@ -59,10 +59,6 @@ object Result {
     case (Move.Scissors, Move.Scissors) => Result.Draw
 }
 
-def computeScore(rounds: List[Round]): Int = {
-  rounds.map(_.score).sum
-}
-
 case class Round(opponent: Move, me: Move, result: Result) {
   val score: Int = me.score + result.score
 }
@@ -74,31 +70,27 @@ object Round {
   def fromOpponentAndResult(opponent: Move, result: Result): Round =
     Round(opponent, Move.from(opponent, result), result)
 }
-object Part1 extends AdventOfCodeBase("day2.txt") {
-  def rounds(lines: List[String]): List[Round] =
+
+object Day02 extends AdventOfCodeBase("day02.txt") {
+  def part1Rounds(lines: List[String]): List[Round] =
     lines
       .map(line => {
         val arr = line.split(' ')
         Round.fromMoves(Move.fromOpponent(arr.head), Move.fromMe(arr.last))
       })
 
-  def main(args: Array[String]): Unit = {
-    val myScore = computeScore(rounds(input))
-    println(s"my score is $myScore")
-  }
-}
-
-object Part2 extends AdventOfCodeBase("day2.txt") {
-
-  def rounds(lines: List[String]): List[Round] =
+  def part2Rounds(lines: List[String]): List[Round] =
     lines
       .map(line => {
         val arr = line.split(' ')
         Round.fromOpponentAndResult(Move.fromOpponent(arr.head), Result.fromInput(arr.last))
       })
 
-  def main(args: Array[String]): Unit = {
-    val myScore = computeScore(rounds(input))
-    println(s"my score is $myScore")
+  def computeScore(rounds: List[Round]): Int = {
+    rounds.map(_.score).sum
   }
+
+  override def part1(lines: List[String]): Int = computeScore(part1Rounds(lines))
+
+  override def part2(lines: List[String]): Int = computeScore(part2Rounds(lines))
 }

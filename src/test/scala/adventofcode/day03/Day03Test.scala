@@ -4,7 +4,7 @@ import adventofcode.AoCTest
 
 class Day03Test extends AoCTest {
 
-  val lines =
+  val lines: String =
     """vJrwpWtwJgWrhcsFMMfFFhFp
       |jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
       |PmmdzqPrVvPwwTWBwg
@@ -29,17 +29,19 @@ class Day03Test extends AoCTest {
     )
   }
 
-  test("Total priority is well computed") {
-    assertEquals(Part1.totalPriority(input), 157)
+  test("Part 1") {
+    assertEquals(Day03.part1(input), 157)
   }
 
   test("groups are well computed") {
-    val groups = Part2.groups(input)
+    val groups = Day03.groups(input)
     assertEquals(groups.size, 2)
     assertEquals(groups.head.elves.size, 3)
     assertEquals(groups.last.elves.size, 3)
     assertEquals(groups.head.badge, Item.fromChar('r'))
     assertEquals(groups.last.badge, Item.fromChar('Z'))
-    assertEquals(Part2.priority(groups), 70)
+  }
+  test("Part 2") {
+    assertEquals(Day03.part2(input), 70)
   }
 }

@@ -6,13 +6,13 @@ import org.scalacheck.Gen.*
 import org.scalacheck.Prop.forAll
 
 class Day02Test extends AoCTest {
-  val lines = """A Y
+  val lines: String = """A Y
                 |B X
                 |C Z""".stripMargin
 
   test("parse part1") {
     assertEquals(
-      Part1.rounds(input),
+      Day02.part1Rounds(input),
       List(
         Round(Move.Rock, Move.Paper, Result.Win),
         Round(Move.Paper, Move.Rock, Result.Loss),
@@ -65,11 +65,11 @@ class Day02Test extends AoCTest {
   }
 
   test("compute score part 1") {
-    assertEquals(computeScore(Part1.rounds(input)), 15)
+    assertEquals(Day02.part1(input), 15)
   }
   test("parse part2") {
     assertEquals(
-      Part2.rounds(input),
+      Day02.part2Rounds(input),
       List(
         Round(Move.Rock, Move.Rock, Result.Draw),
         Round(Move.Paper, Move.Rock, Result.Loss),
@@ -79,6 +79,6 @@ class Day02Test extends AoCTest {
   }
 
   test("compute score part 2") {
-    assertEquals(computeScore(Part2.rounds(input)), 12)
+    assertEquals(Day02.part2(input), 12)
   }
 }

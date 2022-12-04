@@ -1,24 +1,14 @@
 package adventofcode.day03
 
 import adventofcode.AdventOfCodeBase
-import adventofcode.day03.Part1.input
 
-object Part1 extends AdventOfCodeBase("day3.txt") {
-
+object Day03 extends AdventOfCodeBase("day03.txt") {
   def totalPriority(lines: List[String]): Int =
     lines
       .map(RugSack.fromString)
       .map(_.misplaced)
       .map(_.priority)
       .sum
-
-  def main(args: Array[String]): Unit = {
-    val priority = totalPriority(input)
-    println(s"Misplaced items have a total priority of $priority")
-  }
-}
-
-object Part2 extends AdventOfCodeBase("day3.txt") {
 
   def groups(lines: List[String]): List[Group] =
     lines
@@ -30,11 +20,10 @@ object Part2 extends AdventOfCodeBase("day3.txt") {
   def priority(groups: List[Group]): Int =
     groups.map(_.badge).map(_.priority).sum
 
-  def main(args: Array[String]): Unit = {
-    println(s"Total priority is ${priority(groups(input))}")
-  }
-}
+  override def part1(lines: List[String]): Int = totalPriority(lines)
 
+  override def part2(lines: List[String]): Int = priority(groups(lines))
+}
 case class Group(elves: List[RugSack]) {
   val badge: Item =
     elves
