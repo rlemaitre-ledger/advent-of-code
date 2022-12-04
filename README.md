@@ -18,7 +18,7 @@ This repository contains my code for [Advent of Code 2022](https://adventofcode.
 - [x] Day 1 ⭐️⭐️
 - [x] Day 2 ⭐️⭐️
 - [x] Day 3 ⭐️⭐️
-- [ ] Day 4 ✩✩
+- [ ] Day 4 ⭐✩
 - [ ] Day 5 ✩✩
 - [ ] Day 6 ✩✩
 - [ ] Day 7 ✩✩

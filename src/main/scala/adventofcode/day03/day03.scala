@@ -1,7 +1,7 @@
-package adventofcode.day3
+package adventofcode.day03
 
 import adventofcode.AdventOfCodeBase
-import adventofcode.day3.Part1.input
+import adventofcode.day03.Part1.input
 
 object Part1 extends AdventOfCodeBase("day3.txt") {
 

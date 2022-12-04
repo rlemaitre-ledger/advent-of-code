@@ -1,10 +1,10 @@
-package adventofcode.day1
+package adventofcode.day01
 
 import Day1.*
-import munit.FunSuite
+import adventofcode.AoCTest
 
-class Day1Test extends FunSuite {
-  val input = """1000
+class Day01Test extends AoCTest {
+  val lines = """1000
                 |2000
                 |3000
                 |
@@ -17,7 +17,7 @@ class Day1Test extends FunSuite {
                 |8000
                 |9000
                 |
-                |10000""".stripMargin.split('\n').toList
+                |10000""".stripMargin
 
   test("parse input") {
     assertEquals(elves(input), List(Elf(0, 6000L), Elf(1, 4000L), Elf(2, 11000L), Elf(3, 24000L), Elf(4, 10000L)))

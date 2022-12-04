@@ -1,7 +1,7 @@
-package adventofcode.day1
+package adventofcode.day01
 
 import adventofcode.AdventOfCodeBase
-import adventofcode.day1.Day1.elves
+import adventofcode.day01.Day1.elves
 import scala.io.Source
 
 object Day1 extends AdventOfCodeBase("day1.txt") {

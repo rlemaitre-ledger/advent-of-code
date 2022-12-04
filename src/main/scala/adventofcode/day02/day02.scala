@@ -1,4 +1,4 @@
-package adventofcode.day2
+package adventofcode.day02
 
 import adventofcode.AdventOfCodeBase
 import scala.io.Source

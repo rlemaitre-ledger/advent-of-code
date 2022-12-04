@@ -1,8 +1,17 @@
-package adventofcode.day3
+package adventofcode.day03
 
-import munit.FunSuite
+import adventofcode.AoCTest
 
-class Day3Test extends FunSuite {
+class Day03Test extends AoCTest {
+
+  val lines =
+    """vJrwpWtwJgWrhcsFMMfFFhFp
+      |jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+      |PmmdzqPrVvPwwTWBwg
+      |wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+      |ttgJtRGJQctTZtZT
+      |CrZsJsPPZsGzwwsLwLmpwMDw""".stripMargin
+
   test("Item has correct priority") {
     assertEquals(Item.priority('a'), 1)
     assertEquals(Item.priority('z'), 26)
@@ -21,23 +30,11 @@ class Day3Test extends FunSuite {
   }
 
   test("Total priority is well computed") {
-    val lines = """vJrwpWtwJgWrhcsFMMfFFhFp
-                  |jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-                  |PmmdzqPrVvPwwTWBwg
-                  |wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-                  |ttgJtRGJQctTZtZT
-                  |CrZsJsPPZsGzwwsLwLmpwMDw""".stripMargin.split('\n').toList
-    assertEquals(Part1.totalPriority(lines), 157)
+    assertEquals(Part1.totalPriority(input), 157)
   }
 
   test("groups are well computed") {
-    val lines = """vJrwpWtwJgWrhcsFMMfFFhFp
-                  |jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-                  |PmmdzqPrVvPwwTWBwg
-                  |wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-                  |ttgJtRGJQctTZtZT
-                  |CrZsJsPPZsGzwwsLwLmpwMDw""".stripMargin.split('\n').toList
-    val groups = Part2.groups(lines)
+    val groups = Part2.groups(input)
     assertEquals(groups.size, 2)
     assertEquals(groups.head.elves.size, 3)
     assertEquals(groups.last.elves.size, 3)

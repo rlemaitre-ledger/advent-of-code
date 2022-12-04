@@ -1,15 +1,14 @@
-package adventofcode.day2
+package adventofcode.day02
 
-import munit.FunSuite
-import munit.ScalaCheckSuite
+import adventofcode.AoCTest
 import org.scalacheck.Gen
 import org.scalacheck.Gen.*
 import org.scalacheck.Prop.forAll
 
-class Day2Test extends FunSuite, ScalaCheckSuite {
-  val input = """A Y
+class Day02Test extends AoCTest {
+  val lines = """A Y
                 |B X
-                |C Z""".stripMargin.split('\n').toList
+                |C Z""".stripMargin
 
   test("parse part1") {
     assertEquals(
