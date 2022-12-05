@@ -52,7 +52,14 @@ case object ClassicCrane extends ContainerCrane {
 }
 
 case object CrateMover9000 extends ContainerCrane {
-  override def move(stacks: List[Stack])(command: Move): Unit = ???
+  override def move(stacks: List[Stack])(command: Move): Unit =
+    command match
+      case Move(count, from, to) =>
+        (0 until count).map(_ => stacks(from).pop()).reverse.foreach { maybeCrate =>
+          maybeCrate match
+            case Some(crate) => stacks(to).add(crate)
+            case None        =>
+        }
 }
 object Cargo {
   def from(crane: ContainerCrane, lines: List[String]): Cargo = {

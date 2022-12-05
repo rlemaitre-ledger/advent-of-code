@@ -56,10 +56,16 @@ class Day05Test extends AoCTest {
     assertEquals(Day05.parse(ClassicCrane, input), (cargoAtStart, moves))
   }
 
-  test("Move from empty stack") {
+  test("ClassicCrane move from empty stack") {
     val cargo = Cargo(ClassicCrane, List(Stack(1), Stack(2)))
     assertEquals(cargo.play(List(Move(1, 0, 1))).top, List(None, None))
   }
+
+  test("CrateMover9000 move from empty stack") {
+    val cargo = Cargo(CrateMover9000, List(Stack(1), Stack(2)))
+    assertEquals(cargo.play(List(Move(1, 0, 1))).top, List(None, None))
+  }
+
   test("move crates") {
     assertEquals(cargoAtStart.play(List(Move(1, 1, 0))).top, List(Some(Crate("D")), Some(Crate("C")), Some(Crate("P"))))
   }
@@ -68,4 +74,37 @@ class Day05Test extends AoCTest {
     assertEquals(Day05.part1(input), "CMZ")
   }
 
+  test("part 2") {
+    assertEquals(Day05.part2(input), "MCD")
+  }
+
+  test("Move several crates at once with classic") {
+    val stack1 = Stack(1)
+    stack1.add(Crate("A"))
+    stack1.add(Crate("B"))
+    val stack2 = Stack(2)
+    val stacks = List(stack1, stack2)
+    val move   = Move(2, 0, 1)
+    ClassicCrane.move(stacks)(move)
+    val expectedStack2 = Stack(2)
+    expectedStack2.add(Crate("B"))
+    expectedStack2.add(Crate("A"))
+    assertEquals(stack1.top, None)
+    assertEquals(stack2.top, expectedStack2.top)
+  }
+
+  test("Move several crates at once with CrateMover9000") {
+    val stack1 = Stack(1)
+    stack1.add(Crate("A"))
+    stack1.add(Crate("B"))
+    val stack2 = Stack(2)
+    val stacks = List(stack1, stack2)
+    val move   = Move(2, 0, 1)
+    CrateMover9000.move(stacks)(move)
+    val expectedStack2 = Stack(2)
+    expectedStack2.add(Crate("A"))
+    expectedStack2.add(Crate("B"))
+    assertEquals(stack1.top, None)
+    assertEquals(stack2.top, expectedStack2.top)
+  }
 }
