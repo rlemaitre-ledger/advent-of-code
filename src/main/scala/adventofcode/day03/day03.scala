@@ -2,7 +2,7 @@ package adventofcode.day03
 
 import adventofcode.AdventOfCodeBase
 
-object Day03 extends AdventOfCodeBase("day03.txt") {
+object Day03 extends AdventOfCodeBase[Int]("day03.txt") {
   def totalPriority(lines: List[String]): Int =
     lines
       .map(RugSack.fromString)

@@ -71,7 +71,7 @@ object Round {
     Round(opponent, Move.from(opponent, result), result)
 }
 
-object Day02 extends AdventOfCodeBase("day02.txt") {
+object Day02 extends AdventOfCodeBase[Int]("day02.txt") {
   def part1Rounds(lines: List[String]): List[Round] =
     lines
       .map(line => {

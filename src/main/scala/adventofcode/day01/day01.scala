@@ -4,7 +4,7 @@ import adventofcode.AdventOfCodeBase
 import adventofcode.day01.Day01.elves
 import scala.io.Source
 
-object Day01 extends AdventOfCodeBase("day01.txt") {
+object Day01 extends AdventOfCodeBase[Int]("day01.txt") {
 
   def elves(lines: List[String]): List[Elf] =
     lines

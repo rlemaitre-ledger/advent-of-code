@@ -2,7 +2,7 @@ package adventofcode.day04
 
 import adventofcode.AdventOfCodeBase
 
-object Day04 extends AdventOfCodeBase("day04.txt") {
+object Day04 extends AdventOfCodeBase[Int]("day04.txt") {
   def pairs(lines: List[String]): List[Pair] = lines.map(Pair.from)
 
   def part1(lines: List[String]): Int =
