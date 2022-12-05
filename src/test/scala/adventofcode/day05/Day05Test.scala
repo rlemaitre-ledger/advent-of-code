@@ -13,7 +13,7 @@ class Day05Test extends AoCTest {
                                  |move 2 from 2 to 1
                                  |move 1 from 1 to 2""".stripMargin
   def cargoAtStart: Cargo = {
-    val cargo: Cargo = Cargo(List(Stack(1), Stack(2), Stack(3)))
+    val cargo: Cargo = Cargo(ClassicCrane, List(Stack(1), Stack(2), Stack(3)))
     cargo.add(0, Crate("Z"))
     cargo.add(0, Crate("N"))
     cargo.add(1, Crate("M"))
@@ -42,8 +42,8 @@ class Day05Test extends AoCTest {
   }
 
   test("Cargo init") {
-    assertEquals(Cargo.from(Nil), Cargo(Nil))
-    val cargo = Day05.initCargo(input)
+    assertEquals(Cargo.from(ClassicCrane, Nil), Cargo(ClassicCrane, Nil))
+    val cargo = Day05.initCargo(ClassicCrane, input)
     assertEquals(cargo, cargoAtStart)
     assertEquals(cargo.top, List(Some(Crate("N")), Some(Crate("D")), Some(Crate("P"))))
   }
@@ -53,11 +53,11 @@ class Day05Test extends AoCTest {
   }
 
   test("parse") {
-    assertEquals(Day05.parse(input), (cargoAtStart, moves))
+    assertEquals(Day05.parse(ClassicCrane, input), (cargoAtStart, moves))
   }
 
   test("Move from empty stack") {
-    val cargo = Cargo(List(Stack(1), Stack(2)))
+    val cargo = Cargo(ClassicCrane, List(Stack(1), Stack(2)))
     assertEquals(cargo.play(List(Move(1, 0, 1))).top, List(None, None))
   }
   test("move crates") {

@@ -6,29 +6,27 @@ import scala.collection.mutable
 import scala.util.matching.Regex
 
 object Day05 extends AdventOfCodeBase[String]("day05.txt") {
-  def initCargo(lines: List[String]): Cargo = Cargo.from(lines.filterNot(_.startsWith("move")).filterNot(_.isBlank))
+  def initCargo(crane: ContainerCrane, lines: List[String]): Cargo =
+    Cargo.from(crane, lines.filterNot(_.startsWith("move")).filterNot(_.isBlank))
 
   def moves(lines: List[String]): List[Move] = lines.filter(_.startsWith("move")).map(Move.from)
 
-  def parse(lines: List[String]): (Cargo, List[Move]) = (initCargo(lines), moves(lines))
+  def parse(crane: ContainerCrane, lines: List[String]): (Cargo, List[Move]) = (initCargo(crane, lines), moves(lines))
 
   override def part1(lines: List[String]): String = {
-    val (cargo: Cargo, moves: List[Move]) = parse(lines)
+    val (cargo: Cargo, moves: List[Move]) = parse(ClassicCrane, lines)
     cargo.play(moves).topState
   }
 
-  override def part2(lines: List[String]): String = ???
+  override def part2(lines: List[String]): String = {
+    val (cargo: Cargo, moves: List[Move]) = parse(CrateMover9000, lines)
+    cargo.play(moves).topState
+  }
 }
 
-final case class Cargo(stacks: List[Stack]) {
+final case class Cargo(crane: ContainerCrane, stacks: List[Stack]) {
   def play(moves: List[Move]): Cargo = {
-    moves.foreach { case Move(count, from, to) =>
-      (0 until count).foreach { _ =>
-        stacks(from).pop() match
-          case Some(crate) => stacks(to).add(crate)
-          case None        =>
-      }
-    }
+    moves.foreach { crane.move(stacks) }
     this
   }
 
@@ -37,8 +35,27 @@ final case class Cargo(stacks: List[Stack]) {
   def topState: String                         = top.map(_.map(_.name).getOrElse("")).mkString
 }
 
+sealed trait ContainerCrane {
+  def move(stacks: List[Stack])(command: Move): Unit
+}
+
+case object ClassicCrane extends ContainerCrane {
+  override def move(stacks: List[Stack])(command: Move): Unit = {
+    command match
+      case Move(count, from, to) =>
+        (0 until count).foreach { _ =>
+          stacks(from).pop() match
+            case Some(crate) => stacks(to).add(crate)
+            case None        =>
+        }
+  }
+}
+
+case object CrateMover9000 extends ContainerCrane {
+  override def move(stacks: List[Stack])(command: Move): Unit = ???
+}
 object Cargo {
-  def from(lines: List[String]): Cargo = {
+  def from(crane: ContainerCrane, lines: List[String]): Cargo = {
     lines.reverse match
       case head :: tail => {
         val stacks = head.grouped(4).map(_.trim.toInt).map(Stack.apply).toList
@@ -48,9 +65,9 @@ object Cargo {
         } do {
           if (crate.nonEmpty) stacks(index).add(Crate.from(crate))
         }
-        Cargo(stacks)
+        Cargo(crane, stacks)
       }
-      case Nil => Cargo(Nil)
+      case Nil => Cargo(crane, Nil)
   }
 
 }
