@@ -24,13 +24,23 @@ object Day07 extends AdventOfCodeBase[Long]("day07.txt") {
         case _            => fs
     }
 
+  def system(lines: List[String]): FileSystem = fileSystem(parse(lines))
+
   override def part1(lines: List[String]): Long = {
-    val fs = fileSystem(parse(lines))
-    println(fs.show)
-    fs.directories.map { case (path, dir) => fs.size(path) }.filter(_ < 100000L).sum
+    val fs: FileSystem = system(lines)
+    fs.directories.map { case (path, _) => fs.totalSize(path) }.filter(_ < 100000L).sum
   }
 
-  override def part2(lines: List[String]): Long = ???
+  override def part2(lines: List[String]): Long = {
+    val fs: FileSystem = system(lines)
+    val needed         = fs.needed(updateSize)
+    fs.directories
+      .map { case (path, dir) => (dir, fs.totalSize(path)) }
+      .toList
+      .filter(_._2 >= needed)
+      .map(_._2)
+      .min
+  }
 }
 
 sealed trait TerminalOutput
@@ -88,15 +98,16 @@ case class FileSystem(currentPath: List[String], directories: Map[List[String], 
     copy(directories = directories + (currentPath -> withFile))
   }
 
-  def size(path: List[String]): Long = directories.filter(_._1.startsWith(path)).values.map(_.size).sum
+  def totalSize(path: List[String]): Long = directories.filter(_._1.startsWith(path)).values.map(_.size).sum
 
-  def show = directories
-    .map { case (path, dir) => s"${path.mkString("/")} ${dir.size} / ${size(path)}" }
-    .toList
-    .sorted
-    .mkString("\n")
+  def used: Long = totalSize(List(""))
+
+  def freeSpace: Long = FileSystem.totalSize - used
+
+  def needed(size: Long): Long = (size - freeSpace) max 0
 }
 object FileSystem {
+  val totalSize: Long = 70000000L
   val empty: FileSystem =
     FileSystem(
       Nil,
@@ -105,3 +116,5 @@ object FileSystem {
       )
     )
 }
+
+val updateSize = 30_000_000L

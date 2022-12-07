@@ -86,8 +86,16 @@ class Day07Test extends AoCTest {
       List("", "a", "b", "c") -> subSubDir
     )
     val fs = FileSystem(List(""), dirs)
-    assertEquals(fs.size(List("", "a")), 3L)
-    assertEquals(fs.size(List("", "a", "b")), 2L)
-    assertEquals(fs.size(List("", "a", "b", "c")), 1L)
+    assertEquals(fs.totalSize(List("", "a")), 3L)
+    assertEquals(fs.totalSize(List("", "a", "b")), 2L)
+    assertEquals(fs.totalSize(List("", "a", "b", "c")), 1L)
+  }
+  test("used size") {
+    assertEquals(Day07.fileSystem(Day07.parse(input)).used, 48381165L)
+    assertEquals(Day07.fileSystem(Day07.parse(input)).freeSpace, 21618835L)
+    assertEquals(Day07.fileSystem(Day07.parse(input)).needed(updateSize), 8381165L)
+  }
+  test("part 2") {
+    assertEquals(Day07.part2(input), 24933642L)
   }
 }
