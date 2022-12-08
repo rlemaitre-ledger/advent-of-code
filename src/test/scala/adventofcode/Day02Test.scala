@@ -1,6 +1,7 @@
-package adventofcode.day02
+package adventofcode
 
 import adventofcode.AoCTest
+import adventofcode.Day02.*
 import org.scalacheck.Gen
 import org.scalacheck.Gen.*
 import org.scalacheck.Prop.forAll

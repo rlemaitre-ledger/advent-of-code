@@ -1,6 +1,7 @@
-package adventofcode.day04
+package adventofcode
 
 import adventofcode.AoCTest
+import adventofcode.Day04.*
 
 class Day04Test extends AoCTest {
   val lines: String = """2-4,6-8

@@ -1,6 +1,7 @@
-package adventofcode.day05
+package adventofcode
 
 import adventofcode.AoCTest
+import adventofcode.Day05.*
 
 class Day05Test extends AoCTest {
   override val lines: String = """    [D]    

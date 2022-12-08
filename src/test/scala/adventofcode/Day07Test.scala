@@ -1,6 +1,7 @@
-package adventofcode.day07
+package adventofcode
 
 import adventofcode.AoCTest
+import adventofcode.Day07.*
 
 class Day07Test extends AoCTest {
   override val lines: String = """$ cd /
@@ -28,7 +29,6 @@ class Day07Test extends AoCTest {
                                  |7214296 k""".stripMargin
 
   test("parse filesystem entries") {
-    import LsOutput.*
     assertEquals(LsOutput.from("dir a"), LsDir("a"))
     assertEquals(LsOutput.from("14848514 b.txt"), LsFile("b.txt", 14848514L))
     assertEquals(LsOutput.from("8504156 c.dat"), LsFile("c.dat", 8504156L))
@@ -40,7 +40,6 @@ class Day07Test extends AoCTest {
     assertEquals(Command.from("$ ls"), ls)
   }
   test("parse input") {
-    import LsOutput.*
     assertEquals(
       Day07.parse(input),
       List(

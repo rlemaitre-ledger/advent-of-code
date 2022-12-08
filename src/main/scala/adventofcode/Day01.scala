@@ -1,8 +1,4 @@
-package adventofcode.day01
-
-import adventofcode.AdventOfCodeBase
-import adventofcode.day01.Day01.elves
-import scala.io.Source
+package adventofcode
 
 object Day01 extends AdventOfCodeBase[Int]("day01.txt") {
 
@@ -35,10 +31,10 @@ object Day01 extends AdventOfCodeBase[Int]("day01.txt") {
 
   def part2(input: List[String]): Int = top3(elves(input)).map(_.calories).sum
 
-}
+  case class Elf(number: Int, calories: Int) {
+    def next: Elf = Elf(number + 1, 0)
 
-case class Elf(number: Int, calories: Int) {
-  def next: Elf = Elf(number + 1, 0)
+    def addCalories(cal: Int): Elf = copy(calories = calories + cal)
+  }
 
-  def addCalories(cal: Int): Elf = copy(calories = calories + cal)
 }

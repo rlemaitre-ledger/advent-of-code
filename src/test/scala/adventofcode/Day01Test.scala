@@ -1,7 +1,7 @@
-package adventofcode.day01
+package adventofcode
 
-import Day01.*
 import adventofcode.AoCTest
+import adventofcode.Day01.*
 
 class Day01Test extends AoCTest {
   val lines: String = """1000

@@ -1,6 +1,7 @@
-package adventofcode.day06
+package adventofcode
 
 import adventofcode.AoCTest
+import adventofcode.Day06.*
 
 class Day06Test extends AoCTest {
 
