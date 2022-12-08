@@ -22,7 +22,7 @@ This repository contains my code for [Advent of Code 2022](https://adventofcode.
 - [x] Day 5 ⭐⭐
 - [x] Day 6 ⭐⭐
 - [x] Day 7 ⭐⭐
-- [ ] Day 8 ✩✩
+- [x] Day 8 ⭐⭐
 - [ ] Day 9 ✩✩
 - [ ] Day 10 ✩✩
 - [ ] Day 11 ✩✩
