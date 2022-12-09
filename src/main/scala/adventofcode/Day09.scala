@@ -1,23 +1,25 @@
 package adventofcode
 
+import scala.annotation.tailrec
+
 object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
-  override def part1(lines: List[String]): Int = play(State.start, moves(lines)).tailPositions.size
+  override def part1(lines: List[String]): Int = play(State.start, moves(lines)).tail.past.size
 
   override def part2(lines: List[String]): Int = ???
 
   def moves(lines: List[String]): List[Move] = lines.map(Move.parse)
 
+  @tailrec
   def play(state: State, moves: List[Move]): State = {
     moves match
       case Nil => state
-      case head :: next => {
+      case head :: next =>
         if (head.length == 0) {
           play(state, next)
         } else {
           val nextState = state.moveHead(head.direction)
           play(nextState, head.consumed :: next)
         }
-      }
   }
 
   final case class Move(direction: Direction, length: Int) {
@@ -89,24 +91,26 @@ object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
   object Position {
     val start: Position = Position(0, 0)
   }
-  final case class State(
-      head: Position,
-      tail: Position,
-      headPositions: Set[Position],
-      tailPositions: Set[Position]
-  ) {
+  final case class Path(current: Position, past: Set[Position]) {
+    def move(direction: Direction): Path = {
+      val next = current.move(direction)
+      Path(next, past + next)
+    }
+    def moveTowards(path: Path): Path = {
+      val next = current.moveTowards(path.current)
+      Path(next, past + next)
+    }
+  }
+  object Path {
+    val start: Path = Path(Position.start, Set(Position.start))
+  }
+  final case class State(head: Path, tail: Path) {
     def moveHead(direction: Direction): State = {
-      val headPos = head.move(direction)
-      val tailPos = tail.moveTowards(headPos)
-      copy(
-        head = headPos,
-        tail = tailPos,
-        headPositions = headPositions + headPos,
-        tailPositions = tailPositions + tailPos
-      )
+      val nextHead = head.move(direction)
+      copy(head = nextHead, tail = tail.moveTowards(nextHead))
     }
   }
   object State {
-    val start: State = State(Position.start, Position.start, Set(Position.start), Set(Position.start))
+    val start: State = State(Path.start, Path.start)
   }
 }
