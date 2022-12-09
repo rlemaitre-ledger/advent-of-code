@@ -3,12 +3,9 @@ package adventofcode
 import scala.annotation.tailrec
 
 object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
-  override def part1(lines: List[String]): Int = play(State.start, moves(lines)).tail.past.size
-
-  override def part2(lines: List[String]): Int = ???
-
-  def moves(lines: List[String]): List[Move] = lines.map(Move.parse)
-
+  override def part1(lines: List[String]): Int = play(State.init(2), moves(lines)).tail.last.past.size
+  override def part2(lines: List[String]): Int = play(State.init(10), moves(lines)).tail.last.past.size
+  def moves(lines: List[String]): List[Move]   = lines.map(Move.parse)
   @tailrec
   def play(state: State, moves: List[Move]): State = {
     moves match
@@ -21,7 +18,6 @@ object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
           play(nextState, head.consumed :: next)
         }
   }
-
   final case class Move(direction: Direction, length: Int) {
     def consumed: Move = copy(length = length - 1)
   }
@@ -41,7 +37,6 @@ object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
       case "L" => Left
       case "R" => Right
   }
-
   final case class Position(x: Int, y: Int) {
     def adjacentTo(other: Position): Boolean =
       Math.abs(x - other.x) <= 1 && Math.abs(y - other.y) <= 1
@@ -104,13 +99,20 @@ object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
   object Path {
     val start: Path = Path(Position.start, Set(Position.start))
   }
-  final case class State(head: Path, tail: Path) {
+  final case class State(head: Path, tail: List[Path]) {
     def moveHead(direction: Direction): State = {
       val nextHead = head.move(direction)
-      copy(head = nextHead, tail = tail.moveTowards(nextHead))
+      val nextTail = tail
+        .foldLeft((List.empty[Path], nextHead)) { case ((acc, previous), current) =>
+          val next = current.moveTowards(previous)
+          (acc :+ next, next)
+        }
+        ._1
+      copy(head = nextHead, tail = nextTail)
     }
   }
   object State {
-    val start: State = State(Path.start, Path.start)
+    val start: State         = State(Path.start, List(Path.start))
+    def init(nb: Int): State = State(Path.start, (0 until (nb - 1)).toList.map(_ => Path.start))
   }
 }

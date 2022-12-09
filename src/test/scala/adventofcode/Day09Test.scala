@@ -13,6 +13,16 @@ class Day09Test extends AoCTest {
                                  |D 1
                                  |L 5
                                  |R 2""".stripMargin
+  val longerInput: List[String] =
+    """R 5
+      |U 8
+      |L 8
+      |D 3
+      |R 17
+      |D 10
+      |L 25
+      |U 20""".stripMargin.split('\n').toList
+
   test("parse move") {
     assertEquals(
       Day09.moves(input),
@@ -64,38 +74,38 @@ class Day09Test extends AoCTest {
     val state  = State.start
     val state1 = state.moveHead(Direction.Right)
     assertEquals(state1.head.current, Position(1, 0))
-    assertEquals(state1.tail.current, Position(0, 0))
+    assertEquals(state1.tail.last.current, Position(0, 0))
     assertEquals(state1.head.past, Set(Position.start, Position(1, 0)))
-    assertEquals(state1.tail.past, Set(Position.start))
+    assertEquals(state1.tail.last.past, Set(Position.start))
     val state2 = state1.moveHead(Direction.Right)
     assertEquals(state2.head.current, Position(2, 0))
-    assertEquals(state2.tail.current, Position(1, 0))
+    assertEquals(state2.tail.last.current, Position(1, 0))
     assertEquals(state2.head.past, Set(Position.start, Position(1, 0), Position(2, 0)))
-    assertEquals(state2.tail.past, Set(Position.start, Position(1, 0)))
+    assertEquals(state2.tail.last.past, Set(Position.start, Position(1, 0)))
     val state3 = state2.moveHead(Direction.Right)
     assertEquals(state3.head.current, Position(3, 0))
-    assertEquals(state3.tail.current, Position(2, 0))
+    assertEquals(state3.tail.last.current, Position(2, 0))
     assertEquals(state3.head.past, Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0)))
-    assertEquals(state3.tail.past, Set(Position.start, Position(1, 0), Position(2, 0)))
+    assertEquals(state3.tail.last.past, Set(Position.start, Position(1, 0), Position(2, 0)))
     val state4 = state3.moveHead(Direction.Right)
     assertEquals(state4.head.current, Position(4, 0))
-    assertEquals(state4.tail.current, Position(3, 0))
+    assertEquals(state4.tail.last.current, Position(3, 0))
     assertEquals(
       state4.head.past,
       Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0), Position(4, 0))
     )
-    assertEquals(state4.tail.past, Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0)))
+    assertEquals(state4.tail.last.past, Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0)))
     val state5 = state4.moveHead(Direction.Up)
     assertEquals(state5.head.current, Position(4, 1))
-    assertEquals(state5.tail.current, Position(3, 0))
+    assertEquals(state5.tail.last.current, Position(3, 0))
     assertEquals(
       state5.head.past,
       Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0), Position(4, 0), Position(4, 1))
     )
-    assertEquals(state5.tail.past, Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0)))
+    assertEquals(state5.tail.last.past, Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0)))
     val state6 = state5.moveHead(Direction.Up)
     assertEquals(state6.head.current, Position(4, 2))
-    assertEquals(state6.tail.current, Position(4, 1))
+    assertEquals(state6.tail.last.current, Position(4, 1))
     assertEquals(
       state6.head.past,
       Set(
@@ -109,7 +119,7 @@ class Day09Test extends AoCTest {
       )
     )
     assertEquals(
-      state6.tail.past,
+      state6.tail.last.past,
       Set(Position.start, Position(1, 0), Position(2, 0), Position(3, 0), Position(4, 1))
     )
   }
@@ -145,5 +155,12 @@ class Day09Test extends AoCTest {
 
   test("part 1") {
     assertEquals(Day09.part1(input), 13)
+  }
+  test("part 2") {
+    assertEquals(Day09.part2(input), 1)
+    assertEquals(Day09.part2(longerInput), 36)
+  }
+  test("Move chain") {
+    val state = State.init(10)
   }
 }
