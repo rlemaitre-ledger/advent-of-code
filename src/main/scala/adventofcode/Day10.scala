@@ -12,7 +12,8 @@ object Day10 extends AdventOfCodeBase[Int, String]("day10.txt") {
       .map(_.strength)
       .sum
   }
-  override def part2(lines: List[String]): String = display(lines).toString
+  override def part2(lines: List[String]): String              = crt(lines, '#', '.')
+  def crt(lines: List[String], text: Char, fill: Char): String = Printer(fill, text).print(display(lines))
   def display(lines: List[String]): Display = {
     val execs = executions(lines)
     (1 to 240)
@@ -20,7 +21,6 @@ object Day10 extends AdventOfCodeBase[Int, String]("day10.txt") {
       .map(signal(_, execs))
       .foldLeft(Display.default)((display, signal) => display.draw(signal))
   }
-
   def instructions(lines: List[String]): List[Instruction] = lines.map(Instruction.parse)
   def executions(lines: List[String]): List[Execution] =
     instructions(lines)
@@ -73,11 +73,7 @@ object Day10 extends AdventOfCodeBase[Int, String]("day10.txt") {
     def update(pixel: Pixel, position: Int): Display = {
       copy(pixels = pixels.updated(position, pixel))
     }
-    override def toString: String =
-      pixels
-        .grouped(40)
-        .map(_.map(_.char).mkString)
-        .mkString("\n")
+    override def toString: String        = Printer.default.print(this)
     def pixelPosition(cycle: Cycle): Int = cycle.number - 1
     def spritePositions(register: Register): List[Int] =
       List(register.value - 1, register.value, register.value + 1)
@@ -95,8 +91,20 @@ object Day10 extends AdventOfCodeBase[Int, String]("day10.txt") {
   object Display {
     val default: Display = Display(List.fill(240)(Pixel.dark))
   }
-  enum Pixel(val char: Char) {
-    case lit  extends Pixel('#')
-    case dark extends Pixel('.')
+  enum Pixel {
+    case lit, dark
   }
+  case class Printer(fillCharacter: Char, textCharacter: Char) {
+    def print(display: Display): String = display.pixels
+      .grouped(40)
+      .map(_.map(show).mkString)
+      .mkString("\n")
+    private def show(pixel: Pixel) = pixel match
+      case Pixel.lit  => textCharacter
+      case Pixel.dark => fillCharacter
+  }
+  object Printer {
+    val default: Printer = Printer('.', '#')
+  }
+
 }
