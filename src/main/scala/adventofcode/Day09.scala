@@ -2,7 +2,7 @@ package adventofcode
 
 import scala.annotation.tailrec
 
-object Day09 extends AdventOfCodeBase[Int]("day09.txt") {
+object Day09 extends AdventOfCodeBase[Int, Int]("day09.txt") {
   override def part1(lines: List[String]): Int = play(State.init(2), moves(lines)).tail.last.past.size
   override def part2(lines: List[String]): Int = play(State.init(10), moves(lines)).tail.last.past.size
   def moves(lines: List[String]): List[Move]   = lines.map(Move.parse)

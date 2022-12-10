@@ -2,7 +2,7 @@ package adventofcode
 
 import scala.util.matching.Regex
 
-object Day07 extends AdventOfCodeBase[Long]("day07.txt") {
+object Day07 extends AdventOfCodeBase[Long, Long]("day07.txt") {
   def parse(lines: List[String]): List[TerminalOutput] =
     lines.flatMap { line =>
       if (line.matches(Command.pattern.toString())) {

@@ -3,7 +3,7 @@ package adventofcode
 import scala.annotation.targetName
 import scala.util.matching.Regex
 
-object Day10 extends AdventOfCodeBase[Int]("day10.txt") {
+object Day10 extends AdventOfCodeBase[Int, String]("day10.txt") {
   override def part1(lines: List[String]): Int = {
     val execs = executions(lines)
     List(20, 60, 100, 140, 180, 220)
@@ -12,8 +12,14 @@ object Day10 extends AdventOfCodeBase[Int]("day10.txt") {
       .map(_.strength)
       .sum
   }
-
-  override def part2(lines: List[String]): Int = ???
+  override def part2(lines: List[String]): String = display(lines).toString
+  def display(lines: List[String]): Display = {
+    val execs = executions(lines)
+    (1 to 240)
+      .map(Cycle.apply)
+      .map(signal(_, execs))
+      .foldLeft(Display.default)((display, signal) => display.draw(signal))
+  }
 
   def instructions(lines: List[String]): List[Instruction] = lines.map(Instruction.parse)
   def executions(lines: List[String]): List[Execution] =
@@ -28,15 +34,10 @@ object Day10 extends AdventOfCodeBase[Int]("day10.txt") {
     executions
       .filter(_.endsAt.number < cycle.number)
       .foldLeft(Register.init)((register, execution) => execution.instruction.execute(register))
-
   def signal(cycle: Cycle, executions: List[Execution]): Signal =
-    Signal.from(cycle, registerAt(cycle, executions))
-
-  case class Signal(strength: Int)
-  object Signal {
-    def from(cycle: Cycle, register: Register): Signal = {
-      Signal(cycle.number * register.value)
-    }
+    Signal(cycle, registerAt(cycle, executions))
+  case class Signal(cycle: Cycle, register: Register) {
+    val strength: Int = cycle.number * register.value
   }
   enum Instruction(val nbCycles: Int) {
     case Noop           extends Instruction(0)
@@ -67,5 +68,35 @@ object Day10 extends AdventOfCodeBase[Int]("day10.txt") {
   }
   object Register {
     val init: Register = Register(1)
+  }
+  case class Display(pixels: List[Pixel]) {
+    def update(pixel: Pixel, position: Int): Display = {
+      copy(pixels = pixels.updated(position, pixel))
+    }
+    override def toString: String =
+      pixels
+        .grouped(40)
+        .map(_.map(_.char).mkString)
+        .mkString("\n")
+    def pixelPosition(cycle: Cycle): Int = cycle.number - 1
+    def spritePositions(register: Register): List[Int] =
+      List(register.value - 1, register.value, register.value + 1)
+    def draw(signal: Signal): Display = {
+      val position: Int = pixelPosition(signal.cycle)
+      val pixel: Pixel = if (isPixelLit(signal, position)) { Pixel.lit }
+      else { Pixel.dark }
+      update(pixel, position)
+    }
+
+    private def isPixelLit(signal: Signal, position: Int) = {
+      spritePositions(signal.register).contains(position % 40)
+    }
+  }
+  object Display {
+    val default: Display = Display(List.fill(240)(Pixel.dark))
+  }
+  enum Pixel(val char: Char) {
+    case lit  extends Pixel('#')
+    case dark extends Pixel('.')
   }
 }

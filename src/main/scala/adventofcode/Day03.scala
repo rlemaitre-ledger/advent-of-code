@@ -1,6 +1,6 @@
 package adventofcode
 
-object Day03 extends AdventOfCodeBase[Int]("day03.txt") {
+object Day03 extends AdventOfCodeBase[Int, Int]("day03.txt") {
   def totalPriority(lines: List[String]): Int =
     lines
       .map(RugSack.fromString)

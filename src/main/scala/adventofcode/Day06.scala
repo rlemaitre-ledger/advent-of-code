@@ -1,6 +1,6 @@
 package adventofcode
 
-object Day06 extends AdventOfCodeBase[Int]("day06.txt") {
+object Day06 extends AdventOfCodeBase[Int, Int]("day06.txt") {
   def startOfPacket(signal: String, length: Int): Int =
     (0 until signal.length)
       .map(Buffer(signal, _, length))

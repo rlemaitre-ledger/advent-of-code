@@ -1,6 +1,6 @@
 package adventofcode
 
-object Day08 extends AdventOfCodeBase[Int]("day08.txt") {
+object Day08 extends AdventOfCodeBase[Int, Int]("day08.txt") {
 
   override def part1(lines: List[String]): Int = Field.parse(lines).toVisibilityMap.visibleCount
 

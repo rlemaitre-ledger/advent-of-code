@@ -1,6 +1,6 @@
 package adventofcode
 
-object Day01 extends AdventOfCodeBase[Int]("day01.txt") {
+object Day01 extends AdventOfCodeBase[Int, Int]("day01.txt") {
 
   def elves(lines: List[String]): List[Elf] =
     lines

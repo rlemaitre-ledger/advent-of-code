@@ -3,7 +3,7 @@ package adventofcode
 import scala.annotation.nowarn
 import scala.util.matching.Regex
 
-object Day05 extends AdventOfCodeBase[String]("day05.txt") {
+object Day05 extends AdventOfCodeBase[String, String]("day05.txt") {
   def initCargo(crane: ContainerCrane, lines: List[String]): Cargo =
     Cargo.from(crane, lines.filterNot(_.startsWith("move")).filterNot(_.isBlank))
 
