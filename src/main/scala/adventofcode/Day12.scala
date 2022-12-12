@@ -14,13 +14,15 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
   object ColumnNumber {
     def apply(n: Int): ColumnNumber = n
   }
+  opaque type Distance  = Int
+  opaque type Elevation = Int
   enum CellType {
     case Start, Normal, End
   }
   final case class Altitude(height: Char, cellType: CellType) {
     @targetName("minus")
-    def -(other: Altitude): Int = height - other.height
-    val isLowest: Boolean       = height == 'a'
+    def -(other: Altitude): Elevation = height - other.height
+    val isLowest: Boolean             = height == 'a'
   }
   object Altitude {
     def apply(c: Char): Altitude = c match
@@ -62,54 +64,52 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
       }
       adjacencyMap.toMap
     }
-    def minDistanceFromStart: Int          = distanceFrom(Set(start))
-    def minDistance: Int                   = distanceFrom(possibleStartingPoints)
-    def distanceFrom(cell: Set[Cell]): Int = toGraph.distance(cell, end)
-    val lowestCells: List[Cell]            = cells.flatten.filter(_.isLowest)
+    def minDistanceFromStart: Distance          = distanceFrom(Set(start))
+    def minDistance: Distance                   = distanceFrom(possibleStartingPoints)
+    def distanceFrom(cell: Set[Cell]): Distance = toGraph.distance(cell, end)
+    val lowestCells: List[Cell]                 = cells.flatten.filter(_.isLowest)
     lazy val possibleStartingPoints: Set[Cell] = adjacency.filter { case (cell, neighbours) =>
       cell.isLowest && neighbours.exists(_.elevation == 1)
     }.keySet
   }
   final case class Edge(from: Cell, to: Cell) {
-    val weight: Int    = 1
-    val elevation: Int = to.altitude - from.altitude
+    val distance: Distance   = 1
+    val elevation: Elevation = to.altitude - from.altitude
   }
   final case class Graph(adjacency: Map[Cell, List[Edge]]) {
     def shortestPathsFrom(start: Set[Cell]): ShortestPaths = {
       ShortestPaths.from(start, adjacency)
     }
-    def distance(start: Set[Cell], end: Cell): Int = shortestPathsFrom(start).distanceTo(end)
+    def distance(start: Set[Cell], end: Cell): Distance = shortestPathsFrom(start).distanceTo(end)
   }
   object Graph {
     val empty: Graph = Graph(Map.empty)
   }
-  case class Path(weight: Int, predecessor: Option[Cell])
+  case class Path(distance: Distance, predecessor: Option[Cell])
   case class ShortestPaths(from: Set[Cell], directPaths: Map[Cell, Path]) {
-    def distanceTo(cell: Cell): Int = directPaths(cell).weight
+    def distanceTo(cell: Cell): Distance = directPaths(cell).distance
   }
   object ShortestPaths {
     @nowarn
     def from(from: Set[Cell], adjacency: Map[Cell, List[Edge]]): ShortestPaths = {
       val distanceTo = MutableMap.empty[Cell, Path]
-      adjacency.keys.foreach(cell => distanceTo.put(cell, Path(Int.MaxValue, None)))
       from.foreach(distanceTo.put(_, Path(0, None)))
-      val sortByWeight: Ordering[Path] = (p1, p2) => p1.weight.compareTo(p2.weight)
-      val initial                      = from.map(c => Path(0, Some(c))).toList
-      val queue                        = mutable.PriorityQueue[Path](initial: _*)(sortByWeight)
+      val sortByDistance: Ordering[Path] = (p1, p2) => p1.distance.compareTo(p2.distance)
+      val initial                        = from.map(c => Path(0, Some(c))).toList
+      val queue                          = mutable.PriorityQueue[Path](initial: _*)(sortByDistance)
       while (queue.nonEmpty) {
         val p     = queue.dequeue()
         val edges = adjacency.getOrElse(p.predecessor.get, List.empty)
         edges.foreach { e =>
-          val previousWeight = distanceTo(e.from)
+          val previousDistance = distanceTo(e.from)
           distanceTo.get(e.to) match
-            case Some(path) if path.weight <= previousWeight.weight + e.weight => path
-            case _ => {
-              val path = Path(previousWeight.weight + e.weight, Some(e.from))
+            case Some(path) if path.distance <= previousDistance.distance + e.distance => path
+            case _ =>
+              val path = Path(previousDistance.distance + e.distance, Some(e.from))
               distanceTo.put(e.to, path)
               if (!queue.exists(_.predecessor.contains(e.to))) {
-                queue.enqueue(Path(path.weight, Some(e.to)))
+                queue.enqueue(Path(path.distance, Some(e.to)))
               }
-            }
         }
       }
       ShortestPaths(from, distanceTo.toMap)
