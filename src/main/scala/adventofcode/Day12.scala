@@ -6,15 +6,10 @@ import scala.collection.mutable
 import scala.collection.mutable.Map as MutableMap
 
 object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
-  opaque type LineNumber = Int
-  object LineNumber {
-    def apply(n: Int): LineNumber = n
+  opaque type Distance = Int
+  object Distance {
+    def apply(n: Int): Distance = n
   }
-  opaque type ColumnNumber = Int
-  object ColumnNumber {
-    def apply(n: Int): ColumnNumber = n
-  }
-  opaque type Distance  = Int
   opaque type Elevation = Int
   enum CellType {
     case Start, Normal, End
@@ -119,13 +114,5 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
     val isLowest: Boolean = altitude.isLowest
     def isAccessibleFrom(cell: Cell): Boolean =
       position.neighbours.contains(cell.position) && altitude - cell.altitude <= 1
-  }
-  final case class Coordinates(x: LineNumber, y: ColumnNumber) {
-    def neighbours: List[Coordinates] = List(
-      Coordinates(x - 1, y),
-      Coordinates(x, y - 1),
-      Coordinates(x, y + 1),
-      Coordinates(x + 1, y)
-    )
   }
 }
