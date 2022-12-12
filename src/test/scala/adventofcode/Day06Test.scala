@@ -29,4 +29,8 @@ class Day06Test extends AoCTest {
     assertEquals(Day06.part2(List("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")), 29)
     assertEquals(Day06.part2(List("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")), 26)
   }
+  test("answers") {
+    assertEquals(run(Mode.Part1), 1953)
+    assertEquals(run(Mode.Part2), 2301)
+  }
 }

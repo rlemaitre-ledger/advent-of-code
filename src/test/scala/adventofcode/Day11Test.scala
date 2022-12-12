@@ -217,4 +217,9 @@ class Day11Test extends AoCTest {
       play(Day11.monkeys(input, Mode.Part2), nbRounds).map(_.inspections),
       expected
     )
+
+  test("answers") {
+    assertEquals(run(Mode.Part1), 54752L)
+    assertEquals(run(Mode.Part2), 13606755504L)
+  }
 }

@@ -108,4 +108,9 @@ class Day05Test extends AoCTest {
     assertEquals(stack1.top, None)
     assertEquals(stack2.top, expectedStack2.top)
   }
+  test("answers") {
+    assertEquals(Day05.run(Mode.Part1), "ZSQVCCJLL")
+    assertEquals(Day05.run(Mode.Part2), "QZFJRWHGS")
+  }
+
 }

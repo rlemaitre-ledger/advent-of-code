@@ -163,4 +163,8 @@ class Day09Test extends AoCTest {
   test("Move chain") {
     val state = State.init(10)
   }
+  test("answers") {
+    assertEquals(run(Mode.Part1), 6212)
+    assertEquals(run(Mode.Part2), 2522)
+  }
 }

@@ -82,4 +82,11 @@ class Day02Test extends AoCTest {
   test("compute score part 2") {
     assertEquals(Day02.part2(input), 12)
   }
+  test("real part 1") {
+    assertEquals(Day02.run(Mode.Part1), 10310)
+  }
+  test("real part 1") {
+    assertEquals(Day02.run(Mode.Part2), 14859)
+  }
+
 }

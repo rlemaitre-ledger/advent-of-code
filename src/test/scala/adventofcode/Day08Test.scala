@@ -87,4 +87,8 @@ class Day08Test extends AoCTest {
       VisibleTrees(up = 2, right = 2, down = 1, left = 2)
     )
   }
+  test("answers") {
+    assertEquals(run(Mode.Part1), 1789)
+    assertEquals(run(Mode.Part2), 314820)
+  }
 }

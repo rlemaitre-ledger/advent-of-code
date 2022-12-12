@@ -57,6 +57,17 @@ To run tests, run the following command
   sbt test
 ```
 
+## Running with AoC input
+
+To find answers to AoC problem, run the following commands
+
+```bash
+  sbt console
+  > import adventofcode.*
+  > DayXX.run(Mode.Part1)
+  > DayXX.run(Mode.Part2)
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

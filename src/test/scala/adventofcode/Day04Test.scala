@@ -57,4 +57,8 @@ class Day04Test extends AoCTest {
   test("part 2") {
     assertEquals(Day04.part2(input), 4)
   }
+  test("answers") {
+    assertEquals(Day04.run(Mode.Part1), 528)
+    assertEquals(Day04.run(Mode.Part2), 881)
+  }
 }

@@ -97,4 +97,8 @@ class Day07Test extends AoCTest {
   test("part 2") {
     assertEquals(Day07.part2(input), 24933642L)
   }
+  test("answers") {
+    assertEquals(run(Mode.Part1), 1315285L)
+    assertEquals(run(Mode.Part2), 9847279L)
+  }
 }

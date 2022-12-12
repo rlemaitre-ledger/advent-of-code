@@ -120,7 +120,4 @@ object Day11 extends AdventOfCodeBase[Long, Long]("day11.txt") {
     def parseAction(str: String): Int = str match
       case s"    If ${_}: throw to monkey ${monkey}" => monkey.toInt
   }
-  enum Mode {
-    case Part1, Part2
-  }
 }

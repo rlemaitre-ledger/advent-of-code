@@ -29,4 +29,10 @@ class Day01Test extends AoCTest {
   test("part2") {
     assertEquals(part2(input), 45000)
   }
+  test("real part 1") {
+    assertEquals(Day01.run(Mode.Part1), 66719)
+  }
+  test("real part 1") {
+    assertEquals(Day01.run(Mode.Part2), 198551)
+  }
 }
