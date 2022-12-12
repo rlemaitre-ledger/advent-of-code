@@ -62,10 +62,10 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
       }
       adjacencyMap.toMap
     }
-    def minDistanceFromStart: Int     = distanceFrom(start)
-    def minDistance: Int              = possibleStartingPoints.map(distanceFrom).min
-    def distanceFrom(cell: Cell): Int = toGraph.distance(cell, end)
-    val lowestCells: List[Cell]       = cells.flatten.filter(_.isLowest)
+    def minDistanceFromStart: Int          = distanceFrom(Set(start))
+    def minDistance: Int                   = distanceFrom(possibleStartingPoints)
+    def distanceFrom(cell: Set[Cell]): Int = toGraph.distance(cell, end)
+    val lowestCells: List[Cell]            = cells.flatten.filter(_.isLowest)
     lazy val possibleStartingPoints: Set[Cell] = adjacency.filter { case (cell, neighbours) =>
       cell.isLowest && neighbours.exists(_.elevation == 1)
     }.keySet
@@ -75,26 +75,27 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
     val elevation: Int = to.altitude - from.altitude
   }
   final case class Graph(adjacency: Map[Cell, List[Edge]]) {
-    def shortestPathsFrom(start: Cell): ShortestPaths = {
+    def shortestPathsFrom(start: Set[Cell]): ShortestPaths = {
       ShortestPaths.from(start, adjacency)
     }
-    def distance(start: Cell, end: Cell): Int = shortestPathsFrom(start).distanceTo(end)
+    def distance(start: Set[Cell], end: Cell): Int = shortestPathsFrom(start).distanceTo(end)
   }
   object Graph {
     val empty: Graph = Graph(Map.empty)
   }
   case class Path(weight: Int, predecessor: Option[Cell])
-  case class ShortestPaths(from: Cell, directPaths: Map[Cell, Path]) {
+  case class ShortestPaths(from: Set[Cell], directPaths: Map[Cell, Path]) {
     def distanceTo(cell: Cell): Int = directPaths(cell).weight
   }
   object ShortestPaths {
     @nowarn
-    def from(from: Cell, adjacency: Map[Cell, List[Edge]]): ShortestPaths = {
+    def from(from: Set[Cell], adjacency: Map[Cell, List[Edge]]): ShortestPaths = {
       val distanceTo = MutableMap.empty[Cell, Path]
       adjacency.keys.foreach(cell => distanceTo.put(cell, Path(Int.MaxValue, None)))
-      distanceTo.put(from, Path(0, None))
+      from.foreach(distanceTo.put(_, Path(0, None)))
       val sortByWeight: Ordering[Path] = (p1, p2) => p1.weight.compareTo(p2.weight)
-      val queue                        = mutable.PriorityQueue[Path](Path(0, Some(from)))(sortByWeight)
+      val initial                      = from.map(c => Path(0, Some(c))).toList
+      val queue                        = mutable.PriorityQueue[Path](initial: _*)(sortByWeight)
       while (queue.nonEmpty) {
         val p     = queue.dequeue()
         val edges = adjacency.getOrElse(p.predecessor.get, List.empty)

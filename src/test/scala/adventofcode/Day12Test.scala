@@ -76,6 +76,7 @@ class Day12Test extends AoCTest {
   }
   test("answer") {
     assertEquals(run(Mode.Part1), 484)
+    assertEquals(run(Mode.Part2), 478)
   }
   test("lowest cells") {
     assertEquals(
