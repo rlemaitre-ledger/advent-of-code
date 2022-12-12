@@ -20,6 +20,7 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
   final case class Altitude(height: Char, cellType: CellType) {
     @targetName("minus")
     def -(other: Altitude): Int = height - other.height
+    val isLowest: Boolean       = height == 'a'
   }
   object Altitude {
     def apply(c: Char): Altitude = c match
@@ -27,18 +28,14 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
       case 'E' => Altitude('z', CellType.End)
       case _   => Altitude(c, CellType.Normal)
   }
-
-  override def part1(lines: List[String]): Int = parse(lines).minDistance
-
-  override def part2(lines: List[String]): Int = ???
-
+  override def part1(lines: List[String]): Int = parse(lines).minDistanceFromStart
+  override def part2(lines: List[String]): Int = parse(lines).minDistance
   def parse(lines: List[String]): HeightMap =
     HeightMap(
       lines.zipWithIndex.map { case (str, x) =>
         str.zipWithIndex.map { case (alt, y) => Cell(Coordinates(x, y), Altitude(alt)) }.toList
       }
     )
-
   final case class HeightMap(cells: List[List[Cell]]) {
     private val linesCount                            = cells.size
     private val colsCount                             = cells.map(_.size).max
@@ -47,8 +44,8 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
     val end: Cell                                     = cells.flatten.find(_.altitude.cellType == CellType.End).get
     def isValid(coordinates: Coordinates): Boolean =
       (0 until linesCount).contains(coordinates.x) && (0 until colsCount).contains(coordinates.y)
-    def toGraph: Graph = Graph(adjacency)
-    def adjacency: Map[Cell, List[Edge]] = {
+    lazy val toGraph: Graph = Graph(adjacency)
+    lazy val adjacency: Map[Cell, List[Edge]] = {
       val adjacencyMap = MutableMap.empty[Cell, List[Edge]]
       cells.flatten.foreach { cell =>
         cell.position.neighbours
@@ -65,10 +62,17 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
       }
       adjacencyMap.toMap
     }
-    def minDistance: Int = toGraph.distance(start, end)
+    def minDistanceFromStart: Int     = distanceFrom(start)
+    def minDistance: Int              = possibleStartingPoints.map(distanceFrom).min
+    def distanceFrom(cell: Cell): Int = toGraph.distance(cell, end)
+    val lowestCells: List[Cell]       = cells.flatten.filter(_.isLowest)
+    lazy val possibleStartingPoints: Set[Cell] = adjacency.filter { case (cell, neighbours) =>
+      cell.isLowest && neighbours.exists(_.elevation == 1)
+    }.keySet
   }
   final case class Edge(from: Cell, to: Cell) {
-    val weight: Int = 1
+    val weight: Int    = 1
+    val elevation: Int = to.altitude - from.altitude
   }
   final case class Graph(adjacency: Map[Cell, List[Edge]]) {
     def shortestPathsFrom(start: Cell): ShortestPaths = {
@@ -111,6 +115,7 @@ object Day12 extends AdventOfCodeBase[Int, Int]("day12.txt") {
     }
   }
   final case class Cell(position: Coordinates, altitude: Altitude) {
+    val isLowest: Boolean = altitude.isLowest
     def isAccessibleFrom(cell: Cell): Boolean =
       position.neighbours.contains(cell.position) && altitude - cell.altitude <= 1
   }

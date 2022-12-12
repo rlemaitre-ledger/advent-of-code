@@ -66,17 +66,44 @@ class Day12Test extends AoCTest {
     assertEquals(parse(input), map)
   }
   test("min distance") {
-    assertEquals(map.minDistance, 31)
+    assertEquals(map.minDistanceFromStart, 31)
   }
   test("part 1") {
     assertEquals(part1(input), 31)
   }
   test("part 2") {
-    intercept[NotImplementedError] {
-      assertEquals(part2(input), 31)
-    }
+    assertEquals(part2(input), 29)
   }
   test("answer") {
     assertEquals(run(Mode.Part1), 484)
+  }
+  test("lowest cells") {
+    assertEquals(
+      map.lowestCells.toSet,
+      Set(
+        Cell(Coordinates(LineNumber(0), ColumnNumber(0)), Altitude('a', CellType.Start)),
+        Cell(Coordinates(LineNumber(0), ColumnNumber(1)), Altitude('a', CellType.Normal)),
+        Cell(Coordinates(LineNumber(1), ColumnNumber(0)), Altitude('a', CellType.Normal)),
+        Cell(Coordinates(LineNumber(2), ColumnNumber(0)), Altitude('a', CellType.Normal)),
+        Cell(Coordinates(LineNumber(3), ColumnNumber(0)), Altitude('a', CellType.Normal)),
+        Cell(Coordinates(LineNumber(4), ColumnNumber(0)), Altitude('a', CellType.Normal))
+      )
+    )
+  }
+  test("possible starting cell") {
+    assertEquals(
+      map.possibleStartingPoints,
+      Set(
+        Cell(Coordinates(LineNumber(0), ColumnNumber(1)), Altitude('a', CellType.Normal)),
+        Cell(Coordinates(LineNumber(1), ColumnNumber(0)), Altitude('a', CellType.Normal)),
+        Cell(Coordinates(LineNumber(4), ColumnNumber(0)), Altitude('a', CellType.Normal))
+      )
+    )
+  }
+  test("starting points in answers") {
+    assertEquals(
+      parse(Day12.input).possibleStartingPoints.size,
+      53
+    )
   }
 }
