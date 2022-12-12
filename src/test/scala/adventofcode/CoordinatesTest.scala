@@ -3,7 +3,6 @@ package adventofcode
 import munit.FunSuite
 import munit.ScalaCheckSuite
 import org.scalacheck.Prop.forAll
-
 import scala.annotation.nowarn
 
 class CoordinatesTest extends FunSuite, ScalaCheckSuite {
