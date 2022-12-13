@@ -4,7 +4,7 @@ import adventofcode.Mode.Part1
 import adventofcode.Mode.Part2
 import scala.io.Source
 
-trait AdventOfCodeBase[T1, T2](path: String) {
+trait AdventOfCodeBase[T1, T2](path: String):
   def input: List[String] = Source
     .fromResource(path)
     .getLines()
@@ -14,4 +14,3 @@ trait AdventOfCodeBase[T1, T2](path: String) {
   def run(mode: Mode): T1 | T2 = mode match
     case Part1 => part1(input)
     case Part2 => part2(input)
-}
