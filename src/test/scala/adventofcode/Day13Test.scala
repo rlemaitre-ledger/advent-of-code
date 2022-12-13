@@ -92,9 +92,7 @@ class Day13Test extends AoCTest {
     assertEquals(part1(input), 13)
   }
   test("Part 2") {
-    intercept[NotImplementedError] {
-      assertEquals(part2(input), 13)
-    }
+    assertEquals(part2(input), 140)
   }
   test("parse") {
     assertEquals(signal(input), testSignal)
@@ -183,10 +181,16 @@ class Day13Test extends AoCTest {
   }
   test("answer") {
     assertEquals(run(Mode.Part1), 5198)
+    assertEquals(run(Mode.Part2), 22344)
   }
   test("parse invalid input") {
     intercept[IllegalArgumentException] {
       DataParser.parseString("toto")
     }
+  }
+  test("compare to") {
+    assertEquals(Data.simple(0).compareTo(Data.simple(0)), 0)
+    assertEquals(Data.simple(1).compareTo(Data.simple(0)), 1)
+    assertEquals(Data.simple(0).compareTo(Data.simple(1)), -1)
   }
 }
