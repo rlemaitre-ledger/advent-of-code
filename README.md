@@ -45,7 +45,7 @@ This repository contains my code for [Advent of Code 2022](https://adventofcode.
 
 ## Tech Stack
 
-**Language:** Plain Scala 3 (`v3.2.1`)
+**Language:** Plain Scala 3 (`v3.2.1`) with [Parser Combinators](https://github.com/scala/scala-parser-combinators) (`v2.1.1`)
 
 **Tests:** [mUnit](https://scalameta.org/munit/)
 
