@@ -74,7 +74,7 @@ class Day12Test extends AoCTest {
   test("part 2") {
     assertEquals(part2(input), 29)
   }
-  test("answer") {
+  test("answer".ignore) {
     assertEquals(run(Mode.Part1), 484)
     assertEquals(run(Mode.Part2), 478)
   }
