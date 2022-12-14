@@ -46,7 +46,7 @@ object Day07 extends AdventOfCodeBase[Long, Long]("day07.txt"):
           case "cd" => cd(arg)
           case "ls" => ls
   sealed trait LsOutput(name: String) extends TerminalOutput
-  case class LsDir(name: String) extends LsOutput(name)
+  case class LsDir(name: String)      extends LsOutput(name)
   case class LsFile(name: String, size: Long) extends LsOutput(name):
     def toFile: File = File(name, size)
   object LsOutput:
@@ -70,9 +70,9 @@ object Day07 extends AdventOfCodeBase[Long, Long]("day07.txt"):
       val withFile  = directory.copy(directFiles = directory.directFiles + (file.name -> file))
       copy(directories = directories + (currentPath -> withFile))
     def totalSize(path: List[String]): Long = directories.filter(_._1.startsWith(path)).values.map(_.size).sum
-    def used: Long = totalSize(List(""))
-    def freeSpace: Long = FileSystem.totalSize - used
-    def needed(size: Long): Long = (size - freeSpace) max 0
+    def used: Long                          = totalSize(List(""))
+    def freeSpace: Long                     = FileSystem.totalSize - used
+    def needed(size: Long): Long            = (size - freeSpace) max 0
   object FileSystem:
     val totalSize: Long = 70000000L
     val empty: FileSystem =

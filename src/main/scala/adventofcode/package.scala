@@ -33,17 +33,15 @@ package object adventofcode:
           List(Direction.Up)
         else
           List(Direction.Down)
-      else
-        if (x < other.x)
-          if (y < other.y)
-            List(Direction.Up, Direction.Right)
-          else
-            List(Direction.Down, Direction.Right)
+      else if (x < other.x)
+        if (y < other.y)
+          List(Direction.Up, Direction.Right)
         else
-          if (y < other.y)
-            List(Direction.Up, Direction.Left)
-          else
-            List(Direction.Down, Direction.Left)
+          List(Direction.Down, Direction.Right)
+      else if (y < other.y)
+        List(Direction.Up, Direction.Left)
+      else
+        List(Direction.Down, Direction.Left)
     def neighbours: List[Coordinates] = Direction.values.map(move).toList
   object Coordinates:
     val origin: Coordinates = Coordinates(0, 0)

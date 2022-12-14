@@ -40,7 +40,7 @@ object Day10 extends AdventOfCodeBase[Int, String]("day10.txt"):
     case Noop           extends Instruction(0)
     case Addx(inc: Int) extends Instruction(1)
     def execute(register: Register): Register = this match
-      case Noop => register
+      case Noop      => register
       case Addx(inc) => register + inc
   object Instruction:
     private val pattern: Regex = "addx (.*)".r
@@ -60,8 +60,8 @@ object Day10 extends AdventOfCodeBase[Int, String]("day10.txt"):
     val init: Register = Register(1)
   case class Display(pixels: List[Pixel]):
     def update(pixel: Pixel, position: Int): Display = copy(pixels = pixels.updated(position, pixel))
-    override def toString: String        = Printer.default.print(this)
-    def pixelPosition(cycle: Cycle): Int = cycle.number - 1
+    override def toString: String                    = Printer.default.print(this)
+    def pixelPosition(cycle: Cycle): Int             = cycle.number - 1
     def spritePositions(register: Register): List[Int] =
       List(register.value - 1, register.value, register.value + 1)
     def draw(signal: Signal): Display =

@@ -52,7 +52,13 @@ class Day11Test extends AoCTest {
       test = Test(13, 1, 3),
       inspections = 0
     ),
-    Monkey(number = 3, items = List(SimpleItem(74)), operation = Operation.Increase(3), test = Test(17, 0, 1), inspections = 0)
+    Monkey(
+      number = 3,
+      items = List(SimpleItem(74)),
+      operation = Operation.Increase(3),
+      test = Test(17, 0, 1),
+      inspections = 0
+    )
   )
   val round1: List[Monkey] = List(
     Monkey(
@@ -201,7 +207,13 @@ class Day11Test extends AoCTest {
           test = Test(13, 1, 3),
           inspections = 3
         ),
-        Monkey(number = 3, items = List.empty, operation = Operation.Increase(3), test = Test(17, 0, 1), inspections = 5)
+        Monkey(
+          number = 3,
+          items = List.empty,
+          operation = Operation.Increase(3),
+          test = Test(17, 0, 1),
+          inspections = 5
+        )
       )
     )
   }
