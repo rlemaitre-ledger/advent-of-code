@@ -20,30 +20,30 @@ package object adventofcode:
         case Direction.Right => Coordinates(x + 1, y)
     def sameLine(other: Coordinates): Boolean = x == other.x
     def sameRow(other: Coordinates): Boolean  = y == other.y
-    def directionTo(other: Coordinates): Option[List[Direction]] =
+    def directionTo(other: Coordinates): List[Direction] =
       if (adjacentTo(other))
-        None
+        Nil
       else if (sameRow(other))
         if (x < other.x)
-          Some(List(Direction.Right))
+          List(Direction.Right)
         else
-          Some(List(Direction.Left))
+          List(Direction.Left)
       else if (sameLine(other))
         if (y < other.y)
-          Some(List(Direction.Up))
+          List(Direction.Up)
         else
-          Some(List(Direction.Down))
+          List(Direction.Down)
       else
         if (x < other.x)
           if (y < other.y)
-            Some(List(Direction.Up, Direction.Right))
+            List(Direction.Up, Direction.Right)
           else
-            Some(List(Direction.Down, Direction.Right))
+            List(Direction.Down, Direction.Right)
         else
           if (y < other.y)
-            Some(List(Direction.Up, Direction.Left))
+            List(Direction.Up, Direction.Left)
           else
-            Some(List(Direction.Down, Direction.Left))
+            List(Direction.Down, Direction.Left)
     def neighbours: List[Coordinates] = Direction.values.map(move).toList
   object Coordinates:
     val origin: Coordinates = Coordinates(0, 0)

@@ -7,12 +7,11 @@ object Day09 extends AdventOfCodeBase[Int, Int]("day09.txt"):
   override def part2(lines: List[String]): Int = play(State.init(10), moves(lines)).tail.last.past.size
   def moves(lines: List[String]): List[Move]   = lines.map(Move.parse)
   @tailrec
-  def play(state: State, moves: List[Move]): State = 
+  def play(state: State, moves: List[Move]): State =
     moves match
       case Nil => state
       case head :: next =>
-        if (head.length == 0)
-          play(state, next)
+        if (head.length == 0) play(state, next)
         else
           val nextState = state.moveHead(head.direction)
           play(nextState, head.consumed :: next)
@@ -25,8 +24,8 @@ object Day09 extends AdventOfCodeBase[Int, Int]("day09.txt"):
   extension (c: Coordinates)
     def moveTowards(other: Coordinates): Coordinates =
       c.directionTo(other) match
-        case Some(directions) => directions.foldLeft(c) { case (pos, dir) => pos.move(dir) }
-        case None             => c
+        case Nil        => c
+        case directions => directions.foldLeft(c) { case (pos, dir) => pos.move(dir) }
   final case class Path(current: Coordinates, past: Set[Coordinates]):
     def move(direction: Direction): Path =
       val next = current.move(direction)
@@ -34,7 +33,7 @@ object Day09 extends AdventOfCodeBase[Int, Int]("day09.txt"):
     def moveTowards(path: Path): Path =
       val next = current.moveTowards(path.current)
       Path(next, past + next)
-  
+
   object Path:
     val start: Path = Path(Coordinates.origin, Set(Coordinates.origin))
   final case class State(head: Path, tail: List[Path]):
