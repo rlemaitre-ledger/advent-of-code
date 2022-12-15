@@ -43,5 +43,7 @@ package object adventofcode:
       else
         List(Direction.Down, Direction.Left)
     def neighbours: List[Coordinates] = Direction.values.map(move).toList
+    def manhattanDistance(to: Coordinates): Int =
+      Math.abs(to.x - x) + Math.abs(to.y - y)
   object Coordinates:
     val origin: Coordinates = Coordinates(0, 0)

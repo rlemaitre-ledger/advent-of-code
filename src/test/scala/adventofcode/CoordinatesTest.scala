@@ -2,6 +2,8 @@ package adventofcode
 
 import munit.FunSuite
 import munit.ScalaCheckSuite
+import org.scalacheck.Arbitrary
+import org.scalacheck.Gen
 import org.scalacheck.Prop.forAll
 import scala.annotation.nowarn
 
@@ -65,5 +67,24 @@ class CoordinatesTest extends FunSuite, ScalaCheckSuite {
       Coordinates(x1, y1).adjacentTo(Coordinates(x2, y2)) == Coordinates(x2, y2).adjacentTo(Coordinates(x1, y1))
     }
   }
-
+  property("Manhattan distance") {
+    val gen = for {
+      directions <- Gen.oneOf(
+        Gen.containerOf[List, Direction](Gen.oneOf(Direction.Up, Direction.Left)),
+        Gen.containerOf[List, Direction](Gen.oneOf(Direction.Up, Direction.Right)),
+        Gen.containerOf[List, Direction](Gen.oneOf(Direction.Down, Direction.Left)),
+        Gen.containerOf[List, Direction](Gen.oneOf(Direction.Down, Direction.Right)),
+        Gen.containerOf[List, Direction](Gen.const(Direction.Up)),
+        Gen.containerOf[List, Direction](Gen.const(Direction.Right)),
+        Gen.containerOf[List, Direction](Gen.const(Direction.Left)),
+        Gen.containerOf[List, Direction](Gen.const(Direction.Down))
+      )
+      x <- Arbitrary.arbitrary[Int]
+      y <- Arbitrary.arbitrary[Int]
+    } yield (Coordinates(x, y), directions)
+    forAll(gen) { (coordinates: Coordinates, directions: List[Direction]) =>
+      val point = directions.foldLeft(coordinates) { (c, dir) => c.move(dir) }
+      assertEquals(coordinates.manhattanDistance(point), directions.size)
+    }
+  }
 }
