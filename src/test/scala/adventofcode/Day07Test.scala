@@ -28,6 +28,8 @@ class Day07Test extends AoCTest {
                                  |5626152 d.ext
                                  |7214296 k""".stripMargin
 
+  val testInstance: Day07 = Day07(parse(input))
+
   test("parse filesystem entries") {
     assertEquals(LsOutput.from("dir a"), LsDir("a"))
     assertEquals(LsOutput.from("14848514 b.txt"), LsFile("b.txt", 14848514L))
@@ -71,7 +73,7 @@ class Day07Test extends AoCTest {
     assertEquals(Day07.parse(List("sdfghjrty")), Nil)
   }
   test("part 1") {
-    assertEquals(Day07.part1(input), 95437L)
+    assertEquals(testInstance.part1, 95437L)
   }
   test("directory size") {
     val subSubDir = Directory("c", List("", "a", "b"), Map("c1" -> File("c1", 1L)))
@@ -90,15 +92,15 @@ class Day07Test extends AoCTest {
     assertEquals(fs.totalSize(List("", "a", "b", "c")), 1L)
   }
   test("used size") {
-    assertEquals(Day07.fileSystem(Day07.parse(input)).used, 48381165L)
-    assertEquals(Day07.fileSystem(Day07.parse(input)).freeSpace, 21618835L)
-    assertEquals(Day07.fileSystem(Day07.parse(input)).needed(updateSize), 8381165L)
+    assertEquals(testInstance.fileSystem.used, 48381165L)
+    assertEquals(testInstance.fileSystem.freeSpace, 21618835L)
+    assertEquals(testInstance.fileSystem.needed(updateSize), 8381165L)
   }
   test("part 2") {
-    assertEquals(Day07.part2(input), 24933642L)
+    assertEquals(testInstance.part2, 24933642L)
   }
   test("answers") {
-    assertEquals(run(Mode.Part1), 1315285L)
-    assertEquals(run(Mode.Part2), 9847279L)
+    assertEquals(Day07.instance.run(Mode.Part1), 1315285L)
+    assertEquals(Day07.instance.run(Mode.Part2), 9847279L)
   }
 }

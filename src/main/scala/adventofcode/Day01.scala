@@ -1,6 +1,19 @@
 package adventofcode
 
-object Day01 extends AdventOfCodeBase[Int, Int]("day01.txt"):
+import adventofcode.Day01.Elf
+
+case class Day01(input: List[Elf]) extends AdventOfCodeBase[List[Elf], Int, Int] {
+  def maxCalories: Int = input.maxBy(_.calories).calories
+  def top3: List[Elf]  = input.sortBy(_.calories).reverse.take(3)
+  def part1: Int       = maxCalories
+  def part2: Int       = top3.map(_.calories).sum
+}
+object Day01 {
+  val instance: Day01 = Day01(elves(inputLines("day01.txt")))
+  case class Elf(number: Int, calories: Int) {
+    def next: Elf                  = Elf(number + 1, 0)
+    def addCalories(cal: Int): Elf = copy(calories = calories + cal)
+  }
   def elves(lines: List[String]): List[Elf] =
     lines
       .foldLeft(List.empty[Elf]) { case (acc, line) =>
@@ -11,10 +24,4 @@ object Day01 extends AdventOfCodeBase[Int, Int]("day01.txt"):
             if (line.trim.isEmpty) Elf(0, 0) :: acc else Elf(0, line.toInt) :: acc
       }
       .reverse
-  def maxCalories(elves: List[Elf]): Int = elves.maxBy(_.calories).calories
-  def top3(elves: List[Elf]): List[Elf]  = elves.sortBy(_.calories).reverse.take(3)
-  def part1(input: List[String]): Int    = maxCalories(elves(input))
-  def part2(input: List[String]): Int    = top3(elves(input)).map(_.calories).sum
-  case class Elf(number: Int, calories: Int):
-    def next: Elf                  = Elf(number + 1, 0)
-    def addCalories(cal: Int): Elf = copy(calories = calories + cal)
+}

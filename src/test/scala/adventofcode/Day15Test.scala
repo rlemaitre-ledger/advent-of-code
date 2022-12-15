@@ -1,8 +1,7 @@
 package adventofcode
 
+import Day15.*
 class Day15Test extends AoCTest {
-  val testInstance: Day15 = Day15(10, 20)
-  import testInstance.*
   override val lines: String = """Sensor at x=2, y=18: closest beacon is at x=-2, y=15
                                  |Sensor at x=9, y=16: closest beacon is at x=10, y=16
                                  |Sensor at x=13, y=2: closest beacon is at x=15, y=3
@@ -18,8 +17,9 @@ class Day15Test extends AoCTest {
                                  |Sensor at x=14, y=3: closest beacon is at x=15, y=3
                                  |Sensor at x=20, y=1: closest beacon is at x=15, y=3
                                  |""".stripMargin
+  val testInstance: Day15 = Day15(sensors(input), 10, 20)
   test("part 1") {
-    assertEquals(positionWithoutBeacon(sensors(input), 10, None), 26)
+    assertEquals(testInstance.positionWithoutBeacon(None), 26)
   }
   test("within radius at line") {
     assertEquals(
@@ -44,7 +44,7 @@ class Day15Test extends AoCTest {
     assertEquals(multiRange.remove(2), MultiRange(List(IntRange(-2, 1), IntRange(3, 24))))
   }
   test("possible solutions") {
-    val solutions = possibleSolutions(sensors(input), 0, 20)
+    val solutions = testInstance.possibleSolutions(sensors(input), 0, 20)
     assertEquals(solutions.size, 1)
     assertEquals(solutions.head._1, 11)
     assertEquals(solutions.head._2.free, Some(14))
@@ -61,7 +61,7 @@ class Day15Test extends AoCTest {
     assertEquals(m1.remove(5), MultiRange(List(IntRange(0, 4), IntRange(6, 10))))
   }
   test("tuning frequency") {
-    assertEquals(tuningFrequency(input, 20), 56000011L)
+    assertEquals(testInstance.tuningFrequency, 56000011L)
   }
   test("limit range") {
     val limits = Some(0, 20)
@@ -77,9 +77,9 @@ class Day15Test extends AoCTest {
     assertEquals(m.add(IntRange(100, 200)), m)
   }
   test("part 1") {
-    assertEquals(part1(input), 26)
+    assertEquals(testInstance.part1, 26)
   }
   test("part 2") {
-    assertEquals(part2(input), 56000011L)
+    assertEquals(testInstance.part2, 56000011L)
   }
 }

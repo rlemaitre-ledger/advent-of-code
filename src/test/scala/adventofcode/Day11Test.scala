@@ -157,12 +157,13 @@ class Day11Test extends AoCTest {
     Monkey(number = 3, items = List.empty, operation = Operation.Increase(3), test = Test(17, 0, 1), inspections = 20)
   )
 
+  val testInstance: Day11 = Day11(Monkeys(monkeys(input, Mode.Part1), monkeys(input, Mode.Part2)))
   test("part 1") {
-    assertEquals(Day11.part1(input), 10605L)
+    assertEquals(testInstance.part1, 10605L)
   }
   test("part 2") {
     intercept[Throwable] {
-      Day11.part2(input)
+      testInstance.part2
     }
   }
   test("parse monkeys") {
@@ -183,7 +184,7 @@ class Day11Test extends AoCTest {
   }
   test("play round 1") {
     assertEquals(
-      Day11.round(round0),
+      testInstance.round(round0),
       List(
         Monkey(
           number = 0,
@@ -226,12 +227,12 @@ class Day11Test extends AoCTest {
   }
   def testInspections(nbRounds: Int, expected: List[Long]): Unit =
     assertEquals(
-      play(Day11.monkeys(input, Mode.Part2), nbRounds).map(_.inspections),
+      testInstance.play(testInstance.input.part2, nbRounds).map(_.inspections),
       expected
     )
 
   test("answers") {
-    assertEquals(run(Mode.Part1), 54752L)
-    assertEquals(run(Mode.Part2), 13606755504L)
+    assertEquals(Day11.instance.run(Mode.Part1), 54752L)
+    assertEquals(Day11.instance.run(Mode.Part2), 13606755504L)
   }
 }

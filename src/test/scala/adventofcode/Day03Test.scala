@@ -31,11 +31,13 @@ class Day03Test extends AoCTest {
   }
 
   test("Part 1") {
-    assertEquals(Day03.part1(input), 157)
+    val testInstance: Day03 = Day03(input.map(RugSack.fromString))
+    assertEquals(testInstance.part1, 157)
   }
 
   test("groups are well computed") {
-    val groups = Day03.groups(input)
+    val testInstance: Day03 = Day03(input.map(RugSack.fromString))
+    val groups              = testInstance.groups
     assertEquals(groups.size, 2)
     assertEquals(groups.head.elves.size, 3)
     assertEquals(groups.last.elves.size, 3)
@@ -43,11 +45,12 @@ class Day03Test extends AoCTest {
     assertEquals(groups.last.badge, Item.fromChar('Z'))
   }
   test("Part 2") {
-    assertEquals(Day03.part2(input), 70)
+    val testInstance: Day03 = Day03(input.map(RugSack.fromString))
+    assertEquals(testInstance.part2, 70)
   }
   test("answers") {
-    assertEquals(Day03.run(Mode.Part1), 7889)
-    assertEquals(Day03.run(Mode.Part2), 2825)
+    assertEquals(Day03.instance.run(Mode.Part1), 7889)
+    assertEquals(Day03.instance.run(Mode.Part2), 2825)
   }
 
 }

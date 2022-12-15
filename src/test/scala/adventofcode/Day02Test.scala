@@ -11,9 +11,10 @@ class Day02Test extends AoCTest {
                 |B X
                 |C Z""".stripMargin
 
+  val instance: Day02 = Day02(input)
   test("parse part1") {
     assertEquals(
-      Day02.part1Rounds(input),
+      instance.part1Rounds(input),
       List(
         Round(Move.Rock, Move.Paper, Result.Win),
         Round(Move.Paper, Move.Rock, Result.Loss),
@@ -66,11 +67,11 @@ class Day02Test extends AoCTest {
   }
 
   test("compute score part 1") {
-    assertEquals(Day02.part1(input), 15)
+    assertEquals(instance.part1, 15)
   }
   test("parse part2") {
     assertEquals(
-      Day02.part2Rounds(input),
+      instance.part2Rounds(input),
       List(
         Round(Move.Rock, Move.Rock, Result.Draw),
         Round(Move.Paper, Move.Rock, Result.Loss),
@@ -80,13 +81,13 @@ class Day02Test extends AoCTest {
   }
 
   test("compute score part 2") {
-    assertEquals(Day02.part2(input), 12)
+    assertEquals(instance.part2, 12)
   }
   test("real part 1") {
-    assertEquals(Day02.run(Mode.Part1), 10310)
+    assertEquals(Day02.instance.run(Mode.Part1), 10310)
   }
   test("real part 1") {
-    assertEquals(Day02.run(Mode.Part2), 14859)
+    assertEquals(Day02.instance.run(Mode.Part2), 14859)
   }
 
 }

@@ -88,11 +88,12 @@ class Day13Test extends AoCTest {
       )
     )
   )
+  val testInstance: Day13 = Day13(Input(testSignal, packets(input)))
   test("Part 1") {
-    assertEquals(part1(input), 13)
+    assertEquals(testInstance.part1, 13)
   }
   test("Part 2") {
-    assertEquals(part2(input), 140)
+    assertEquals(testInstance.part2, 140)
   }
   test("parse") {
     assertEquals(signal(input), testSignal)
@@ -180,8 +181,8 @@ class Day13Test extends AoCTest {
     assertEquals(PacketPair(150, left, right).isOrdered, false)
   }
   test("answer") {
-    assertEquals(run(Mode.Part1), 5198)
-    assertEquals(run(Mode.Part2), 22344)
+    assertEquals(Day13.instance.run(Mode.Part1), 5198)
+    assertEquals(Day13.instance.run(Mode.Part2), 22344)
   }
   test("parse invalid input") {
     intercept[IllegalArgumentException] {

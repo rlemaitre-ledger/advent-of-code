@@ -18,21 +18,22 @@ class Day01Test extends AoCTest {
                 |9000
                 |
                 |10000""".stripMargin
+  val day01: Day01 = Day01(elves(input))
 
   test("parse input") {
     assertEquals(elves(input), List(Elf(0, 6000), Elf(1, 4000), Elf(2, 11000), Elf(3, 24000), Elf(4, 10000)))
     assertEquals(elves(List("")), List(Elf(0, 0)))
   }
   test("part1") {
-    assertEquals(part1(input), 24000)
+    assertEquals(day01.part1, 24000)
   }
   test("part2") {
-    assertEquals(part2(input), 45000)
+    assertEquals(day01.part2, 45000)
   }
   test("real part 1") {
-    assertEquals(Day01.run(Mode.Part1), 66719)
+    assertEquals(Day01.instance.run(Mode.Part1), 66719)
   }
   test("real part 1") {
-    assertEquals(Day01.run(Mode.Part2), 198551)
+    assertEquals(Day01.instance.run(Mode.Part2), 198551)
   }
 }

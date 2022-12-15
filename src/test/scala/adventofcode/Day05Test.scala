@@ -13,6 +13,7 @@ class Day05Test extends AoCTest {
                                  |move 3 from 1 to 3
                                  |move 2 from 2 to 1
                                  |move 1 from 1 to 2""".stripMargin
+  val testInstance: Day05 = Day05(Input.from(input))
   def cargoAtStart: Cargo = {
     val cargo: Cargo = Cargo(ClassicCrane, List(Stack(1), Stack(2), Stack(3)))
     cargo.add(0, Crate("Z"))
@@ -23,7 +24,7 @@ class Day05Test extends AoCTest {
     cargo.add(2, Crate("P"))
     cargo
   }
-  val moves = List(
+  val moves: List[Move] = List(
     Move(1, 1, 0),
     Move(3, 0, 2),
     Move(2, 1, 0),
@@ -72,11 +73,11 @@ class Day05Test extends AoCTest {
   }
 
   test("part 1") {
-    assertEquals(Day05.part1(input), "CMZ")
+    assertEquals(testInstance.part1, "CMZ")
   }
 
   test("part 2") {
-    assertEquals(Day05.part2(input), "MCD")
+    assertEquals(testInstance.part2, "MCD")
   }
 
   test("Move several crates at once with classic") {
@@ -109,8 +110,8 @@ class Day05Test extends AoCTest {
     assertEquals(stack2.top, expectedStack2.top)
   }
   test("answers") {
-    assertEquals(Day05.run(Mode.Part1), "ZSQVCCJLL")
-    assertEquals(Day05.run(Mode.Part2), "QZFJRWHGS")
+    assertEquals(Day05.instance.run(Mode.Part1), "ZSQVCCJLL")
+    assertEquals(Day05.instance.run(Mode.Part2), "QZFJRWHGS")
   }
 
 }

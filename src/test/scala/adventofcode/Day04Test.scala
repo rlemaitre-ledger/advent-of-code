@@ -11,6 +11,7 @@ class Day04Test extends AoCTest {
                         |6-6,4-6
                         |2-6,4-8
                         |""".stripMargin
+  val testInstance: Day04 = Day04(pairs(input))
   test("Construct assignment from input") {
     assertEquals(Assignment.from("2-4"), Assignment(2, 4))
   }
@@ -46,7 +47,7 @@ class Day04Test extends AoCTest {
     assertEquals(Pair(Assignment(1, 5), Assignment(0, 9)).assignmentsIncluded, true)
   }
   test("part 1") {
-    assertEquals(Day04.part1(input), 2)
+    assertEquals(testInstance.part1, 2)
   }
   test("Pair do not overlap") {
     assertEquals(Pair(Assignment(2, 4), Assignment(6, 8)).overlaps, false)
@@ -55,10 +56,10 @@ class Day04Test extends AoCTest {
     assertEquals(Pair(Assignment(5, 7), Assignment(7, 9)).overlaps, true)
   }
   test("part 2") {
-    assertEquals(Day04.part2(input), 4)
+    assertEquals(testInstance.part2, 4)
   }
   test("answers") {
-    assertEquals(Day04.run(Mode.Part1), 528)
-    assertEquals(Day04.run(Mode.Part2), 881)
+    assertEquals(Day04.instance.run(Mode.Part1), 528)
+    assertEquals(Day04.instance.run(Mode.Part2), 881)
   }
 }

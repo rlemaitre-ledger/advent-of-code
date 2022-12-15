@@ -62,6 +62,7 @@ class Day12Test extends AoCTest {
       )
     )
   )
+  val testInstance: Day12 = Day12(map)
   test("Parse map") {
     assertEquals(parse(input), map)
   }
@@ -69,14 +70,14 @@ class Day12Test extends AoCTest {
     assertEquals(map.minDistanceFromStart, Distance(31))
   }
   test("part 1") {
-    assertEquals(part1(input), 31)
+    assertEquals(testInstance.part1, 31)
   }
   test("part 2") {
-    assertEquals(part2(input), 29)
+    assertEquals(testInstance.part2, 29)
   }
   test("answer".ignore) {
-    assertEquals(run(Mode.Part1), 484)
-    assertEquals(run(Mode.Part2), 478)
+    assertEquals(Day12.instance.run(Mode.Part1), 484)
+    assertEquals(Day12.instance.run(Mode.Part2), 478)
   }
   test("lowest cells") {
     assertEquals(
@@ -103,7 +104,7 @@ class Day12Test extends AoCTest {
   }
   test("starting points in answers") {
     assertEquals(
-      parse(Day12.input).possibleStartingPoints.size,
+      parse(inputLines("day12.txt")).possibleStartingPoints.size,
       53
     )
   }

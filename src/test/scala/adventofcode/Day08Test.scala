@@ -12,7 +12,8 @@ class Day08Test extends AoCTest {
                                  |33549
                                  |35390
                                  |""".stripMargin
-  val field: Field = Field.parse(input)
+  val field: Field        = Field.parse(input)
+  val testInstance: Day08 = Day08(field)
   test("parse field") {
     assertEquals(
       field,
@@ -30,7 +31,7 @@ class Day08Test extends AoCTest {
 
   property("all border trees are visible") {
     val posGen = Gen.choose(0, 4)
-    forAll(posGen) { (pos) =>
+    forAll(posGen) { pos =>
       field.isVisible(Coordinates(pos, 0)): @nowarn
       field.isVisible(Coordinates(0, pos)): @nowarn
       field.isVisible(Coordinates(pos, 4)): @nowarn
@@ -40,7 +41,7 @@ class Day08Test extends AoCTest {
 
   property("all border trees have a scenic score of 0") {
     val posGen = Gen.choose(0, 4)
-    forAll(posGen) { (pos) =>
+    forAll(posGen) { pos =>
       field.toBorder(Coordinates(pos, 0)).scenicScore == 0: @nowarn
       field.toBorder(Coordinates(0, pos)).scenicScore == 0: @nowarn
       field.toBorder(Coordinates(pos, 4)).scenicScore == 0: @nowarn
@@ -72,10 +73,10 @@ class Day08Test extends AoCTest {
     )
   }
   test("part 1") {
-    assertEquals(Day08.part1(input), 21)
+    assertEquals(testInstance.part1, 21)
   }
   test("part 2") {
-    assertEquals(Day08.part2(input), 8)
+    assertEquals(testInstance.part2, 8)
   }
   test("visible trees") {
     assertEquals(
@@ -88,7 +89,7 @@ class Day08Test extends AoCTest {
     )
   }
   test("answers") {
-    assertEquals(run(Mode.Part1), 1789)
-    assertEquals(run(Mode.Part2), 314820)
+    assertEquals(Day08.instance.run(Mode.Part1), 1789)
+    assertEquals(Day08.instance.run(Mode.Part2), 314820)
   }
 }

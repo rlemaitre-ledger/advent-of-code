@@ -155,34 +155,33 @@ class Day10Test extends AoCTest {
                    |addx 3
                    |addx -5
                    |""".stripMargin.split('\n').toList
-    val executions = Day10.executions(simple)
-    assertEquals(Day10.registerAt(Cycle(1), executions), Register(1))
-    assertEquals(Day10.registerAt(Cycle(2), executions), Register(1))
-    assertEquals(Day10.registerAt(Cycle(3), executions), Register(1))
-    assertEquals(Day10.registerAt(Cycle(4), executions), Register(4))
-    assertEquals(Day10.registerAt(Cycle(5), executions), Register(4))
-    assertEquals(Day10.registerAt(Cycle(6), executions), Register(-1))
+    assertEquals(Day10(instructions(simple)).registerAt(Cycle(1)), Register(1))
+    assertEquals(Day10(instructions(simple)).registerAt(Cycle(2)), Register(1))
+    assertEquals(Day10(instructions(simple)).registerAt(Cycle(3)), Register(1))
+    assertEquals(Day10(instructions(simple)).registerAt(Cycle(4)), Register(4))
+    assertEquals(Day10(instructions(simple)).registerAt(Cycle(5)), Register(4))
+    assertEquals(Day10(instructions(simple)).registerAt(Cycle(6)), Register(-1))
   }
   test("Register") {
-    val executions = Day10.executions(input)
-    assertEquals(Day10.registerAt(Cycle(20), executions), Register(21))
-    assertEquals(Day10.registerAt(Cycle(60), executions), Register(19))
-    assertEquals(Day10.registerAt(Cycle(100), executions), Register(18))
-    assertEquals(Day10.registerAt(Cycle(140), executions), Register(21))
-    assertEquals(Day10.registerAt(Cycle(180), executions), Register(16))
-    assertEquals(Day10.registerAt(Cycle(220), executions), Register(18))
+    val instance = Day10(instructions(input))
+    assertEquals(instance.registerAt(Cycle(20)), Register(21))
+    assertEquals(instance.registerAt(Cycle(60)), Register(19))
+    assertEquals(instance.registerAt(Cycle(100)), Register(18))
+    assertEquals(instance.registerAt(Cycle(140)), Register(21))
+    assertEquals(instance.registerAt(Cycle(180)), Register(16))
+    assertEquals(instance.registerAt(Cycle(220)), Register(18))
   }
   test("Signal Strength") {
-    val executions = Day10.executions(input)
-    assertEquals(Day10.signal(Cycle(20), executions).strength, 420)
-    assertEquals(Day10.signal(Cycle(60), executions).strength, 1140)
-    assertEquals(Day10.signal(Cycle(100), executions).strength, 1800)
-    assertEquals(Day10.signal(Cycle(140), executions).strength, 2940)
-    assertEquals(Day10.signal(Cycle(180), executions).strength, 2880)
-    assertEquals(Day10.signal(Cycle(220), executions).strength, 3960)
+    val instance = Day10(instructions(input))
+    assertEquals(instance.signal(Cycle(20)).strength, 420)
+    assertEquals(instance.signal(Cycle(60)).strength, 1140)
+    assertEquals(instance.signal(Cycle(100)).strength, 1800)
+    assertEquals(instance.signal(Cycle(140)).strength, 2940)
+    assertEquals(instance.signal(Cycle(180)).strength, 2880)
+    assertEquals(instance.signal(Cycle(220)).strength, 3960)
   }
   test("part 1") {
-    assertEquals(Day10.part1(input), 13140)
+    assertEquals(Day10(instructions(input)).part1, 13140)
   }
   test("display to string") {
     assertEquals(
@@ -225,8 +224,9 @@ class Day10Test extends AoCTest {
     )
   }
   test("part2") {
+    val instance = Day10(instructions(input))
     assertEquals(
-      Day10.part2(input),
+      instance.part2,
       """##..##..##..##..##..##..##..##..##..##..
         |###...###...###...###...###...###...###.
         |####....####....####....####....####....
@@ -242,7 +242,8 @@ class Day10Test extends AoCTest {
       display: Display,
       expectedOutput: String
   ): Display = {
-    val signal = Day10.signal(Cycle(cycle), executions)
+    val instance = Day10(instructions(input))
+    val signal   = instance.signal(Cycle(cycle))
     assertEquals(signal, Signal(Cycle(cycle), Register(register)))
     val drawn = display.draw(signal)
     assertEquals(drawn.toString, expectedOutput)
@@ -250,7 +251,8 @@ class Day10Test extends AoCTest {
   }
 
   test("test signal") {
-    val executions = Day10.executions(input)
+    val instance   = Day10(instructions(input))
+    val executions = instance.executions
     var display    = Display.default
     display = testSignal(
       executions,
@@ -518,9 +520,9 @@ class Day10Test extends AoCTest {
     )
   }
   test("answers") {
-    assertEquals(run(Mode.Part1), 13480)
+    assertEquals(Day10.instance.run(Mode.Part1), 13480)
     assertEquals(
-      run(Mode.Part2),
+      Day10.instance.run(Mode.Part2),
       """####..##....##.###...##...##..####.#..#.
         |#....#..#....#.#..#.#..#.#..#.#....#.#..
         |###..#.......#.###..#....#....###..##...

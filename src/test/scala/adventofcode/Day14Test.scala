@@ -4,11 +4,12 @@ import Day14.*
 class Day14Test extends AoCTest {
   override val lines: String = """498,4 -> 498,6 -> 496,6
                                  |503,4 -> 502,4 -> 502,9 -> 494,9""".stripMargin
+  val testInstance: Day14 = Day14(Input(cavern(input, Mode.Part1), cavern(input, Mode.Part2)))
   test("part 1") {
-    assertEquals(part1(input), 24)
+    assertEquals(testInstance.part1, 24)
   }
   test("part 2") {
-    assertEquals(part2(input), 93)
+    assertEquals(testInstance.part2, 93)
   }
   test("parse invalid path") {
     intercept[IllegalArgumentException] {

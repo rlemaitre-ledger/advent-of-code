@@ -23,6 +23,9 @@ class Day09Test extends AoCTest {
       |L 25
       |U 20""".stripMargin.split('\n').toList
 
+  val simpleInstance: Day09 = Day09(moves(input))
+  val longInstance: Day09   = Day09(moves(longerInput))
+
   test("parse move") {
     assertEquals(
       Day09.moves(input),
@@ -106,14 +109,14 @@ class Day09Test extends AoCTest {
     )
   }
   test("part 1") {
-    assertEquals(Day09.part1(input), 13)
+    assertEquals(simpleInstance.part1, 13)
   }
   test("part 2") {
-    assertEquals(Day09.part2(input), 1)
-    assertEquals(Day09.part2(longerInput), 36)
+    assertEquals(simpleInstance.part2, 1)
+    assertEquals(longInstance.part2, 36)
   }
   test("answers") {
-    assertEquals(run(Mode.Part1), 6212)
-    assertEquals(run(Mode.Part2), 2522)
+    assertEquals(Day09.instance.run(Mode.Part1), 6212)
+    assertEquals(Day09.instance.run(Mode.Part2), 2522)
   }
 }

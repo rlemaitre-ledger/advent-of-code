@@ -6,6 +6,7 @@ import adventofcode.Day06.*
 class Day06Test extends AoCTest {
 
   override val lines: String = "mjqjpqmgbljsphdztnvjfqwrcgsmlb"
+  val testInstance: Day06    = Day06(lines)
 
   test("valid buffer at start") {
     val buffer: Buffer = Buffer("abcdefgh", 0, Buffer.packetLength)
@@ -16,21 +17,21 @@ class Day06Test extends AoCTest {
     assertEquals(buffer.isValid, false)
   }
   test("part 1") {
-    assertEquals(Day06.part1(List("mjqjpqmgbljsphdztnvjfqwrcgsmlb")), 7)
-    assertEquals(Day06.part1(List("bvwbjplbgvbhsrlpgdmjqwftvncz")), 5)
-    assertEquals(Day06.part1(List("nppdvjthqldpwncqszvftbrmjlhg")), 6)
-    assertEquals(Day06.part1(List("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")), 10)
-    assertEquals(Day06.part1(List("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")), 11)
+    assertEquals(Day06("mjqjpqmgbljsphdztnvjfqwrcgsmlb").part1, 7)
+    assertEquals(Day06("bvwbjplbgvbhsrlpgdmjqwftvncz").part1, 5)
+    assertEquals(Day06("nppdvjthqldpwncqszvftbrmjlhg").part1, 6)
+    assertEquals(Day06("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg").part1, 10)
+    assertEquals(Day06("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw").part1, 11)
   }
   test("part 2") {
-    assertEquals(Day06.part2(List("mjqjpqmgbljsphdztnvjfqwrcgsmlb")), 19)
-    assertEquals(Day06.part2(List("bvwbjplbgvbhsrlpgdmjqwftvncz")), 23)
-    assertEquals(Day06.part2(List("nppdvjthqldpwncqszvftbrmjlhg")), 23)
-    assertEquals(Day06.part2(List("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")), 29)
-    assertEquals(Day06.part2(List("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")), 26)
+    assertEquals(Day06("mjqjpqmgbljsphdztnvjfqwrcgsmlb").part2, 19)
+    assertEquals(Day06("bvwbjplbgvbhsrlpgdmjqwftvncz").part2, 23)
+    assertEquals(Day06("nppdvjthqldpwncqszvftbrmjlhg").part2, 23)
+    assertEquals(Day06("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg").part2, 29)
+    assertEquals(Day06("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw").part2, 26)
   }
   test("answers") {
-    assertEquals(run(Mode.Part1), 1953)
-    assertEquals(run(Mode.Part2), 2301)
+    assertEquals(Day06.instance.run(Mode.Part1), 1953)
+    assertEquals(Day06.instance.run(Mode.Part2), 2301)
   }
 }

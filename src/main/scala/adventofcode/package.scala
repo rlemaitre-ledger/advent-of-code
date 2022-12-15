@@ -1,4 +1,10 @@
+import scala.io.Source
+
 package object adventofcode:
+  def inputLines(path: String): List[String] = Source
+    .fromResource(path)
+    .getLines()
+    .toList
   enum Mode:
     case Part1, Part2
   enum Direction:
