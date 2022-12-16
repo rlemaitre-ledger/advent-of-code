@@ -5,7 +5,6 @@ import adventofcode.AdventOfCodeBase
 import adventofcode.Coordinates
 import adventofcode.Direction
 import adventofcode.inputLines
-
 import scala.annotation.tailrec
 case class Day09(input: List[Move]) extends AdventOfCodeBase[List[Move], Int, Int] {
   override def part1: Int = play(State.init(2), input).tail.last.past.size

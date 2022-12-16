@@ -4,7 +4,6 @@ import adventofcode.AdventOfCodeBase
 import adventofcode.Coordinates
 import adventofcode.day12.Day12.*
 import adventofcode.inputLines
-
 import scala.annotation.nowarn
 import scala.annotation.targetName
 import scala.collection.mutable

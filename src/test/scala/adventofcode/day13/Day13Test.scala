@@ -4,7 +4,6 @@ import adventofcode.*
 import adventofcode.day13.Day13
 import adventofcode.day13.Day13.*
 import org.scalacheck.Prop.forAll
-
 import scala.annotation.nowarn
 
 class Day13Test extends AoCTest {

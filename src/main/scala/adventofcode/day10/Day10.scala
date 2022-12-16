@@ -2,7 +2,6 @@ package adventofcode.day10
 
 import adventofcode.*
 import adventofcode.day10.Day10.*
-
 import scala.annotation.targetName
 import scala.util.matching.Regex
 

@@ -3,7 +3,6 @@ package adventofcode.day05
 import adventofcode.AdventOfCodeBase
 import adventofcode.day05.Day05.*
 import adventofcode.inputLines
-
 import scala.annotation.nowarn
 import scala.util.matching.Regex
 

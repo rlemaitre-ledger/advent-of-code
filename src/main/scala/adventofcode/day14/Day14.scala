@@ -6,7 +6,6 @@ import adventofcode.Direction
 import adventofcode.Mode
 import adventofcode.day14.Day14.*
 import adventofcode.inputLines
-
 import scala.annotation.nowarn
 import scala.annotation.tailrec
 import scala.collection.mutable.Set as MutableSet

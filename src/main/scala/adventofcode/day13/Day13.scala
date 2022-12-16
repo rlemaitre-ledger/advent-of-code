@@ -3,7 +3,6 @@ package adventofcode.day13
 import adventofcode.AdventOfCodeBase
 import adventofcode.day13.Day13.*
 import adventofcode.inputLines
-
 import scala.annotation.tailrec
 import scala.util.matching.Regex
 import scala.util.parsing.combinator.*

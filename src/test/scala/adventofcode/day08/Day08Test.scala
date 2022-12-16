@@ -5,7 +5,6 @@ import adventofcode.Day08.*
 import adventofcode.Mode
 import org.scalacheck.Gen
 import org.scalacheck.Prop.*
-
 import scala.annotation.nowarn
 
 class Day08Test extends AoCTest {

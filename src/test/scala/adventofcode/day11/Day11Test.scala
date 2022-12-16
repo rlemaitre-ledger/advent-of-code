@@ -4,7 +4,6 @@ import adventofcode.AoCTest
 import adventofcode.Mode
 import adventofcode.day11.Day11
 import adventofcode.day11.Day11.*
-
 import scala.collection.immutable.List
 class Day11Test extends AoCTest {
   override val lines: String = """Monkey 0:
