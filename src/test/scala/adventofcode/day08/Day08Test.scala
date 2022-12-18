@@ -1,8 +1,8 @@
 package adventofcode.day08
 
 import adventofcode.*
-import adventofcode.Day08.*
-import adventofcode.Mode
+import adventofcode.day08.*
+import adventofcode.day08.Day08.*
 import org.scalacheck.Gen
 import org.scalacheck.Prop.*
 import scala.annotation.nowarn
