@@ -34,7 +34,7 @@ This repository contains my code for [Advent of Code 2022](https://adventofcode.
 | Day 15 | Beacon Exclusion Zone   | ⭐️⭐️   |
 | Day 16 | Proboscidea Volcanium   | ⭐️⭐️   |
 | Day 17 | Pyroclastic Flow        | ⭐️⭐️   |
-| Day 18 |                         | ✩✩     |
+| Day 18 | Boiling Boulders        | ⭐️⭐️   |
 | Day 19 |                         | ✩✩     |
 | Day 20 |                         | ✩✩     |
 | Day 21 |                         | ✩✩     |
@@ -64,8 +64,9 @@ To find answers to AoC problem, run the following commands
 ```bash
   sbt console
   > import adventofcode.*
-  > DayXX.run(Mode.Part1)
-  > DayXX.run(Mode.Part2)
+  > import adventofcode.dayXX.*
+  > DayXX.instance.run(Mode.Part1)
+  > DayXX.instance.run(Mode.Part2)
 ```
 
 ## License
