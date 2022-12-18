@@ -1,11 +1,13 @@
-package adventofcode.day10
+package adventofcode.day11.day10
 
+import Day10.*
 import adventofcode.*
-import adventofcode.day10.Day10.*
+import adventofcode.day11.day10.Day10.Cycle
+import adventofcode.day11.day10.Day10.Instruction
 import scala.annotation.targetName
 import scala.util.matching.Regex
 
-case class Day10(input: List[Instruction]) extends AdventOfCodeBase[List[Instruction], Int, String] {
+case class Day10(input: List[Instruction]) extends Problem[List[Instruction], Int, String]("Cathode-Ray Tube") {
   lazy val executions: List[Execution] =
     input
       .foldLeft((List.empty[Execution], Cycle(0))) { case ((instructions, previousCycle), instruction) =>

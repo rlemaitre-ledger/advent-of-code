@@ -2,9 +2,9 @@ package adventofcode.day17
 
 import Day17.*
 import adventofcode.*
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 
-final case class Day17(input: String) extends AdventOfCodeBase[String, Int, Long] {
+final case class Day17(input: String) extends Problem[String, Int, Long]("Pyroclastic Flow") {
 
   def simulate: Iterator[State] = {
     val initial = State(input, Grid.empty, 0, 0, 0)

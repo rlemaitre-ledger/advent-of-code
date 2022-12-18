@@ -1,14 +1,14 @@
 package adventofcode.day15
 
-import adventofcode.AdventOfCodeBase
 import adventofcode.Coordinates
+import adventofcode.Problem
 import adventofcode.day15.Day15.*
 import adventofcode.inputLines
 import scala.collection.immutable.TreeMap
 import scala.util.parsing.combinator.JavaTokenParsers
 
 case class Day15(input: List[Sensor], lineInPart1: Int, maxCols: Int)
-    extends AdventOfCodeBase[List[Sensor], Int, Long] {
+    extends Problem[List[Sensor], Int, Long]("Beacon Exclusion Zone") {
   override def part1: Int = positionWithoutBeacon(None)
 
   override def part2: Long = tuningFrequency

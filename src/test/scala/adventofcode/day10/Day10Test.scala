@@ -2,7 +2,8 @@ package adventofcode.day10
 
 import adventofcode.AoCTest
 import adventofcode.Mode
-import adventofcode.day10.Day10.*
+import adventofcode.day11.day10.Day10
+import adventofcode.day11.day10.Day10.*
 
 class Day10Test extends AoCTest {
   override val lines: String = """addx 15

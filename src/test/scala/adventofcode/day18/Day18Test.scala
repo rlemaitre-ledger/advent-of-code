@@ -70,4 +70,7 @@ class Day18Test extends AoCTest {
   test("part 2") {
     assertEquals(Day18(Coordinates3D.fromLines(input)).part2, 58)
   }
+  test("run") {
+    assertEquals(Day18(Coordinates3D.fromLines(input)).run, (64, 58))
+  }
 }

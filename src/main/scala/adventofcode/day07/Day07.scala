@@ -4,7 +4,8 @@ import adventofcode.*
 import adventofcode.day07.Day07.*
 import scala.util.matching.Regex
 
-case class Day07(input: List[TerminalOutput]) extends AdventOfCodeBase[List[TerminalOutput], Long, Long] {
+case class Day07(input: List[TerminalOutput])
+    extends Problem[List[TerminalOutput], Long, Long]("No Space Left On Device") {
   def fileSystem: FileSystem =
     input.foldLeft(FileSystem.empty) { case (fs: FileSystem, output: TerminalOutput) =>
       output match

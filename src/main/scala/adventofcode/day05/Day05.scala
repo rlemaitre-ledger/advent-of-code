@@ -1,12 +1,12 @@
 package adventofcode.day05
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day05.Day05.*
 import adventofcode.inputLines
 import scala.annotation.nowarn
 import scala.util.matching.Regex
 
-case class Day05(input: Input) extends AdventOfCodeBase[Input, String, String] {
+case class Day05(input: Input) extends Problem[Input, String, String]("Supply Stacks") {
   override def part1: String =
     input.part1Cargo.play(input.moves).topState
   override def part2: String =

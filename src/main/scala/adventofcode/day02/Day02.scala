@@ -1,9 +1,9 @@
 package adventofcode.day02
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day02.Day02.*
 import adventofcode.inputLines
-case class Day02(input: List[String]) extends AdventOfCodeBase[List[String], Int, Int] {
+case class Day02(input: List[String]) extends Problem[List[String], Int, Int]("Rock Paper Scissors") {
   def part1Rounds(lines: List[String]): List[Round] =
     lines
       .map(line => {

@@ -1,11 +1,11 @@
 package adventofcode.day16
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day16.Day16.Position
 import adventofcode.inputLines
 import adventofcode.utils.ShortestPaths
 
-final case class Day16(input: ValveNetwork) extends AdventOfCodeBase[ValveNetwork, Int, Int] {
+final case class Day16(input: ValveNetwork) extends Problem[ValveNetwork, Int, Int]("Proboscidea Volcanium") {
   override def part1: Int = maxPressure(input, 30, 0)
   override def part2: Int = maxPressure(input, 26, 26)
 

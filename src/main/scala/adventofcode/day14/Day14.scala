@@ -1,9 +1,9 @@
 package adventofcode.day14
 
-import adventofcode.AdventOfCodeBase
 import adventofcode.Coordinates
 import adventofcode.Direction
 import adventofcode.Mode
+import adventofcode.Problem
 import adventofcode.day14.Day14.*
 import adventofcode.inputLines
 import scala.annotation.nowarn
@@ -12,7 +12,7 @@ import scala.collection.mutable.Set as MutableSet
 import scala.util.matching.Regex
 import scala.util.parsing.combinator.JavaTokenParsers
 
-case class Day14(input: Input) extends AdventOfCodeBase[Input, Int, Int] {
+case class Day14(input: Input) extends Problem[Input, Int, Int]("Regolith Reservoir") {
   override def part1: Int =
     val cavern = input.part1
     while (!cavern.fallsToInfinite) cavern.tick()

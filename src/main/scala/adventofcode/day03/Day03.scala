@@ -1,10 +1,10 @@
 package adventofcode.day03
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day03.Day03.*
 import adventofcode.inputLines
 
-case class Day03(input: List[RugSack]) extends AdventOfCodeBase[List[RugSack], Int, Int] {
+case class Day03(input: List[RugSack]) extends Problem[List[RugSack], Int, Int]("Rucksack Reorganization") {
   def groups: List[Group] = input.grouped(3).map(Group.apply).toList
   override def part1: Int = input.map(_.misplaced).map(_.priority).sum
 

@@ -65,7 +65,24 @@ To find answers to AoC problem, run the following commands
   sbt console
   > import adventofcode.*
   > import adventofcode.dayXX.*
+  > DayXX.instance.run
+```
+
+To run only Part 1
+
+```bash
+  sbt console
+  > import adventofcode.*
+  > import adventofcode.dayXX.*
   > DayXX.instance.run(Mode.Part1)
+```
+
+To run only Part 2
+
+```bash
+  sbt console
+  > import adventofcode.*
+  > import adventofcode.dayXX.*
   > DayXX.instance.run(Mode.Part2)
 ```
 

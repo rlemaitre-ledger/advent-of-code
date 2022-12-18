@@ -3,7 +3,7 @@ package adventofcode.day06
 import adventofcode.*
 import adventofcode.day06.Day06.*
 
-case class Day06(input: String) extends AdventOfCodeBase[String, Int, Int] {
+case class Day06(input: String) extends Problem[String, Int, Int]("Tuning Trouble") {
   def startOfPacket(length: Int): Int =
     (0 until input.length)
       .map(Buffer(input, _, length))

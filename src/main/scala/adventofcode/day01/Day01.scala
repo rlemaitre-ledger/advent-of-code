@@ -1,10 +1,10 @@
 package adventofcode.day01
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day01.Day01.Elf
 import adventofcode.inputLines
 
-case class Day01(input: List[Elf]) extends AdventOfCodeBase[List[Elf], Int, Int] {
+case class Day01(input: List[Elf]) extends Problem[List[Elf], Int, Int]("Calorie Counting") {
   def maxCalories: Int = input.maxBy(_.calories).calories
   def top3: List[Elf]  = input.sortBy(_.calories).reverse.take(3)
   def part1: Int       = maxCalories

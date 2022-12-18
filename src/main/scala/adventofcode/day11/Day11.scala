@@ -1,11 +1,11 @@
 package adventofcode.day11
 
-import adventofcode.AdventOfCodeBase
 import adventofcode.Mode
+import adventofcode.Problem
 import adventofcode.day11.Day11.*
 import adventofcode.inputLines
 
-case class Day11(input: Monkeys) extends AdventOfCodeBase[Monkeys, Long, Long] {
+case class Day11(input: Monkeys) extends Problem[Monkeys, Long, Long]("Monkey in the Middle") {
   override def part1: Long = business(play(input.part1, 20))
 
   override def part2: Long                  = business(play(input.part2, 10000))

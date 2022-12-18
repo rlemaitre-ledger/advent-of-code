@@ -1,13 +1,13 @@
 package adventofcode.day13
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day13.Day13.*
 import adventofcode.inputLines
 import scala.annotation.tailrec
 import scala.util.matching.Regex
 import scala.util.parsing.combinator.*
 
-case class Day13(input: Input) extends AdventOfCodeBase[Input, Int, Int] {
+case class Day13(input: Input) extends Problem[Input, Int, Int]("Distress Signal") {
   override def part1: Int = input.signal.inRightOrderIndices.sum
 
   override def part2: Int =

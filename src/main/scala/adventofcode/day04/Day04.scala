@@ -1,10 +1,10 @@
 package adventofcode.day04
 
-import adventofcode.AdventOfCodeBase
+import adventofcode.Problem
 import adventofcode.day04.Day04.*
 import adventofcode.day04.Day04.pairs
 import adventofcode.inputLines
-case class Day04(input: List[Pair]) extends AdventOfCodeBase[List[Pair], Int, Int] {
+case class Day04(input: List[Pair]) extends Problem[List[Pair], Int, Int]("Camp Cleanup") {
   override def part1: Int = input.count(_.assignmentsIncluded)
   override def part2: Int = input.count(_.overlaps)
 }

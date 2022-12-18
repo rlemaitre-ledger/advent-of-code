@@ -1,7 +1,7 @@
 package adventofcode.day12
 
-import adventofcode.AdventOfCodeBase
 import adventofcode.Coordinates
+import adventofcode.Problem
 import adventofcode.day12.Day12.*
 import adventofcode.inputLines
 import scala.annotation.nowarn
@@ -9,7 +9,7 @@ import scala.annotation.targetName
 import scala.collection.mutable
 import scala.collection.mutable.Map as MutableMap
 
-case class Day12(input: HeightMap) extends AdventOfCodeBase[HeightMap, Int, Int] {
+case class Day12(input: HeightMap) extends Problem[HeightMap, Int, Int]("Hill Climbing Algorithm") {
   override def part1: Int = input.minDistanceFromStart.value
 
   override def part2: Int = input.minDistance.value

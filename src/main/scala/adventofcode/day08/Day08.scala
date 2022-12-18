@@ -2,7 +2,7 @@ package adventofcode.day08
 
 import Day08.*
 import adventofcode.*
-case class Day08(input: Field) extends AdventOfCodeBase[Field, Int, Int] {
+case class Day08(input: Field) extends Problem[Field, Int, Int]("Treetop Tree House") {
   override def part1: Int = input.toVisibilityMap.visibleCount
 
   override def part2: Int =

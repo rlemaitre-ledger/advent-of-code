@@ -11,11 +11,11 @@ final case class Coordinates3D(x: Int, y: Int, z: Int) {
     plus(Coordinates3D(-1, 0, 0)),
     plus(Coordinates3D(0, 1, 0)),
     plus(Coordinates3D(0, -1, 0)),
-    plus(Coordinates3D(0, 0, 1 )),
-    plus(Coordinates3D(0, 0,-1 ))
+    plus(Coordinates3D(0, 0, 1)),
+    plus(Coordinates3D(0, 0, -1))
   )
   def plus(other: Coordinates3D): Coordinates3D = copy(x = x + other.x, y = y + other.y, z = z + other.z)
-  def in(box: Box): Boolean = box.x.contains(x) && box.y.contains(y) && box.z.contains(z)
+  def in(box: Box): Boolean                     = box.x.contains(x) && box.y.contains(y) && box.z.contains(z)
 }
 object Coordinates3D {
   def fromString(str: String): Coordinates3D = {
