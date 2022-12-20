@@ -5,9 +5,9 @@
 		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
 			 alt="Gitmoji">
 	</a>
-    <img src="https://github.com/rlemaitre-ledger/advent-of-code-2022/actions/workflows/ci.yml/badge.svg">
+    <img src="https://github.com/rlemaitre-ledger/advent-of-code-2022/actions/workflows/ci.yml/badge.svg" alt="ci">
     <a href="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022">
-        <img src="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022/branch/main/graph/badge.svg?token=5XW9EJ5SBD"/>
+        <img src="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022/branch/main/graph/badge.svg?token=5XW9EJ5SBD" alt="coverage"/>
     </a>
 </p>
 
@@ -39,7 +39,7 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 16](src/main/scala/adventofcode/aoc2022/day16/Day16.scala) | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)   | ⭐️⭐️   |
 | [Day 17](src/main/scala/adventofcode/aoc2022/day17/Day17.scala) | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)        | ⭐️⭐️   |
 | [Day 18](src/main/scala/adventofcode/aoc2022/day18/Day18.scala) | [Boiling Boulders](https://adventofcode.com/2022/day/18)        | ⭐️⭐️   |
-| Day 19                                                          |                                                                 | ✩✩     |
+| [Day 19](src/main/scala/adventofcode/aoc2022/day19/Day19.scala) | [Not Enough Minerals](https://adventofcode.com/2022/day/19)     | ⭐️⭐️   |
 | Day 20                                                          |                                                                 | ✩✩     |
 | Day 21                                                          |                                                                 | ✩✩     |
 | Day 22                                                          |                                                                 | ✩✩     |

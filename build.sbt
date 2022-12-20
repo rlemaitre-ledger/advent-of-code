@@ -10,7 +10,14 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 libraryDependencies += "org.scalameta"          %% "munit"                    % "0.7.29" % Test
 libraryDependencies += "org.scalameta"          %% "munit-scalacheck"         % "0.7.29" % Test
 libraryDependencies += compilerPlugin("com.github.ghik" % "zerowaste" % "0.2.1" cross CrossVersion.full)
-scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Werror")
+scalacOptions ++= Seq(
+  "-unchecked",
+  "-deprecation",
+  "-feature",
+  "-Werror",
+  "-explain",
+  "-explain-types"
+)
 
 coverageHighlighting            := true
 coverageFailOnMinimum           := true
