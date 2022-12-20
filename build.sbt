@@ -27,3 +27,5 @@ coverageMinimumStmtPerPackage   := 80
 coverageMinimumBranchPerPackage := 80
 coverageMinimumStmtPerFile      := 80
 coverageMinimumBranchPerFile    := 80
+
+enablePlugins()
