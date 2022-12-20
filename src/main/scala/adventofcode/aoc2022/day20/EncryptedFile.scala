@@ -1,13 +1,13 @@
 package adventofcode.aoc2022.day20
 
 import EncryptedFile.*
-final case class EncryptedFile (nodes: Seq[Node]) {
+final case class EncryptedFile(nodes: Seq[Node]) {
   val start: Node = nodes.find(_.value == 0).get
   def rotate(times: Int = 1): EncryptedFile = {
     for _ <- 1 to times do {
       for node <- nodes do {
         val remainder = (node.value % (nodes.size - 1)).toInt
-        val move = if remainder >= 0 then remainder else remainder + nodes.size - 1
+        val move      = if remainder >= 0 then remainder else remainder + nodes.size - 1
         for _ <- 1 to move do {
           val (previous, current, next, nextNext) = (node.prev, node, node.next, node.next.next)
           previous.next = next

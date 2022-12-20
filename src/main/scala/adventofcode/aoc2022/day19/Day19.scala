@@ -4,7 +4,6 @@ import adventofcode.Problem
 import adventofcode.aoc2022.day19.Day19.*
 import adventofcode.inputLines
 import adventofcode.time
-
 import scala.annotation.nowarn
 import scala.annotation.tailrec
 import scala.math.Ordering.Implicits.*
@@ -17,11 +16,14 @@ final case class Day19(input: List[Blueprint])
       println(s"Blueprint ${blueprint.index}: $maxGeode geodes")
       blueprint.index * maxGeode
     }.sum
-  override def part2: Long = input.take(3).map { blueprint =>
-    val maxGeode = simulate(32, blueprint, Resources.oreBot, Resources.zero, false, false, false)
-    println(s"Blueprint ${blueprint.index}: $maxGeode geodes")
-    maxGeode.toLong
-  }.product
+  override def part2: Long = input
+    .take(3)
+    .map { blueprint =>
+      val maxGeode = simulate(32, blueprint, Resources.oreBot, Resources.zero, false, false, false)
+      println(s"Blueprint ${blueprint.index}: $maxGeode geodes")
+      maxGeode.toLong
+    }
+    .product
   def simulate(
       minute: Int,
       blueprint: Blueprint,
@@ -50,17 +52,41 @@ final case class Day19(input: List[Blueprint])
       val noConstruction = simulate(minute - 1, blueprint, bots, resources + bots, canOre, canClay, canObsidian)
       val constructOre =
         if (canOre && !couldBuildOre) {
-          simulate(minute - 1, blueprint, bots + Resources.oreBot, resources + bots - blueprint.ore, false, false, false)
+          simulate(
+            minute - 1,
+            blueprint,
+            bots + Resources.oreBot,
+            resources + bots - blueprint.ore,
+            false,
+            false,
+            false
+          )
         } else 0
       val constructClay =
         if (canClay && !couldBuildClay)
-          simulate(minute - 1, blueprint, bots + Resources.clayBot, resources + bots - blueprint.clay, false, false, false)
+          simulate(
+            minute - 1,
+            blueprint,
+            bots + Resources.clayBot,
+            resources + bots - blueprint.clay,
+            false,
+            false,
+            false
+          )
         else 0
       val constructObsidian =
         if (canObsidian && !couldBuildObsidian)
-          simulate(minute - 1, blueprint, bots + Resources.obsidianBot, resources + bots - blueprint.obsidian, false, false, false)
+          simulate(
+            minute - 1,
+            blueprint,
+            bots + Resources.obsidianBot,
+            resources + bots - blueprint.obsidian,
+            false,
+            false,
+            false
+          )
         else 0
-      noConstruction.max( constructOre).max(constructClay).max( constructObsidian)
+      noConstruction.max(constructOre).max(constructClay).max(constructObsidian)
     }
   }
 
