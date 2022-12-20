@@ -3,6 +3,7 @@ package adventofcode.aoc2022.day12
 import adventofcode.*
 import adventofcode.aoc2022.day12.Day12
 import adventofcode.aoc2022.day12.Day12.*
+import adventofcode.utils.coordinates.Coordinates
 
 class Day12Test extends AoCTest {
   override val lines: String = """Sabqponm

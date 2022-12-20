@@ -2,7 +2,7 @@ package adventofcode.aoc2022.day17
 
 import Day17.*
 import State.*
-import adventofcode.Coordinates
+import adventofcode.utils.coordinates.Coordinates
 import scala.annotation.tailrec
 
 final case class State(moves: String, grid: Grid, rockIndex: Int, moveIndex: Int, height: Int) {

@@ -1,10 +1,10 @@
 package adventofcode.aoc2022.day17
 
-import adventofcode.Coordinates
-import adventofcode.Direction
+import adventofcode.utils.coordinates.Coordinates
+import adventofcode.utils.coordinates.Direction
 
 case class Rock(name: String, points: Set[Coordinates]) {
-  def move(vector: Coordinates): Rock = copy(points = points.map(_.plus(vector)))
+  def move(vector: Coordinates): Rock = copy(points = points.map(_ + vector))
   def canMove(grid: Grid): Boolean    = points.forall(p => p.x > 0 && p.x < 8 && !grid.contains(p))
 }
 object Rock {

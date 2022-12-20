@@ -1,7 +1,7 @@
 package adventofcode.aoc2022.day12
 
 import Day12.*
-import adventofcode.Coordinates
+import adventofcode.utils.coordinates.Coordinates
 import adventofcode.Problem
 import adventofcode.inputLines
 import scala.annotation.nowarn

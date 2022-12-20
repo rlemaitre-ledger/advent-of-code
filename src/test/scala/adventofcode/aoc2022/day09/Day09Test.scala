@@ -3,7 +3,10 @@ package adventofcode.aoc2022.day09
 import adventofcode.*
 import adventofcode.aoc2022.day09.Day09
 import adventofcode.aoc2022.day09.Day09.*
+import adventofcode.utils.coordinates.Coordinates
+import adventofcode.utils.coordinates.Direction
 import org.scalacheck.Prop.*
+
 import scala.annotation.nowarn
 
 class Day09Test extends AoCTest {

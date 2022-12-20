@@ -3,6 +3,7 @@ package adventofcode.aoc2022.day15
 import adventofcode.*
 import adventofcode.aoc2022.day15.Day15
 import adventofcode.aoc2022.day15.Day15.*
+import adventofcode.utils.coordinates.Coordinates
 
 class Day15Test extends AoCTest {
   override val lines: String = """Sensor at x=2, y=18: closest beacon is at x=-2, y=15

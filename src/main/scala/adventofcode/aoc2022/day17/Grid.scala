@@ -1,6 +1,6 @@
 package adventofcode.aoc2022.day17
 
-import adventofcode.Coordinates
+import adventofcode.utils.coordinates.Coordinates
 
 final case class Grid(private val points: Set[Coordinates]) {
   def add(rock: Rock): Grid            = copy(points = points ++ rock.points)

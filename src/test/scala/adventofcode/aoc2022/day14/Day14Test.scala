@@ -3,6 +3,7 @@ package adventofcode.aoc2022.day14
 import adventofcode.*
 import adventofcode.aoc2022.day14.Day14
 import adventofcode.aoc2022.day14.Day14.*
+import adventofcode.utils.coordinates.Coordinates
 
 class Day14Test extends AoCTest {
   override val lines: String = """498,4 -> 498,6 -> 496,6

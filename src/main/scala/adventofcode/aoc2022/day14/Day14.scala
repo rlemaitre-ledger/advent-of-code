@@ -1,8 +1,8 @@
 package adventofcode.aoc2022.day14
 
 import Day14.*
-import adventofcode.Coordinates
-import adventofcode.Direction
+import adventofcode.utils.coordinates.Coordinates
+import adventofcode.utils.coordinates.Direction
 import adventofcode.Mode
 import adventofcode.Problem
 import adventofcode.inputLines

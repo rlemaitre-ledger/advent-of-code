@@ -1,8 +1,8 @@
 package adventofcode.aoc2022.day09
 
 import Day09.*
-import adventofcode.Coordinates
-import adventofcode.Direction
+import adventofcode.utils.coordinates.Coordinates
+import adventofcode.utils.coordinates.Direction
 import adventofcode.Problem
 import adventofcode.inputLines
 import scala.annotation.tailrec
