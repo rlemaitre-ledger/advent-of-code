@@ -26,7 +26,7 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 |-----------------------------------------------------------------|-----------------------------------------------------------------|--------|
 | [Day 1 ](src/main/scala/adventofcode/aoc2021/day01/Day01.scala) | [Sonar Sweep](https://adventofcode.com/2021/day/1)              | ⭐️⭐️   |
 | [Day 2 ](src/main/scala/adventofcode/aoc2021/day02/Day02.scala) | [Dive!](https://adventofcode.com/2021/day/2)                    | ⭐️⭐️   |
-| [Day 3 ](src/main/scala/adventofcode/aoc2021/day03/Day03.scala) | [Binary Diagnostic](https://adventofcode.com/2021/day/3)        | ✩✩     |
+| [Day 3 ](src/main/scala/adventofcode/aoc2021/day03/Day03.scala) | [Binary Diagnostic](https://adventofcode.com/2021/day/3)        | ⭐️⭐️   |
 | [Day 4 ](src/main/scala/adventofcode/aoc2021/day04/Day04.scala) | [Giant Squid](https://adventofcode.com/2021/day/4)              | ✩✩     |
 | [Day 5 ](src/main/scala/adventofcode/aoc2021/day05/Day05.scala) | [Hydrothermal Venture](https://adventofcode.com/2021/day/5)     | ✩✩     |
 | [Day 6 ](src/main/scala/adventofcode/aoc2021/day06/Day06.scala) | [Lanternfish](https://adventofcode.com/2021/day/6)              | ✩✩     |
