@@ -1,10 +1,10 @@
 package adventofcode.aoc2022.day09
 
 import Day09.*
-import adventofcode.utils.coordinates.Coordinates
-import adventofcode.utils.coordinates.Direction
 import adventofcode.Problem
 import adventofcode.inputLines
+import adventofcode.utils.coordinates.Coordinates
+import adventofcode.utils.coordinates.Direction
 import scala.annotation.tailrec
 case class Day09(input: List[Move]) extends Problem[List[Move], Int, Int](2022, 9, "Rope Bridge") {
   override def part1: Int = play(State.init(2), input).tail.last.past.size

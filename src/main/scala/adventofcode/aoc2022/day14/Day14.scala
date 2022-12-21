@@ -1,11 +1,11 @@
 package adventofcode.aoc2022.day14
 
 import Day14.*
-import adventofcode.utils.coordinates.Coordinates
-import adventofcode.utils.coordinates.Direction
 import adventofcode.Mode
 import adventofcode.Problem
 import adventofcode.inputLines
+import adventofcode.utils.coordinates.Coordinates
+import adventofcode.utils.coordinates.Direction
 import scala.annotation.nowarn
 import scala.annotation.tailrec
 import scala.collection.mutable.Set as MutableSet

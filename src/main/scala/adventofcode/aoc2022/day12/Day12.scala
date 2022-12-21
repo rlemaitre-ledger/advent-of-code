@@ -1,9 +1,9 @@
 package adventofcode.aoc2022.day12
 
 import Day12.*
-import adventofcode.utils.coordinates.Coordinates
 import adventofcode.Problem
 import adventofcode.inputLines
+import adventofcode.utils.coordinates.Coordinates
 import scala.annotation.nowarn
 import scala.annotation.targetName
 import scala.collection.mutable

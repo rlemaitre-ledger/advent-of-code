@@ -6,7 +6,6 @@ import adventofcode.aoc2022.day08.Day08.*
 import adventofcode.utils.coordinates.Coordinates
 import org.scalacheck.Gen
 import org.scalacheck.Prop.*
-
 import scala.annotation.nowarn
 
 class Day08Test extends AoCTest {

@@ -1,9 +1,9 @@
 package adventofcode.aoc2022.day15
 
 import Day15.*
-import adventofcode.utils.coordinates.Coordinates
 import adventofcode.Problem
 import adventofcode.inputLines
+import adventofcode.utils.coordinates.Coordinates
 import scala.collection.immutable.TreeMap
 import scala.util.parsing.combinator.JavaTokenParsers
 

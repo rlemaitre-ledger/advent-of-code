@@ -16,7 +16,7 @@ class Day01Test extends AoCTest {
       |263""".stripMargin
 
   test("part 1") {
-      assertEquals(Day01(input).part1, 7)
+    assertEquals(Day01(input).part1, 7)
   }
   test("part 2") {
     assertEquals(Day01(input).part2, 5)

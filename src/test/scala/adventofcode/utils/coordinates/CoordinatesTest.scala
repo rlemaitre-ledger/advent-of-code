@@ -5,7 +5,6 @@ import munit.ScalaCheckSuite
 import org.scalacheck.Arbitrary
 import org.scalacheck.Gen
 import org.scalacheck.Prop.forAll
-
 import scala.annotation.nowarn
 
 class CoordinatesTest extends FunSuite, ScalaCheckSuite {

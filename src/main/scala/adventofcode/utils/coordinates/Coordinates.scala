@@ -7,13 +7,13 @@ final case class Coordinates(x: Int, y: Int) {
     Math.abs(x - other.x) <= 1 && Math.abs(y - other.y) <= 1
   def move(direction: Direction): Coordinates = {
     direction match
-      case Direction.Up => Coordinates(x, y + 1)
-      case Direction.Down => Coordinates(x, y - 1)
-      case Direction.Left => Coordinates(x - 1, y)
+      case Direction.Up    => Coordinates(x, y + 1)
+      case Direction.Down  => Coordinates(x, y - 1)
+      case Direction.Left  => Coordinates(x - 1, y)
       case Direction.Right => Coordinates(x + 1, y)
   }
   def sameLine(other: Coordinates): Boolean = x == other.x
-  def sameRow(other: Coordinates): Boolean = y == other.y
+  def sameRow(other: Coordinates): Boolean  = y == other.y
   def directionTo(other: Coordinates): List[Direction] = {
     if (adjacentTo(other))
       Nil
