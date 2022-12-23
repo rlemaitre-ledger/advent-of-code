@@ -13,9 +13,7 @@ final case class Board(numbers: Map[Int, Cell], lastDraw: Int = -1, drawCount: I
   def wins: Boolean = columns.exists(_.forall(_.drawn)) || rows.exists(_.forall(_.drawn))
   def score: Int    = numbers.values.filterNot(_.drawn).map(_.value).sum * lastDraw
   def draw(number: Int): Board =
-    if numbers.contains(number) then
-      copy(numbers = numbers + (number -> numbers(number).mark), lastDraw = number, drawCount = drawCount + 1)
-    else copy(lastDraw = number, drawCount = drawCount + 1)
+    copy(numbers = numbers + (number -> numbers(number).mark), lastDraw = number, drawCount = drawCount + 1)
 }
 object Board {
   final case class Cell(value: Int, coordinates: Coordinates, drawn: Boolean = false) {
@@ -26,6 +24,7 @@ object Board {
       println(s"parse line $index ($line)")
       line.split("\\W+").dropWhile(_.isEmpty).zipWithIndex.map((n, i) => Cell(n.toInt, Coordinates(i, index))).toList
     lines
+      .filterNot(_.isEmpty)
       .grouped(5)
       .map { grid =>
         Board(

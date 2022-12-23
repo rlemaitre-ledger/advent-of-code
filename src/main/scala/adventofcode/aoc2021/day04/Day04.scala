@@ -23,5 +23,5 @@ final case class Day04(input: List[String]) extends Problem[List[String], Int, I
   }
 }
 object Day04 {
-  val instance: Day04 = Day04(inputLines("2021/day04.txt").filterNot(_.isEmpty))
+  val instance: Day04 = Day04(inputLines("2021/day04.txt"))
 }

@@ -82,7 +82,7 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 19](src/main/scala/adventofcode/aoc2022/day19/Day19.scala) | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      | ⭐️⭐️   |
 | [Day 20](src/main/scala/adventofcode/aoc2022/day20/Day20.scala) | [Grove Positioning System](https://adventofcode.com/2022/day/20) | ⭐️⭐️   |
 | [Day 21](src/main/scala/adventofcode/aoc2022/day21/Day21.scala) | [Monkey Math](https://adventofcode.com/2022/day/21)              | ⭐️⭐️   |
-| [Day 22](src/main/scala/adventofcode/aoc2022/day22/Day22.scala) | [](https://adventofcode.com/2022/day/22)                         | ✩✩     |
+| [Day 22](src/main/scala/adventofcode/aoc2022/day22/Day22.scala) | [](https://adventofcode.com/2022/day/22)                         | ⭐️✩    |
 | [Day 23](src/main/scala/adventofcode/aoc2022/day23/Day23.scala) | [](https://adventofcode.com/2022/day/23)                         | ✩✩     |
 | [Day 24](src/main/scala/adventofcode/aoc2022/day24/Day24.scala) | [](https://adventofcode.com/2022/day/24)                         | ✩✩     |
 | [Day 25](src/main/scala/adventofcode/aoc2022/day25/Day25.scala) | [](https://adventofcode.com/2022/day/25)                         | ✩✩     |
