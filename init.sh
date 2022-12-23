@@ -91,12 +91,12 @@ parse_params() {
 }
 
 check_dependencies() {
-  echo >&2 -n "${GREEN}Checking dependencies...${NOFORMAT} "
+  echo >&2 -n -e "${GREEN}Checking dependencies...${NOFORMAT} "
   local dependencies=("curl" "sbt")
   for name in "${dependencies[@]}"; do
-    [[ $(which $name 2>/dev/null) ]] || { echo >&2 -en "\n$name needs to be installed. Use 'brew install $name'";deps=1; }
+    [[ $(which $name 2>/dev/null) ]] || { echo >&2 -en "\n${RED}$name needs to be installed. Use 'brew install $name'${NOFORMAT}";deps=1; }
   done
-  [[ ${deps-} -ne 1 ]] && echo >&2 "OK" || die "Install the above and rerun this script"
+  [[ ${deps-} -ne 1 ]] && echo >&2 -e "${BLUE}OK${NOFORMAT}" || die "${RED}Install the above and rerun this script${NOFORMAT}"
 }
 
 parse_params "$@"
@@ -104,9 +104,9 @@ setup_colors
 check_dependencies
 
 # script logic here
-msg "${GREEN}Generating files${NOFORMAT}"
+echo >&2 -n -e "${GREEN}Generating files...${NOFORMAT}"
 sbt "g8Scaffold problem --year=${year} --day=${day}" > /dev/null 2>&1
-msg "    ${BLUE}OK${NOFORMAT}"
-msg "${GREEN}Retrieving input data${NOFORMAT}"
+echo >&2 -e "${BLUE}OK${NOFORMAT}"
+echo >&2 -n -e "${GREEN}Retrieving input data...${NOFORMAT}"
 curl --silent --fail --cookie "session=$token" "https://adventofcode.com/$year/day/$simple_day/input" > src/main/resources/$year/day$day.txt
-msg "    ${BLUE}OK${NOFORMAT}"
+echo >&2 -e "${BLUE}OK${NOFORMAT}"
