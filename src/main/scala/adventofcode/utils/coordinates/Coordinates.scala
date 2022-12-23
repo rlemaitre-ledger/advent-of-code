@@ -44,5 +44,13 @@ final case class Coordinates(x: Int, y: Int) {
   def +(other: Coordinates): Coordinates = Coordinates(this.x + other.x, this.y + other.y)
 }
 object Coordinates {
-  val origin: Coordinates = Coordinates(0, 0)
+  val origin: Coordinates    = Coordinates(0, 0)
+  val west: Coordinates      = Coordinates(-1, 0)
+  val northWest: Coordinates = Coordinates(-1, 1)
+  val north: Coordinates     = Coordinates(0, 1)
+  val northEast: Coordinates = Coordinates(1, 1)
+  val east: Coordinates      = Coordinates(1, 0)
+  val southEast: Coordinates = Coordinates(1, -1)
+  val south: Coordinates     = Coordinates(0, -1)
+  val southWest: Coordinates = Coordinates(-1, -1)
 }
