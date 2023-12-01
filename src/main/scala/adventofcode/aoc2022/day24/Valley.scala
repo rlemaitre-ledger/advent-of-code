@@ -4,11 +4,11 @@ import adventofcode.utils.coordinates.Coordinates
 import adventofcode.utils.coordinates.Direction
 
 final case class Valley(
-                         tiles: Map[Coordinates, Set[Tile]],
-                         entry: Coordinates,
-                         exit: Coordinates,
-                         nbLines: Int,
-                         nbColumn: Int
+    tiles: Map[Coordinates, Set[Tile]],
+    entry: Coordinates,
+    exit: Coordinates,
+    nbLines: Int,
+    nbColumn: Int
 ) {
   def move(tile: Tile, from: Coordinates, to: Coordinates): Valley =
     copy(
@@ -43,13 +43,13 @@ final case class Valley(
                     val lower = acc.tiles.keys.filter(_.x == from.x).minBy(_.y)
                     if acc.isWall(lower) then lower + Coordinates.north else lower
                   } else to
-                case Direction.Down  =>
+                case Direction.Down =>
                   val to = from + Coordinates.south
                   if acc.isWall(to) || to.y <= 0 then {
                     val upper = acc.tiles.keys.filter(_.x == from.x).maxBy(_.y)
                     if acc.isWall(upper) then upper + Coordinates.south else upper
                   } else to
-                case Direction.Left  =>
+                case Direction.Left =>
                   val to = from + Coordinates.west
                   if acc.isWall(to) || to.x >= 0 then {
                     val leftMost = acc.tiles.keys.filter(_.y == from.y).maxBy(_.x)
@@ -61,7 +61,7 @@ final case class Valley(
                     val rightMost = acc.tiles.keys.filter(_.y == from.y).minBy(_.x)
                     if acc.isWall(rightMost) then rightMost + Coordinates.east else rightMost
                   } else to
-        )
+            )
       }
 }
 object Valley {

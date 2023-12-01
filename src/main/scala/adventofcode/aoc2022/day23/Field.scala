@@ -16,7 +16,7 @@ final case class Field(
     case Occupation.Elf => true
   )
 
-  val elvesMoved: Boolean = field != previousField
+  val elvesMoved: Boolean                           = field != previousField
   private def rotatePropositions: List[Proposition] = propositions.tail ++ List(propositions.head)
   def next: Field =
     val wishes = elves
@@ -39,7 +39,7 @@ final case class Field(
     val maxX = elves.keySet.map(_.x).max
     val minY = elves.keySet.map(_.y).min
     val maxY = elves.keySet.map(_.y).max
-    (1 + maxX - minX) * (1 + maxY - minY) -elves.size
+    (1 + maxX - minX) * (1 + maxY - minY) - elves.size
   private def proposition(coordinates: Coordinates, occupation: Occupation): Option[Coordinates] = {
     if emptyAround(field, coordinates) then None
     else {

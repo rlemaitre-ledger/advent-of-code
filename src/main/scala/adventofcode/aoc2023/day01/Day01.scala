@@ -1,7 +1,7 @@
 package adventofcode.aoc2023.day01
+import Day01.*
 import adventofcode.Problem
 import adventofcode.inputLines
-import Day01.*
 
 final case class Day01(input: List[String]) extends Problem[List[String], Int, Int](2023, 1, "Trebuchet?!"):
   override def part1: Int = input.map(calibrationValue(onlyDigits)).sum
@@ -17,18 +17,20 @@ object Day01:
   val onlyDigits: DigitExtractor = _.filter(_.isDigit).toList
 
   private def firstDigit(extractDigit: DigitExtractor)(line: String): Char = extractDigit(line).head
-  def lastDigit(extractDigit: DigitExtractor)(line: String): Char = extractDigit(line).last
+  def lastDigit(extractDigit: DigitExtractor)(line: String): Char          = extractDigit(line).last
 
   val digitsAndSpelledOut: DigitExtractor = line =>
-    line.foldLeft(""): (acc, c) =>
+    line
+      .foldLeft(""): (acc, c) =>
         (acc + c)
-          .replaceAll("one",   "1e")
-          .replaceAll("two",   "2o")
+          .replaceAll("one", "1e")
+          .replaceAll("two", "2o")
           .replaceAll("three", "3e")
-          .replaceAll("four",  "4r")
-          .replaceAll("five",  "5f")
-          .replaceAll("six",   "6x")
+          .replaceAll("four", "4r")
+          .replaceAll("five", "5f")
+          .replaceAll("six", "6x")
           .replaceAll("seven", "7n")
           .replaceAll("eight", "8t")
-          .replaceAll("nine",  "9e")
-      .filter(_.isDigit).toList
+          .replaceAll("nine", "9e")
+      .filter(_.isDigit)
+      .toList
