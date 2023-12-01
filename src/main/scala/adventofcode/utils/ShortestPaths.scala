@@ -58,4 +58,7 @@ object ShortestPaths {
 }
 
 case class Path[Vertex, Cost](predecessor: Option[Vertex], cost: Cost, edge: Option[Edge[Vertex, Cost]])
-trait Edge[Vertex, Cost](val from: Vertex, val to: Vertex, val cost: Cost)
+trait Edge[Vertex, Cost]:
+  def from: Vertex
+  def to: Vertex
+  def cost: Cost

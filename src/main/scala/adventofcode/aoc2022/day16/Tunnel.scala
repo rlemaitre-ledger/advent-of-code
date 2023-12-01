@@ -2,5 +2,5 @@ package adventofcode.aoc2022.day16
 
 import adventofcode.utils.Edge
 
-final case class Tunnel(override val from: Valve, override val to: Valve, override val cost: Int)
-    extends Edge[Valve, Int](from, to, cost)
+final case class Tunnel(from: Valve, to: Valve, cost: Int)
+    extends Edge[Valve, Int]

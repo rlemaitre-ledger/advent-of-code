@@ -4,18 +4,19 @@ import adventofcode.AoCTest
 
 class Day24Test extends AoCTest {
   override val lines: String =
-    """
-      |
-      |""".stripMargin
+    """#.######
+      |#>>.<^<#
+      |#.<..<<#
+      |#>v.><>#
+      |#<^v^^>#
+      |######.#""".stripMargin
 
   test("part 1") {
-    intercept[NotImplementedError] {
-      Day24(input).part1
-    }
+    assertEquals(Day24(Trip.parse(input)).part1, 18)
   }
   test("part 2") {
     intercept[NotImplementedError] {
-      Day24(input).part2
+      Day24(Trip.parse(input)).part2
     }
   }
 }
