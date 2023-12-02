@@ -94,9 +94,10 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 <details open="open">
     <summary>Details</summary>
 
-| Day                                                            | Title                                              | Result |
-|----------------------------------------------------------------|----------------------------------------------------|--------|
-| [Day 1](src/main/scala/adventofcode/aoc2023/day01/Day01.scala) | [Trebuchet?!](https://adventofcode.com/2023/day/1) | ⭐️⭐️   |
+| Day                                                            | Title                                                 | Result |
+|----------------------------------------------------------------|-------------------------------------------------------|--------|
+| [Day 1](src/main/scala/adventofcode/aoc2023/day01/Day01.scala) | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | ⭐️⭐️   |
+| [Day 2](src/main/scala/adventofcode/aoc2023/day02/Day02.scala) | [Cube Conundrum](https://adventofcode.com/2023/day/2) | ⭐️⭐️   |
 
 </details>
 ## Tech Stack
