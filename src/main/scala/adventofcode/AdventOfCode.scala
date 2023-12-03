@@ -4,9 +4,9 @@ import adventofcode.AdventOfCode.*
 import cats.syntax.all.*
 import com.monovore.decline.CommandApp
 import com.monovore.decline.Opts
-import java.time.LocalDate
-import jdk.tools.jlink.internal.plugins.IncludeLocalesPlugin
 
+import java.time.LocalDate
+// $COVERAGE-OFF$
 object AdventOfCode
     extends CommandApp(
       name = "aoc",
@@ -87,3 +87,4 @@ object AdventOfCode
 //        25 -> aoc2023.day25.Day25.instance,
       )
     )
+// $COVERAGE-ON$

@@ -33,4 +33,3 @@ coverageMinimumBranchPerPackage := 50
 coverageMinimumStmtPerFile      := 50
 coverageMinimumBranchPerFile    := 50
 
-ThisBuild / coverageExcludedFiles := """.*AdventOfCode"""
