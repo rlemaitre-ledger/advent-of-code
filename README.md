@@ -5,9 +5,9 @@
 		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
 			 alt="Gitmoji">
 	</a>
-    <img src="https://github.com/rlemaitre-ledger/advent-of-code-2022/actions/workflows/ci.yml/badge.svg" alt="ci">
+    <img src="https://github.com/rlemaitre-ledger/advent-of-code/actions/workflows/ci.yml/badge.svg" alt="ci">
     <a href="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022">
-        <img src="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022/branch/main/graph/badge.svg?token=5XW9EJ5SBD" alt="coverage"/>
+        <img src="https://codecov.io/gh/rlemaitre-ledger/advent-of-code/branch/main/graph/badge.svg?token=5XW9EJ5SBD" alt="coverage"/>
     </a>
 </p>
 

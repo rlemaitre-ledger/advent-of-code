@@ -18,8 +18,8 @@ class Day03Test extends AoCTest:
       |""".stripMargin
 
   test("part 1") {
-      assertEquals(Day03(Board.parse(input)).part1, 4361)
+    assertEquals(Day03(Board.parse(input)).part1, 4361)
   }
   test("part 2") {
-      assertEquals(Day03(Board.parse(input)).part2, 467835L)
+    assertEquals(Day03(Board.parse(input)).part2, 467835L)
   }

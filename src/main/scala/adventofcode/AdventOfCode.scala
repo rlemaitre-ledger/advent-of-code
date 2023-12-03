@@ -4,7 +4,6 @@ import adventofcode.AdventOfCode.*
 import cats.syntax.all.*
 import com.monovore.decline.CommandApp
 import com.monovore.decline.Opts
-
 import java.time.LocalDate
 import jdk.tools.jlink.internal.plugins.IncludeLocalesPlugin
 
@@ -31,18 +30,18 @@ object AdventOfCode
         1 -> aoc2021.day01.Day01.instance,
         2 -> aoc2021.day02.Day02.instance,
         3 -> aoc2021.day03.Day03.instance,
-        4 -> aoc2021.day04.Day04.instance,
+        4 -> aoc2021.day04.Day04.instance
       ),
       2022 -> Map(
-         1 -> aoc2022.day01.Day01.instance,
-         2 -> aoc2022.day02.Day02.instance,
-         3 -> aoc2022.day03.Day03.instance,
-         4 -> aoc2022.day04.Day04.instance,
-         5 -> aoc2022.day05.Day05.instance,
-         6 -> aoc2022.day06.Day06.instance,
-         7 -> aoc2022.day07.Day07.instance,
-         8 -> aoc2022.day08.Day08.instance,
-         9 -> aoc2022.day09.Day09.instance,
+        1  -> aoc2022.day01.Day01.instance,
+        2  -> aoc2022.day02.Day02.instance,
+        3  -> aoc2022.day03.Day03.instance,
+        4  -> aoc2022.day04.Day04.instance,
+        5  -> aoc2022.day05.Day05.instance,
+        6  -> aoc2022.day06.Day06.instance,
+        7  -> aoc2022.day07.Day07.instance,
+        8  -> aoc2022.day08.Day08.instance,
+        9  -> aoc2022.day09.Day09.instance,
         10 -> aoc2022.day10.Day10.instance,
         11 -> aoc2022.day11.Day11.instance,
         12 -> aoc2022.day12.Day12.instance,
@@ -59,12 +58,12 @@ object AdventOfCode
         22 -> aoc2022.day22.Day22.instance,
         23 -> aoc2022.day23.Day23.instance,
         24 -> aoc2022.day24.Day24.instance,
-        25 -> aoc2022.day25.Day25.instance,
+        25 -> aoc2022.day25.Day25.instance
       ),
       2023 -> Map(
-         1 -> aoc2023.day01.Day01.instance,
-         2 -> aoc2023.day02.Day02.instance,
-         3 -> aoc2023.day03.Day03.instance,
+        1 -> aoc2023.day01.Day01.instance,
+        2 -> aoc2023.day02.Day02.instance,
+        3 -> aoc2023.day03.Day03.instance
 //         4 -> aoc2023.day04.Day04.instance,
 //         5 -> aoc2023.day05.Day05.instance,
 //         6 -> aoc2023.day06.Day06.instance,
@@ -88,5 +87,5 @@ object AdventOfCode
 //        23 -> aoc2023.day23.Day23.instance,
 //        24 -> aoc2023.day24.Day24.instance,
 //        25 -> aoc2023.day25.Day25.instance,
-      ),
+      )
     )

@@ -13,8 +13,8 @@ class Day02Test extends AoCTest:
       |""".stripMargin
 
   test("part 1") {
-      assertEquals(Day02(input.map(Game.parse)).part1, 8)
+    assertEquals(Day02(input.map(Game.parse)).part1, 8)
   }
   test("part 2") {
-      assertEquals(Day02(input.map(Game.parse)).part2, 2286L)
+    assertEquals(Day02(input.map(Game.parse)).part2, 2286L)
   }
