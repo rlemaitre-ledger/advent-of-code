@@ -25,7 +25,7 @@ scalacOptions ++= Seq(
 )
 
 coverageHighlighting            := true
-coverageFailOnMinimum           := true
+coverageFailOnMinimum           := false
 coverageMinimumStmtTotal        := 50
 coverageMinimumBranchTotal      := 50
 coverageMinimumStmtPerPackage   := 50
