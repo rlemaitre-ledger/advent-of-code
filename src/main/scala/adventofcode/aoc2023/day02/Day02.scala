@@ -10,10 +10,7 @@ final case class Day02(input: List[Game]) extends Problem[List[Game], Int, Long]
 object Day02:
   val instance: Day02 = Day02(inputLines("2023/day02.txt").map(Game.parse))
 
-  enum Cube(number: Int):
-    case Red(number: Int)   extends Cube(number)
-    case Green(number: Int) extends Cube(number)
-    case Blue(number: Int)  extends Cube(number)
+
   final case class Game(id: Int, rounds: List[Round]):
     def isValid(bag: Bag): Boolean = rounds.forall(_.isValid(bag))
     def minBag: Bag =
