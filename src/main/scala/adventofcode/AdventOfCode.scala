@@ -56,9 +56,7 @@ object AdventOfCode
         20 -> aoc2022.day20.Day20.instance,
         21 -> aoc2022.day21.Day21.instance,
         22 -> aoc2022.day22.Day22.instance,
-        23 -> aoc2022.day23.Day23.instance,
-        24 -> aoc2022.day24.Day24.instance,
-        25 -> aoc2022.day25.Day25.instance
+        23 -> aoc2022.day23.Day23.instance
       ),
       2023 -> Map(
         1 -> aoc2023.day01.Day01.instance,

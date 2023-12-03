@@ -10,7 +10,6 @@ final case class Day02(input: List[Game]) extends Problem[List[Game], Int, Long]
 object Day02:
   val instance: Day02 = Day02(inputLines("2023/day02.txt").map(Game.parse))
 
-
   final case class Game(id: Int, rounds: List[Round]):
     def isValid(bag: Bag): Boolean = rounds.forall(_.isValid(bag))
     def minBag: Bag =
