@@ -6,7 +6,7 @@
 			 alt="Gitmoji">
 	</a>
     <img src="https://github.com/rlemaitre-ledger/advent-of-code/actions/workflows/ci.yml/badge.svg" alt="ci">
-    <a href="https://codecov.io/gh/rlemaitre-ledger/advent-of-code-2022">
+    <a href="https://codecov.io/gh/rlemaitre-ledger/advent-of-code">
         <img src="https://codecov.io/gh/rlemaitre-ledger/advent-of-code/branch/main/graph/badge.svg?token=5XW9EJ5SBD" alt="coverage"/>
     </a>
 </p>
