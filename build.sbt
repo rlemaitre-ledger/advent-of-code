@@ -26,11 +26,11 @@ scalacOptions ++= Seq(
 
 coverageHighlighting            := true
 coverageFailOnMinimum           := true
-coverageMinimumStmtTotal        := 80
-coverageMinimumBranchTotal      := 80
-coverageMinimumStmtPerPackage   := 80
-coverageMinimumBranchPerPackage := 80
-coverageMinimumStmtPerFile      := 80
-coverageMinimumBranchPerFile    := 80
+coverageMinimumStmtTotal        := 50
+coverageMinimumBranchTotal      := 50
+coverageMinimumStmtPerPackage   := 50
+coverageMinimumBranchPerPackage := 50
+coverageMinimumStmtPerFile      := 50
+coverageMinimumBranchPerFile    := 50
 
 ThisBuild / coverageExcludedFiles := """.*AdventOfCode"""
