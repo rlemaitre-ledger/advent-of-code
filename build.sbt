@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "3.3.1"
 
 lazy val root = (project in file("."))
   .settings(
-    name                   := "advent-of-code",
+    name := "advent-of-code",
 //    Compile / mainClass    := Some("AdventOfCode"),
 //    run / mainClass        := Some("AdventOfCode"),
 //    packageBin / mainClass := Some("AdventOfCode"),
@@ -33,3 +33,4 @@ coverageMinimumBranchPerPackage := 80
 coverageMinimumStmtPerFile      := 80
 coverageMinimumBranchPerFile    := 80
 
+ThisBuild / coverageExcludedFiles := """.*AdventOfCode"""
