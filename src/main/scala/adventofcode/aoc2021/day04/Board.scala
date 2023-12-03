@@ -21,7 +21,6 @@ object Board {
   }
   def parseLines(lines: List[String]): List[Board] =
     def parseLine(line: String, index: Int): List[Cell] =
-      println(s"parse line $index ($line)")
       line.split("\\W+").dropWhile(_.isEmpty).zipWithIndex.map((n, i) => Cell(n.toInt, Coordinates(i, index))).toList
     lines
       .filterNot(_.isEmpty)

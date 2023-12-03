@@ -98,6 +98,7 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 |----------------------------------------------------------------|-------------------------------------------------------|--------|
 | [Day 1](src/main/scala/adventofcode/aoc2023/day01/Day01.scala) | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | ⭐️⭐️   |
 | [Day 2](src/main/scala/adventofcode/aoc2023/day02/Day02.scala) | [Cube Conundrum](https://adventofcode.com/2023/day/2) | ⭐️⭐️   |
+| [Day 3](src/main/scala/adventofcode/aoc2023/day03/Day03.scala) | [Gear Ratios](https://adventofcode.com/2023/day/3)    | ⭐️⭐️   |
 
 </details>
 ## Tech Stack

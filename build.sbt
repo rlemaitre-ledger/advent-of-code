@@ -4,12 +4,18 @@ ThisBuild / scalaVersion := "3.3.1"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "advent-of-code"
+    name                   := "advent-of-code",
+//    Compile / mainClass    := Some("AdventOfCode"),
+//    run / mainClass        := Some("AdventOfCode"),
+//    packageBin / mainClass := Some("AdventOfCode"),
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0",
+      "com.monovore"           %% "decline"                  % "2.4.1",
+      "org.scalameta"          %% "munit"                    % "0.7.29" % Test,
+      "org.scalameta"          %% "munit-scalacheck"         % "0.7.29" % Test
+    )
   )
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0"
-
-libraryDependencies += "org.scalameta" %% "munit"            % "0.7.29" % Test
-libraryDependencies += "org.scalameta" %% "munit-scalacheck" % "0.7.29" % Test
+  .enablePlugins(JavaAppPackaging, UniversalPlugin)
 scalacOptions ++= Seq(
   "-unchecked",
   "-deprecation",
@@ -27,4 +33,3 @@ coverageMinimumBranchPerPackage := 80
 coverageMinimumStmtPerFile      := 80
 coverageMinimumBranchPerFile    := 80
 
-enablePlugins()

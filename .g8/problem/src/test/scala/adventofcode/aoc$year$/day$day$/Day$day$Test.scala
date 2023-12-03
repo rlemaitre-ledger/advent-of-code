@@ -2,7 +2,7 @@ package adventofcode.aoc$year$.day$day$
 
 import adventofcode.AoCTest
 
-class Day$day$Test extends AoCTest {
+class Day$day$Test extends AoCTest:
   override val lines: String =
     """
       |
@@ -18,4 +18,3 @@ class Day$day$Test extends AoCTest {
       Day$day$(input).part2
     }
   }
-}
