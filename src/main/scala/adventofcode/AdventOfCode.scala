@@ -4,7 +4,6 @@ import adventofcode.AdventOfCode.*
 import cats.syntax.all.*
 import com.monovore.decline.CommandApp
 import com.monovore.decline.Opts
-
 import java.time.LocalDate
 // $COVERAGE-OFF$
 object AdventOfCode
@@ -61,8 +60,8 @@ object AdventOfCode
       2023 -> Map(
         1 -> aoc2023.day01.Day01.instance,
         2 -> aoc2023.day02.Day02.instance,
-        3 -> aoc2023.day03.Day03.instance
-//         4 -> aoc2023.day04.Day04.instance,
+        3 -> aoc2023.day03.Day03.instance,
+        4 -> aoc2023.day04.Day04.instance
 //         5 -> aoc2023.day05.Day05.instance,
 //         6 -> aoc2023.day06.Day06.instance,
 //         7 -> aoc2023.day07.Day07.instance,

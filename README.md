@@ -84,12 +84,12 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 21](src/main/scala/adventofcode/aoc2022/day21/Day21.scala) | [Monkey Math](https://adventofcode.com/2022/day/21)              | ⭐️⭐️   |
 | [Day 22](src/main/scala/adventofcode/aoc2022/day22/Day22.scala) | [](https://adventofcode.com/2022/day/22)                         | ⭐️✩    |
 | [Day 23](src/main/scala/adventofcode/aoc2022/day23/Day23.scala) | [](https://adventofcode.com/2022/day/23)                         | ⭐️⭐️   |
-| [Day 24](src/main/scala/adventofcode/aoc2022/day24/Day24.scala) | [](https://adventofcode.com/2022/day/24)                         | ✩✩     |
-| [Day 25](src/main/scala/adventofcode/aoc2022/day25/Day25.scala) | [](https://adventofcode.com/2022/day/25)                         | ✩✩     |
+| Day 24                                                          | [](https://adventofcode.com/2022/day/24)                         | ✩✩     |
+| Day 25                                                          | [](https://adventofcode.com/2022/day/25)                         | ✩✩     |
 
 </details>
 
-### 2022
+### 2023
 
 <details open="open">
     <summary>Details</summary>
@@ -99,6 +99,7 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 1](src/main/scala/adventofcode/aoc2023/day01/Day01.scala) | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | ⭐️⭐️   |
 | [Day 2](src/main/scala/adventofcode/aoc2023/day02/Day02.scala) | [Cube Conundrum](https://adventofcode.com/2023/day/2) | ⭐️⭐️   |
 | [Day 3](src/main/scala/adventofcode/aoc2023/day03/Day03.scala) | [Gear Ratios](https://adventofcode.com/2023/day/3)    | ⭐️⭐️   |
+| [Day 4](src/main/scala/adventofcode/aoc2023/day04/Day04.scala) | [Scratchcards](https://adventofcode.com/2023/day/4)   | ⭐️⭐️   |
 
 </details>
 ## Tech Stack
