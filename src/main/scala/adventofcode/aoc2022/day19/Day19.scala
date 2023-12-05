@@ -13,14 +13,12 @@ final case class Day19(input: List[Blueprint])
   override def part1: Int =
     input.map { blueprint =>
       val maxGeode = simulate(24, blueprint, Resources.oreBot, Resources.zero, false, false, false)
-      println(s"Blueprint ${blueprint.index}: $maxGeode geodes")
       blueprint.index * maxGeode
     }.sum
   override def part2: Long = input
     .take(3)
     .map { blueprint =>
       val maxGeode = simulate(32, blueprint, Resources.oreBot, Resources.zero, false, false, false)
-      println(s"Blueprint ${blueprint.index}: $maxGeode geodes")
       maxGeode.toLong
     }
     .product

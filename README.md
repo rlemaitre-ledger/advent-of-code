@@ -94,12 +94,13 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 <details open="open">
     <summary>Details</summary>
 
-| Day                                                            | Title                                                 | Result |
-|----------------------------------------------------------------|-------------------------------------------------------|--------|
-| [Day 1](src/main/scala/adventofcode/aoc2023/day01/Day01.scala) | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | ⭐️⭐️   |
-| [Day 2](src/main/scala/adventofcode/aoc2023/day02/Day02.scala) | [Cube Conundrum](https://adventofcode.com/2023/day/2) | ⭐️⭐️   |
-| [Day 3](src/main/scala/adventofcode/aoc2023/day03/Day03.scala) | [Gear Ratios](https://adventofcode.com/2023/day/3)    | ⭐️⭐️   |
-| [Day 4](src/main/scala/adventofcode/aoc2023/day04/Day04.scala) | [Scratchcards](https://adventofcode.com/2023/day/4)   | ⭐️⭐️   |
+| Day                                                            | Title                                                                  | Result |
+|----------------------------------------------------------------|------------------------------------------------------------------------|--------|
+| [Day 1](src/main/scala/adventofcode/aoc2023/day01/Day01.scala) | [Trebuchet?!](https://adventofcode.com/2023/day/1)                     | ⭐️⭐️   |
+| [Day 2](src/main/scala/adventofcode/aoc2023/day02/Day02.scala) | [Cube Conundrum](https://adventofcode.com/2023/day/2)                  | ⭐️⭐️   |
+| [Day 3](src/main/scala/adventofcode/aoc2023/day03/Day03.scala) | [Gear Ratios](https://adventofcode.com/2023/day/3)                     | ⭐️⭐️   |
+| [Day 4](src/main/scala/adventofcode/aoc2023/day04/Day04.scala) | [Scratchcards](https://adventofcode.com/2023/day/4)                    | ⭐️⭐️   |
+| [Day 5](src/main/scala/adventofcode/aoc2023/day05/Day05.scala) | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | ⭐️⭐️   |
 
 </details>
 ## Tech Stack
@@ -121,28 +122,13 @@ To run tests, run the following command
 To find answers to AoC problem, run the following commands
 
 ```bash
-  sbt console
-  > import adventofcode.*
-  > import adventofcode.aocXXXX.dayXX.*
-  > DayXX.instance.run
+  sbt run
 ```
 
-To run only Part 1
+To run a specific problem
 
 ```bash
-  sbt console
-  > import adventofcode.*
-  > import adventofcode.aocXXXX.dayXX.*
-  > DayXX.instance.run(Mode.Part1)
-```
-
-To run only Part 2
-
-```bash
-  sbt console
-  > import adventofcode.*
-  > import adventofcode.aocXXXX.dayXX.*
-  > DayXX.instance.run(Mode.Part2)
+  sbt "run --year YYYY --day DD"
 ```
 
 ## License

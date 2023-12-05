@@ -11,6 +11,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0",
       "com.monovore"           %% "decline"                  % "2.4.1",
+      "io.github.iltotore"     %% "iron"                     % "2.3.0",
       "org.scalameta"          %% "munit"                    % "0.7.29" % Test,
       "org.scalameta"          %% "munit-scalacheck"         % "0.7.29" % Test
     )
@@ -32,4 +33,3 @@ coverageMinimumStmtPerPackage   := 50
 coverageMinimumBranchPerPackage := 50
 coverageMinimumStmtPerFile      := 50
 coverageMinimumBranchPerFile    := 50
-
