@@ -8,10 +8,8 @@ class Day06Test extends AoCTest:
       |Distance:  9  40  200
       |""".stripMargin
 
-  test("part 1") {
-    assertEquals(Day06(input).part1, 288L)
-  }
+  test("part 1"):
+      assertEquals(Day06(input).part1, 288L)
 
-  test("part 2") {
-    assertEquals(Day06(input).part2, 71503L)
-  }
+  test("part 2"):
+      assertEquals(Day06(input).part2, 71503L)
