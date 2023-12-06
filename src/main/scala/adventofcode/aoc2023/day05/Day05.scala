@@ -1,6 +1,8 @@
 package adventofcode.aoc2023.day05
+
 import adventofcode.Problem
 import adventofcode.inputLines
+import adventofcode.utils.*
 
 final case class Day05(input: List[String])
     extends Problem[List[String], Long, Long](2023, 5, "If You Give A Seed A Fertilizer"):
@@ -10,18 +12,20 @@ final case class Day05(input: List[String])
 object Day05:
   val instance: Day05 = Day05(inputLines("2023/day05.txt"))
 
-final case class Almanac(seeds: MultiRange, transformations: List[Transform]):
+final case class Almanac(seeds: MultiRange[Long], transformations: List[Transform]):
   private def getLocation(seed: Long): Long = transformations.foldLeft(seed)((acc, t) => t.transform(acc))
 
   def lowestLocation: Long = transformations.foldLeft(seeds)((m, t) => t.transformMultiRange(m)).head.from
 
 object Almanac:
   def parse1(lines: List[String]): Almanac =
-    val seeds = MultiRange(lines.head.replace("seeds: ", "").split(' ').map(_.toLong).toList.map(n => Range.single(n)))
+    val seeds = MultiRange(
+      lines.head.replace("seeds: ", "").split(' ').map(_.toLong).toList.map(n => Range.single(n))
+    )
     Almanac(seeds, parse(lines))
   def parse2(lines: List[String]): Almanac =
     val numbers = lines.head.replace("seeds: ", "").split(' ')
-    val seeds: MultiRange = MultiRange(
+    val seeds: MultiRange[Long] = MultiRange(
       numbers
         .grouped(2)
         .map: pair =>
@@ -60,15 +64,15 @@ final case class Conversion(destinationStart: Long, sourceStart: Long, length: L
   def validFor(input: Long): Boolean = input >= sourceStart && input < sourceStart + length
   def convert(input: Long): Long     = destinationStart + input - sourceStart
 
-  val sourceRange: Range      = Range(sourceStart, sourceStart + length - 1)
-  val destinationRange: Range = Range(destinationStart, destinationStart + length - 1)
+  val sourceRange: Range[Long]      = Range(sourceStart, sourceStart + length - 1)
+  val destinationRange: Range[Long] = Range(destinationStart, destinationStart + length - 1)
 final case class Transform(conversions: List[Conversion]):
   def transform(input: Long): Long = conversions.find(_.validFor(input)) match
     case Some(value) => value.convert(input)
     case None        => input
 
-  private def transformRange(range: Range): MultiRange =
-    val intervals: List[(Range, Range)] = conversions.flatMap: c =>
+  private def transformRange(range: Range[Long]): MultiRange[Long] =
+    val intervals: List[(Range[Long], Range[Long])] = conversions.flatMap: c =>
       Option.when(range overlaps c.sourceRange):
         val intersection = range intersect c.sourceRange
         val converted    = Range(c.convert(intersection.from), c.convert(intersection.to))
@@ -76,7 +80,7 @@ final case class Transform(conversions: List[Conversion]):
     val nonConverted = intervals.foldLeft(MultiRange.of(range))((acc, pair) => acc - pair._1)
     MultiRange(intervals.map(_._2)) + nonConverted
 
-  def transformMultiRange(multiRange: MultiRange): MultiRange = {
+  def transformMultiRange(multiRange: MultiRange[Long]): MultiRange[Long] = {
     MultiRange.concat(multiRange.map(r => transformRange(r)))
   }
 

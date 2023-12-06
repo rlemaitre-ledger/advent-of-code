@@ -31,7 +31,7 @@ object Board:
                     case Nil => (ps :+ PartNumber(d.toString.toInt, coordinates.pure[NonEmptyList]), ss, es)
                     case l: List[PartNumber]
                         if l.last.coordinates.last
-                          .sameRow(coordinates) && l.last.coordinates.last.adjacentTo(coordinates) =>
+                          .sameLine(coordinates) && l.last.coordinates.last.adjacentTo(coordinates) =>
                       (ps.init :+ l.last.add(d.toString.toInt), ss, es)
                     case _ => (ps :+ PartNumber(d.toString.toInt, coordinates.pure[NonEmptyList]), ss, es)
                 case _ => (ps, ss :+ Symbol(c, coordinates), es)
