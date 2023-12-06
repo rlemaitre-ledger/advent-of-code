@@ -9,9 +9,9 @@ class Day06Test extends AoCTest:
       |""".stripMargin
 
   test("part 1") {
-    assertEquals(Day06(input).part1, 288)
+    assertEquals(Day06(input).part1, 288L)
   }
 
   test("part 2") {
-    assertEquals(Day06(input).part2, 71503)
+    assertEquals(Day06(input).part2, 71503L)
   }
