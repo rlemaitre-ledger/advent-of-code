@@ -43,5 +43,5 @@ class Day05Test extends AoCTest:
     assertEquals(Day05(input).part1, 35L)
   }
   test("part 2") {
-      assertEquals(Day05(input).part2, 46L)
+    assertEquals(Day05(input).part2, 46L)
   }

@@ -1,7 +1,6 @@
 package adventofcode.aoc2023.day05
 import cats.Monoid
 import cats.syntax.all.*
-
 import scala.annotation.targetName
 import scala.util.matching.Regex
 
@@ -61,9 +60,9 @@ object Range:
     pattern.findFirstMatchIn(str.trim) match
       case Some(regexMatch) =>
         val lowerBound = if (regexMatch.group(1).isEmpty) 0L else regexMatch.group(1).toLong
-        val from = if (str.startsWith("[")) lowerBound else lowerBound + 1
+        val from       = if (str.startsWith("[")) lowerBound else lowerBound + 1
         val upperBound = if (regexMatch.group(2).isEmpty) Long.MaxValue else regexMatch.group(2).toLong
-        val to = if (str.endsWith("]")) upperBound else upperBound - 1
+        val to         = if (str.endsWith("]")) upperBound else upperBound - 1
         Right(Range(from, to))
       case None => Left(s"Invalid format $str must have the ${pattern.regex} format")
   }
@@ -95,7 +94,7 @@ given math.Ordering[Long] = (a: Long, b: Long) => a.compare(b)
  *   - `+`: Adds a `Range` or another `MultiRange` to this `MultiRange`.
  *   - `-`: Removes a `Range` or another `MultiRange` from this `MultiRange`.
  */
-final case class MultiRange private(private val ranges: List[Range]) extends Iterable[Range]:
+final case class MultiRange private (private val ranges: List[Range]) extends Iterable[Range]:
 
   override def iterator: Iterator[Range] = ranges.iterator
 
@@ -107,13 +106,13 @@ final case class MultiRange private(private val ranges: List[Range]) extends Ite
 
   @targetName("plusRange")
   def +(range: Range): MultiRange =
-    val (before, endAfter) = ranges.span(_.to + 1 < range.from)
+    val (before, endAfter)   = ranges.span(_.to + 1 < range.from)
     val (overlapping, after) = endAfter.span(_.from <= range.to + 1)
-    val newRange = overlapping.foldLeft(range)(_ union _)
+    val newRange             = overlapping.foldLeft(range)(_ union _)
     val beginning = before.lastOption match
       case Some(rangeBefore) if rangeBefore.contiguous(newRange) => before.init ++ List(rangeBefore union newRange)
-      case Some(rangeBefore) => before :+ newRange
-      case _ => List(newRange)
+      case Some(rangeBefore)                                     => before :+ newRange
+      case _                                                     => List(newRange)
     MultiRange(beginning ++ after)
 
   @targetName("plusMultiRange")
@@ -143,7 +142,7 @@ object MultiRange:
     if trimmed == "{}" then Right(MultiRange.empty)
     else if trimmed.startsWith("{") && trimmed.endsWith("}") then
       val rangesStr = trimmed.drop(1).dropRight(1).trim
-      val ranges = Range.pattern.findAllIn(rangesStr).map(Range.parse).toList
+      val ranges    = Range.pattern.findAllIn(rangesStr).map(Range.parse).toList
       if ranges.forall(_.isRight) then
         val value: List[Range] = ranges.map(_.getOrElse(throw new Exception("This should never happen")))
         Right(MultiRange.of(value.head, value.tail: _*))

@@ -101,6 +101,7 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 3](src/main/scala/adventofcode/aoc2023/day03/Day03.scala) | [Gear Ratios](https://adventofcode.com/2023/day/3)                     | ⭐️⭐️   |
 | [Day 4](src/main/scala/adventofcode/aoc2023/day04/Day04.scala) | [Scratchcards](https://adventofcode.com/2023/day/4)                    | ⭐️⭐️   |
 | [Day 5](src/main/scala/adventofcode/aoc2023/day05/Day05.scala) | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | ⭐️⭐️   |
+| [Day 6](src/main/scala/adventofcode/aoc2023/day06/Day06.scala) | [Wait For It](https://adventofcode.com/2023/day/6)                     | ⭐️⭐️   |
 
 </details>
 ## Tech Stack
