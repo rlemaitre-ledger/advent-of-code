@@ -2,6 +2,8 @@ package adventofcode.aoc2023.day08
 import adventofcode.Problem
 import adventofcode.inputLines
 import adventofcode.utils.coordinates.Direction
+import adventofcode.utils.lcm
+
 import scala.annotation.tailrec
 
 final case class Day08(input: List[String]) extends Problem[List[String], BigInt, BigInt](2023, 8, "Haunted Wasteland"):
@@ -39,10 +41,6 @@ case class Network(nodes: Map[String, Node], directions: List[Direction]):
   def run: BigInt = walk(nodes("AAA"), _.name == "ZZZ")
   def ghosts: BigInt =
     val starts: List[Node] = nodes.filter(_._1.endsWith("A")).values.toList
-
-    @tailrec
-    def gcd(a: BigInt, b: BigInt): BigInt = if (b == 0) a.abs else gcd(b, a % b)
-    def lcm(list: Seq[BigInt]): BigInt    = list.foldLeft(BigInt(1))((a, b) => (a / gcd(a, b)) * b)
     lcm(starts.map(n => walk(n, _.name.endsWith("Z"))))
 object Network:
   def parse(lines: List[String]): Network =
