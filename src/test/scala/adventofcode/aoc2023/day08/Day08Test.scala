@@ -31,3 +31,29 @@ class Day08Test extends AoCTest:
                    |XXX = (XXX, XXX)
                    |""".stripMargin
       assertEquals(Day08(input2.split('\n').toList).part2, BigInt(6))
+  test("part 2- Vincent input"):
+      val input2 = """LR
+                     |
+                     |11A = (11B, XXX)
+                     |11B = (XXX, 11Z)
+                     |11Z = (11Z, XXX)
+                     |22A = (22B, XXX)
+                     |22B = (22C, 22C)
+                     |22C = (22Z, 22Z)
+                     |22Z = (11Z, 11Z)
+                     |XXX = (XXX, XXX)
+                     |""".stripMargin
+      assertEquals(Day08(input2.split('\n').toList).part2, BigInt(3))
+  test("part 2- Vincent second input"):
+      val input2 = """LR
+                     |
+                     |11A = (11B, XXX)
+                     |11B = (XXX, 11Z)
+                     |11Z = (11B, XXX)
+                     |22A = (22B, XXX)
+                     |22B = (22C, 22C)
+                     |22C = (22Z, 22Z)
+                     |22Z = (22A, 22A)
+                     |XXX = (XXX, XXX)
+                     |""".stripMargin
+      assertEquals(Day08(input2.split('\n').toList).part2, BigInt(6))
