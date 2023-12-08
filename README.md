@@ -102,6 +102,8 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 4](src/main/scala/adventofcode/aoc2023/day04/Day04.scala) | [Scratchcards](https://adventofcode.com/2023/day/4)                    | ⭐️⭐️   |
 | [Day 5](src/main/scala/adventofcode/aoc2023/day05/Day05.scala) | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | ⭐️⭐️   |
 | [Day 6](src/main/scala/adventofcode/aoc2023/day06/Day06.scala) | [Wait For It](https://adventofcode.com/2023/day/6)                     | ⭐️⭐️   |
+| [Day 7](src/main/scala/adventofcode/aoc2023/day07/Day07.scala) | [Camel Cards](https://adventofcode.com/2023/day/7)                     | ⭐️⭐️   |
+| [Day 8](src/main/scala/adventofcode/aoc2023/day08/Day08.scala) | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               | ⭐️⭐️   |
 
 </details>
 ## Tech Stack
