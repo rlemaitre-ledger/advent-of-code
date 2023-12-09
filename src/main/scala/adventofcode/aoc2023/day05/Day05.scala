@@ -2,7 +2,7 @@ package adventofcode.aoc2023.day05
 
 import adventofcode.Problem
 import adventofcode.inputLines
-import adventofcode.utils.*
+import adventofcode.utils.range.*
 
 final case class Day05(input: List[String])
     extends Problem[List[String], Long, Long](2023, 5, "If You Give A Seed A Fertilizer"):

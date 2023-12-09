@@ -1,4 +1,4 @@
-package adventofcode.utils
+package adventofcode.utils.math
 
 import scala.annotation.tailrec
 import scala.math.Integral.Implicits.infixIntegralOps

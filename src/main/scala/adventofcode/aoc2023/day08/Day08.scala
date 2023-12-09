@@ -2,7 +2,7 @@ package adventofcode.aoc2023.day08
 import adventofcode.Problem
 import adventofcode.inputLines
 import adventofcode.utils.coordinates.Direction
-import adventofcode.utils.lcm
+import adventofcode.utils.math.lcm
 import scala.annotation.tailrec
 
 final case class Day08(input: List[String], simple: Boolean = false) extends Problem[List[String], BigInt, BigInt](2023, 8, "Haunted Wasteland"):

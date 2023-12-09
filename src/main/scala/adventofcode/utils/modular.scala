@@ -1,4 +1,4 @@
-package adventofcode.utils
+package adventofcode.utils.mod
 
 import scala.annotation.tailrec
 import scala.annotation.targetName

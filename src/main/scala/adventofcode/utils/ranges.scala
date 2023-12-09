@@ -1,4 +1,4 @@
-package adventofcode.utils
+package adventofcode.utils.range
 
 import cats.Monoid
 import cats.syntax.all.*
