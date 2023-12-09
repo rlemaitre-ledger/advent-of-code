@@ -104,13 +104,21 @@ This repository contains my code for [Advent of Code](https://adventofcode.com/)
 | [Day 6](src/main/scala/adventofcode/aoc2023/day06/Day06.scala) | [Wait For It](https://adventofcode.com/2023/day/6)                     | ⭐️⭐️   |
 | [Day 7](src/main/scala/adventofcode/aoc2023/day07/Day07.scala) | [Camel Cards](https://adventofcode.com/2023/day/7)                     | ⭐️⭐️   |
 | [Day 8](src/main/scala/adventofcode/aoc2023/day08/Day08.scala) | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               | ⭐️⭐️   |
+| [Day 9](src/main/scala/adventofcode/aoc2023/day09/Day09.scala) | [Mirage Maintenance](https://adventofcode.com/2023/day/9)              | ⭐️⭐️   |
 
 </details>
 ## Tech Stack
 
-**Language:** Plain Scala 3 (`v3.2.1`) with [Parser Combinators](https://github.com/scala/scala-parser-combinators) (`v2.1.1`)
+### Language
 
-**Tests:** [mUnit](https://scalameta.org/munit/)
+Scala 3 (`v3.3.1`) with a few libraries:
+- [Parser Combinators](https://github.com/scala/scala-parser-combinators) (`v2.1.1`)
+- [Decline](https://github.com/bkirwi/decline) (`v2.4.1`)
+- [Iron](https://github.com/Iltotore/iron) (`v2.3.0`)
+
+### Tests
+- [mUnit](https://scalameta.org/munit/) (`v0.7.29`)
+- [mUnit-scalacheck](https://scalameta.org/munit/docs/integrations/scalacheck.html) (`v0.7.29`)
 
 ## Running Tests
 

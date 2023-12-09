@@ -5,9 +5,6 @@ ThisBuild / scalaVersion := "3.3.1"
 lazy val root = (project in file("."))
   .settings(
     name := "advent-of-code",
-//    Compile / mainClass    := Some("AdventOfCode"),
-//    run / mainClass        := Some("AdventOfCode"),
-//    packageBin / mainClass := Some("AdventOfCode"),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0",
       "com.monovore"           %% "decline"                  % "2.4.1",
