@@ -2,7 +2,6 @@ package adventofcode.aoc2023.day09
 import adventofcode.Problem
 import adventofcode.aoc2023.day09.Day09.Oasis
 import adventofcode.inputLines
-
 import scala.annotation.tailrec
 import scala.annotation.targetName
 
@@ -21,11 +20,11 @@ object Day09:
 
   final case class Line(values: List[Int]):
     def containsOnlyZero: Boolean = values.forall(_ == 0)
-    def difference: Line = Line(values.sliding(2).map(l => l.last - l.head).toList)
+    def difference: Line          = Line(values.sliding(2).map(l => l.last - l.head).toList)
 
     override def toString: String = values.mkString(" ")
-    def nextValue: Int = nextLine.values.last
-    def previousValue: Int = nextLine.values.head
+    def nextValue: Int            = nextLine.values.last
+    def previousValue: Int        = nextLine.values.head
 
     private def nextLine: Line = {
       @tailrec
@@ -36,8 +35,8 @@ object Day09:
       @tailrec
       def up(lines: List[Line]): Line =
         lines match
-          case Nil => throw Exception("💥")
-          case l :: Nil => l
+          case Nil              => throw Exception("💥")
+          case l :: Nil         => l
           case l1 :: l2 :: rest => up((l2 + l1) +: rest)
 
       val future = up(down(List(this)))
@@ -45,7 +44,8 @@ object Day09:
     }
 
     @targetName("plusLine")
-    def +(line: Line): Line = copy(values = (values.head - line.values.head) +: values :+ (values.last + line.values.last))
+    def +(line: Line): Line =
+      copy(values = (values.head - line.values.head) +: values :+ (values.last + line.values.last))
 
   object Line:
     def parse(s: String): Line = Line(s.split(" ").toList.map(_.toInt))

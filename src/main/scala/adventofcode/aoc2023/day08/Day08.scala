@@ -5,7 +5,8 @@ import adventofcode.utils.coordinates.Direction
 import adventofcode.utils.math.lcm
 import scala.annotation.tailrec
 
-final case class Day08(input: List[String], simple: Boolean = false) extends Problem[List[String], BigInt, BigInt](2023, 8, "Haunted Wasteland"):
+final case class Day08(input: List[String], simple: Boolean = false)
+    extends Problem[List[String], BigInt, BigInt](2023, 8, "Haunted Wasteland"):
   override def part1: BigInt = Network.parse(input).run
   override def part2: BigInt = Network.parse(input).ghosts(simple)
 
@@ -39,7 +40,7 @@ case class Node(
 
   // Intentionally avoiding the call to super.hashCode because no ancestor has overridden hashCode (see note 7 below)
   override def hashCode(): Int =
-    31 * (31 * ( name.##) + leftName.##) + rightName.##
+    31 * (31 * (name.##) + leftName.##) + rightName.##
 
 object Node:
   val unknown: Node = Node("", "", "")
@@ -68,25 +69,24 @@ case class Network(nodes: Map[String, Node], directions: List[Direction]):
         seen: Set[(Node, BigInt)]
     ): List[BigInt] =
       val next = directions.next()
-      if seen.contains((current, steps % loopSize)) then
-        result
+      if seen.contains((current, steps % loopSize)) then result
       else
         val res = if predicate(current) then result :+ steps else result
         next match
-          case Direction.Left  => findAll(current.left, directions, steps + 1, res, seen + ((current, steps % loopSize)))
-          case Direction.Right => findAll(current.right, directions, steps + 1, res, seen + ((current, steps % loopSize)))
-          case _               => throw RuntimeException("Not possible")
+          case Direction.Left => findAll(current.left, directions, steps + 1, res, seen + ((current, steps % loopSize)))
+          case Direction.Right =>
+            findAll(current.right, directions, steps + 1, res, seen + ((current, steps % loopSize)))
+          case _ => throw RuntimeException("Not possible")
     findAll(current, Iterator.continually(directions).flatten, BigInt(0), Nil, Set.empty)
 
   def run: BigInt = walk(nodes("AAA"), _.name == "ZZZ")
   def ghosts(simple: Boolean): BigInt =
     val starts: List[Node] = nodes.filter(_._1.endsWith("A")).values.toList
-    val findFirst = starts.map(n => walk(n, _.name.endsWith("Z")))
+    val findFirst          = starts.map(n => walk(n, _.name.endsWith("Z")))
     if simple then {
       lcm(findFirst)
-    }
-    else
-      val findAll            = starts.map(n => betterWalk(n, _.name.endsWith("Z")))
+    } else
+      val findAll = starts.map(n => betterWalk(n, _.name.endsWith("Z")))
       def combinationList[T](ls: List[List[T]]): List[List[T]] = ls match
         case Nil => Nil :: Nil
         case head :: tail =>
