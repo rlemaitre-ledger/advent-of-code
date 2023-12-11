@@ -30,6 +30,8 @@ final case class Coordinates(x: Int, y: Int):
   @targetName("plus")
   def +(other: Coordinates): Coordinates = Coordinates(this.x + other.x, this.y + other.y)
 
+  override def toString: String = s"($x, $y)"
+
 object Coordinates:
   val origin: Coordinates    = Coordinates(0, 0)
   val west: Coordinates      = Coordinates(-1, 0)
