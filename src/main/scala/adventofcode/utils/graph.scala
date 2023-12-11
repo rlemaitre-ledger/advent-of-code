@@ -6,7 +6,7 @@ import scala.math.Ordered.orderingToOrdered
 
 object graph:
   case class Graph[Node, E <: Edge[Node, Weight], Weight](nodes: Set[Node], edges: Set[E])(using num: Numeric[Weight]):
-    val roots: Set[Node]                            = nodes.filter(incoming(_).isEmpty)
+    def roots: Set[Node]                            = nodes.filter(incoming(_).isEmpty)
     def addNode(node: Node): Graph[Node, E, Weight] = copy(nodes = nodes + node)
     def addEdge(edge: E): Graph[Node, E, Weight]    = copy(edges = edges + edge)
     def neighbors(node: Node): Set[Node] =
@@ -17,9 +17,24 @@ object graph:
     def incoming(node: Node): Map[Node, Weight] =
       (edges.filter(_.to == node).map(e => e.from -> e.weight) ++
         edges.filter(e => !e.isDirected && e.from == node).map(e => e.to -> e.weight)).toMap
-    def outgoing(node: Node): Map[Node, Weight] =
-      (edges.filter(_.from == node).map(e => e.to -> e.weight) ++
-        edges.filter(e => !e.isDirected && e.to == node).map(e => e.from -> e.weight)).toMap
+    def outgoing(node: Node): Map[Node, Weight] = {
+      val allOut       = edges.filter(_.from == node)
+      val undirectedIn = edges.filter(e => !e.isDirected && e.to == node)
+      (allOut.map(e => e.to -> e.weight) ++
+        undirectedIn.map(e => e.from -> e.weight)).toMap
+    }
+
+    def bfs(start: Node): Map[Node, Weight] =
+      @tailrec
+      def bfsImpl(queue: Queue[(Node, Weight)], visited: Map[Node, Weight]): Map[Node, Weight] =
+        if queue.isEmpty then visited
+        else
+          val ((node, weight), rest) = queue.dequeue
+          val newVisited             = visited + (node -> weight)
+          val newQueue = rest ++ neighbors(node).diff(newVisited.keySet).map(n => (n, num.plus(weight, num.one)))
+          bfsImpl(newQueue, newVisited)
+
+      bfsImpl(Queue(start -> num.zero), Map.empty)
 
     def reachableFrom(start: Node): Set[Node] =
       @tailrec
@@ -31,7 +46,7 @@ object graph:
           val newQueue     = rest ++ neighbors(node).diff(newVisited)
           bfsImpl(newQueue, newVisited)
       bfsImpl(Queue(start), Set.empty)
-    lazy val isCycle: Boolean =
+    def isCycle: Boolean =
       @tailrec
       def dfsImpl(visited: Set[Node], stack: List[Node]): Boolean =
         if stack.isEmpty then true
@@ -44,7 +59,7 @@ object graph:
             dfsImpl(newVisited, newStack)
       roots.isEmpty || roots.exists(n => dfsImpl(Set.empty, List(n)))
 
-    lazy val topologicalSort: List[Node] =
+    def topologicalSort: List[Node] =
       @tailrec
       def dfsImpl(visited: Set[Node], stack: List[Node]): List[Node] =
         if stack.isEmpty then visited.toList
@@ -69,8 +84,9 @@ object graph:
           val (node, path) = minHeap.minBy(_._2.weight)
           val newMinHeap   = minHeap - node
           val newPaths     = paths.updated(node, path)
-          val newMinHeap2 = outgoing(node)
-            .filterNot((n, _) => newPaths.contains(n))
+          val out          = outgoing(node)
+          val nonSeen      = out.filterNot((n, _) => newPaths.contains(n))
+          val newMinHeap2 = nonSeen
             .foldLeft(newMinHeap):
               case (heap, (neighbor, weight)) =>
                 val newPath = path.add(neighbor, weight)
@@ -81,7 +97,7 @@ object graph:
       val minHeap: Map[Node, Path[Node, Weight]] = start.map(n => n -> Path.empty).toMap
       dijkstra(minHeap, minHeap)
 
-    lazy val shortestPaths: Map[Node, Path[Node, Weight]] = shortestPath(roots)
+    def shortestPaths: Map[Node, Path[Node, Weight]] = shortestPath(roots)
 
   object Graph:
     def empty[Node, E <: Edge[Node, Weight], Weight: Numeric]: Graph[Node, E, Weight] = Graph(Set.empty, Set.empty)

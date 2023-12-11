@@ -5,6 +5,10 @@ import scala.annotation.targetName
 final case class Coordinates(x: Int, y: Int):
   def adjacentTo(other: Coordinates): Boolean =
     Math.abs(x - other.x) <= 1 && Math.abs(y - other.y) <= 1
+  def up: Coordinates    = move(Direction.Up)
+  def down: Coordinates  = move(Direction.Down)
+  def left: Coordinates  = move(Direction.Left)
+  def right: Coordinates = move(Direction.Right)
   def move(direction: Direction): Coordinates =
     direction match
       case Direction.Up    => Coordinates(x, y + 1)
