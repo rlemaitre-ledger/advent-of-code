@@ -27,6 +27,7 @@ final case class Coordinates(x: Int, y: Int):
     else List(Direction.Down, Direction.Left)
   def neighbours: List[Coordinates]           = Direction.values.map(move).toList
   def manhattanDistance(to: Coordinates): Int = Math.abs(to.x - x) + Math.abs(to.y - y)
+  def chebyshevDistance(to: Coordinates): Int = Math.max(Math.abs(to.x - x), Math.abs(to.y - y))
   @targetName("plus")
   def +(other: Coordinates): Coordinates = Coordinates(this.x + other.x, this.y + other.y)
 

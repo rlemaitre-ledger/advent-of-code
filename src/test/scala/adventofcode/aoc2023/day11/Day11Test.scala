@@ -14,8 +14,8 @@ class Day11Test extends AoCTest:
       |..........
       |.......#..
       |#...#.....""".stripMargin
-    
-  val expanded = """....#........
+
+  val expanded: List[String] = """....#........
                    |.........#...
                    |#............
                    |.............
@@ -29,10 +29,12 @@ class Day11Test extends AoCTest:
                    |#....#.......""".stripMargin.split('\n').toList
 
   test("part 1"):
-    assertEquals(Day11(input).part1, 374)
+    assertEquals(Day11(input).part1, 374L)
+
+
   test("expand"):
-    assertEquals(Universe.parse(input).expand.cells, Universe.parse(expanded).cells)
+    assertEquals(Universe.parse(input).expand(2).galaxies, Universe.parse(expanded).galaxies)
 
   test("part 2"):
-    intercept[NotImplementedError]:
-      assertEquals(Day11(input).part2, 0)
+    assertEquals(Universe.parse(input).expand(1).shortestPaths, 292L)
+    assertEquals(Universe.parse(input).expand(10).shortestPaths, 1030L)
