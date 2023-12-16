@@ -3,7 +3,6 @@ package adventofcode.aoc2023.day12
 import adventofcode.*
 import adventofcode.aoc2023.day12.Spring.*
 import adventofcode.inputLines
-
 import scala.annotation.targetName
 import scala.collection.immutable.::
 
@@ -24,8 +23,8 @@ object Spring:
   def damaged(n: Int): Spring = Damaged(n)
   def compress(springs: List[Spring]): List[Spring] =
     val compressed = springs.foldLeft(List.empty[Spring]):
-      case (existing, Unknown)                     => Unknown :: existing
       case (head :: tail, Unknown)            => Unknown :: head :: tail
+      case (existing, Unknown)                => Unknown :: existing
       case (Nil, Operational)                 => List(Operational)
       case (Operational :: tail, Operational) => Operational :: tail
       case (head :: tail, Operational)        => Operational :: head :: tail
@@ -35,18 +34,17 @@ object Spring:
     compressed.dropWhile(_ == Operational).reverse.dropWhile(_ == Operational)
   def resolve(groups: List[Spring]): List[List[Spring]] =
     if groups.contains(Unknown) then
-      val i = groups.indexOf(Unknown)
+      val i                    = groups.indexOf(Unknown)
       val (before, _ :: after) = groups.splitAt(i): @unchecked
       resolve(Operational :: after).map(before ++ _) ++
         resolve(Damaged(1) :: after).map(before ++ _)
-    else
-      List(groups)
+    else List(groups)
   def display(springs: List[Spring]): String =
     springs
       .map:
-        case Damaged(n) => "#" * n
+        case Damaged(n)  => "#" * n
         case Operational => "."
-        case Unknown => "?"
+        case Unknown     => "?"
       .mkString
 final case class Line(str: String, groupSizes: List[Int]):
   @targetName("multiply")
@@ -69,7 +67,7 @@ object Line:
 
   def parse(line: String): Line =
     val conditionRecord :: groups :: Nil = line.split(" ").toList: @unchecked
-    val groupSizes = groups.split(',').map(_.toInt).toList
+    val groupSizes                       = groups.split(',').map(_.toInt).toList
     Line(conditionRecord, groupSizes)
 
   def combinations(line: Line): Int =
@@ -98,4 +96,3 @@ object Line:
     val (s1, g1) = removeGroupsSimple(compress(line.str), line.groupSizes)
     val (s2, g2) = removeGroupsSimple(s1.reverse, g1.reverse)
     Line(s2.reverse, g2.reverse)
-

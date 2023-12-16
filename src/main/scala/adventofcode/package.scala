@@ -1,5 +1,7 @@
-import scala.+:
-import scala.+:
+import cats.Functor
+import cats.Id
+import cats.Monoid
+import cats.kernel.Semigroup
 import scala.+:
 import scala.annotation.nowarn
 import scala.annotation.tailrec
@@ -60,6 +62,6 @@ package object adventofcode:
   extension [A](s: List[A])
     def intersperse(separator: A): List[A] =
       s match
-        case Nil  => Nil
+        case Nil         => Nil
         case head :: Nil => head :: Nil
-        case head :: t  => head :: separator :: t.intersperse(separator)
+        case head :: t   => head :: separator :: t.intersperse(separator)

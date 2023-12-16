@@ -12,10 +12,12 @@ import adventofcode.dfs
 import adventofcode.inputLines
 import adventofcode.utils.coordinates.Coordinates
 import adventofcode.utils.range.*
+import cats.Id
 
 final case class Day10(input: List[String]) extends Problem[List[String], Int, Int](2023, 10, "Pipe Maze"):
   private val (start, graph, types)       = Tile.parse(input)
-  private val loop: Map[Coordinates, Int] = dfs(start, graph, 0)
+  given Id[Int]                           = 0
+  private val loop: Map[Coordinates, Int] = dfs(start, graph)
   private val maxX                        = input.map(_.length).max - 1
   private val maxY                        = input.size - 1
 

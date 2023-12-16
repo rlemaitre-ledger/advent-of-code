@@ -73,7 +73,7 @@ object AdventOfCode
         13 -> aoc2023.day13.Day13.instance,
         14 -> aoc2023.day14.Day14.instance,
         15 -> aoc2023.day15.Day15.instance,
-//        16 -> aoc2023.day16.Day16.instance,
+        16 -> aoc2023.day16.Day16.instance
 //        17 -> aoc2023.day17.Day17.instance,
 //        18 -> aoc2023.day18.Day18.instance,
 //        19 -> aoc2023.day19.Day19.instance,

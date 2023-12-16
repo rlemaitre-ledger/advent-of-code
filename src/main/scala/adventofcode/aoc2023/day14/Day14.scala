@@ -10,20 +10,18 @@ final case class Day14(input: List[String])
     extends Problem[List[String], Int, Int](2023, 14, "Parabolic Reflector Dish"):
   override def part1: Int = Platform.parse(input).tilt.load
   override def part2: Int =
-    val number      = 1_000_000_000
+    val number = 1_000_000_000
     @tailrec
     def detectCycle(cache: Map[String, Int], loads: Map[Int, Int], platform: Platform, i: Int): Int =
       val cyclePos = cache.get(platform.show)
       if cyclePos.isDefined then
-        val start = cyclePos.get
-        val end = i - 1
+        val start       = cyclePos.get
+        val end         = i - 1
         val cycleLength = end - start + 1
         val position    = ((number - start + 1) % cycleLength) + start - 1
         loads(position)
-      else
-        detectCycle(cache.updated(platform.show, i), loads.updated(i, platform.load), platform.cycle, i + 1)
-    detectCycle(Map.empty, Map.empty,Platform.parse(input), 0)
-
+      else detectCycle(cache.updated(platform.show, i), loads.updated(i, platform.load), platform.cycle, i + 1)
+    detectCycle(Map.empty, Map.empty, Platform.parse(input), 0)
 
 object Day14:
   val instance: Day14 = Day14(inputLines("2023/day14.txt"))
@@ -43,9 +41,9 @@ case class Platform(rocks: Vector[Vector[Option[Rock]]], sizeX: Int, sizeY: Int)
     (minLine until minCube).findLast(rocks(_)(column).isEmpty).getOrElse(minLine)
   def cycle: Platform =
     val north = tilt
-    val west = north.rotate.tilt
+    val west  = north.rotate.tilt
     val south = west.rotate.tilt
-    val east = south.rotate.tilt
+    val east  = south.rotate.tilt
     east.rotate
   def tilt: Platform =
     @tailrec

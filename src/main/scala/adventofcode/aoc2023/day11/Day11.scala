@@ -66,7 +66,7 @@ final case class OptimizedUniverse(xs: List[Int], ys: List[Int], addToX: Vector[
   }
   def sum(values: List[Int], age: Int, toAdd: Vector[Int]): Long =
     val expandedValues = values.map(x => x + (age - 1) * toAdd(x))
-    val multipliers = Range(1 - count, count - 1, 2).inclusive.toList
+    val multipliers    = Range(1 - count, count - 1, 2).inclusive.toList
     expandedValues.zip(multipliers).map(_.toLong * _).sum
 
 object Universe:
@@ -85,9 +85,9 @@ object Universe:
             case _        => None
         impl(rest, coordinates ++ points.toList)
     val coordinates = impl(lines, List.empty)
-    val cols = coordinates.map(_._1).sorted
+    val cols        = coordinates.map(_._1).sorted
     val emptyLines  = toExpand(nbRows, (0 until nbRows).toSet -- cols.toSet)
-    val rows = coordinates.map(_._2).sorted
+    val rows        = coordinates.map(_._2).sorted
     val emptyCols   = toExpand(nbRows, (0 until nbCols).toSet -- rows.toSet)
     OptimizedUniverse(cols, rows, emptyLines, emptyCols)
 

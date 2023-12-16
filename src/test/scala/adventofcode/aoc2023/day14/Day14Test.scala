@@ -16,13 +16,13 @@ class Day14Test extends AoCTest:
       |#OO..#....""".stripMargin
 
   test("part 1"):
-    assertEquals(Day14(input).part1, 136)
+      assertEquals(Day14(input).part1, 136)
 
   test("part 2"):
-    assertEquals(Day14(input).part2, 64)
+      assertEquals(Day14(input).part2, 64)
 
   test("rotate"):
-    val expected = """.....#....
+      val expected = """.....#....
                      |....#...O#
                      |...OO##...
                      |.OO#......
@@ -32,10 +32,10 @@ class Day14Test extends AoCTest:
                      |......OOOO
                      |#...O###..
                      |#..OO#....""".stripMargin
-    assertEquals(Platform.parse(input).cycle.show, expected)
+      assertEquals(Platform.parse(input).cycle.show, expected)
 
   test("rotate twice"):
-    val expected = """.....#....
+      val expected = """.....#....
                      |....#...O#
                      |.....##...
                      |..O#......
@@ -45,10 +45,10 @@ class Day14Test extends AoCTest:
                      |.......OOO
                      |#..OO###..
                      |#.OOO#...O""".stripMargin
-    assertEquals(Platform.parse(input).cycle.cycle.show, expected)
+      assertEquals(Platform.parse(input).cycle.cycle.show, expected)
 
   test("rotate three time"):
-    val expected = """.....#....
+      val expected = """.....#....
                      |....#...O#
                      |.....##...
                      |..O#......
@@ -58,4 +58,4 @@ class Day14Test extends AoCTest:
                      |.......OOO
                      |#...O###.O
                      |#.OOO#...O""".stripMargin
-    assertEquals(Platform.parse(input).cycle.cycle.cycle.show, expected)
+      assertEquals(Platform.parse(input).cycle.cycle.cycle.show, expected)

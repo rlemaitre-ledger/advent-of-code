@@ -1,6 +1,7 @@
 package adventofcode.aoc2022.day16
 
 import adventofcode.*
+import cats.Id
 import scala.annotation.nowarn
 import scala.collection.immutable.List
 import scala.collection.mutable.Map as MutableMap
@@ -9,6 +10,7 @@ final case class ValveNetwork(valvesByName: Map[String, Valve], tunnels: Map[Val
   val valves: Set[Valve]                     = valvesByName.values.toSet
   val interesting: Set[Valve]                = valves.filterNot(_.pressureRate == 0)
   val adjacency: Map[Valve, Seq[Valve]]      = tunnels.map { case (v, tunnels) => v -> tunnels.map(_.to) }
+  given Id[Int]                              = 1
   val distances: Map[Valve, Map[Valve, Int]] = valves.map(v => v -> bfs(v, adjacency.apply)).toMap
 }
 object ValveNetwork {

@@ -29,12 +29,11 @@ class Day11Test extends AoCTest:
                    |#....#.......""".stripMargin.split('\n').toList
 
   test("part 1"):
-    assertEquals(Day11(input).part1, 374L)
-
+      assertEquals(Day11(input).part1, 374L)
 
   test("expand"):
-    assertEquals(Universe.parse(input).expand(2).galaxies, Universe.parse(expanded).galaxies)
+      assertEquals(Universe.parse(input).expand(2).galaxies, Universe.parse(expanded).galaxies)
 
   test("part 2"):
-    assertEquals(Universe.parse(input).expand(1).shortestPaths, 292L)
-    assertEquals(Universe.parse(input).expand(10).shortestPaths, 1030L)
+      assertEquals(Universe.parse(input).expand(1).shortestPaths, 292L)
+      assertEquals(Universe.parse(input).expand(10).shortestPaths, 1030L)

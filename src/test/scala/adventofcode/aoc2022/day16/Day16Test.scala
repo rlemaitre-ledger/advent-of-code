@@ -9,6 +9,7 @@ import adventofcode.aoc2022.day16.ValveNetwork
 import adventofcode.bfs
 import adventofcode.time
 import adventofcode.utils.ShortestPaths
+import cats.Id
 
 class Day16Test extends AoCTest {
   override val lines: String = """Valve AA has flow rate=0; tunnels lead to valves DD, II, BB
@@ -68,6 +69,7 @@ class Day16Test extends AoCTest {
     assertEquals(testInstance.part2, 1707)
   }
   test("bfs") {
+    given Id[Int] = 1
     assertEquals(
       bfs(aa, tunnels.map { case (k, v) => (k, v.map(_.to).sortBy(_.name)) }),
       Map(

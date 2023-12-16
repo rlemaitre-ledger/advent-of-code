@@ -48,10 +48,9 @@ object graph:
       bfsImpl(Queue(start), Set.empty)
     def isCycle: Boolean =
       @tailrec
-      def dfsImpl(visited: Set[Node], stack: List[Node]): Boolean =
-        if stack.isEmpty then true
-        else
-          val node :: rest = stack
+      def dfsImpl(visited: Set[Node], stack: List[Node]): Boolean = stack match
+        case Nil => true
+        case node :: rest =>
           if visited.contains(node) then false
           else
             val newStack   = rest.prependedAll(neighbors(node))
@@ -61,10 +60,9 @@ object graph:
 
     def topologicalSort: List[Node] =
       @tailrec
-      def dfsImpl(visited: Set[Node], stack: List[Node]): List[Node] =
-        if stack.isEmpty then visited.toList
-        else
-          val node :: rest = stack
+      def dfsImpl(visited: Set[Node], stack: List[Node]): List[Node] = stack match
+        case Nil => visited.toList
+        case node :: rest =>
           if visited.contains(node) then dfsImpl(visited, rest)
           else
             val newStack   = rest.prependedAll(neighbors(node))

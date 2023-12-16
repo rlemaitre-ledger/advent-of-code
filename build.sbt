@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
       "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0",
       "com.monovore"           %% "decline"                  % "2.4.1",
       "io.github.iltotore"     %% "iron"                     % "2.3.0",
+      "co.fs2"                 %% "fs2-core"                 % "3.9.3",
       "org.scalameta"          %% "munit"                    % "0.7.29" % Test,
       "org.scalameta"          %% "munit-scalacheck"         % "0.7.29" % Test
     )
